@@ -28,8 +28,6 @@ interface Shortcut {
   metaKey: boolean
   shiftKey: boolean
   altKey: boolean
-  // code?: string
-  // keyCode?: number
 }
 
 export const defineShortcuts = (config: ShortcutsConfig, options: ShortcutsOptions = {}) => {
