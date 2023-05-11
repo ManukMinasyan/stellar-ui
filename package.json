@@ -56,6 +56,7 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
+    "@vueuse/math": "^10.2.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "defu": "^6.1.2",
