@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 module.exports = defineConfig({
     plugins: [
         vue()
-    ], // to process SFC
+    ],
     build: {
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
