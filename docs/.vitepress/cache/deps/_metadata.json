@@ -1,0 +1,167 @@
+{
+  "hash": "453247b6",
+  "browserHash": "c209e771",
+  "optimized": {
+    "vue": {
+      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "87361b4e",
+      "needsInterop": false
+    },
+    "vitepress > @vue/devtools-api": {
+      "src": "../../../../node_modules/@vue/devtools-api/lib/esm/index.js",
+      "file": "vitepress___@vue_devtools-api.js",
+      "fileHash": "95ec56a0",
+      "needsInterop": false
+    },
+    "defu": {
+      "src": "../../../../node_modules/defu/dist/defu.mjs",
+      "file": "defu.js",
+      "fileHash": "278fff3a",
+      "needsInterop": false
+    },
+    "@headlessui/vue": {
+      "src": "../../../../node_modules/@headlessui/vue/dist/headlessui.esm.js",
+      "file": "@headlessui_vue.js",
+      "fileHash": "3000007a",
+      "needsInterop": false
+    },
+    "lodash-es": {
+      "src": "../../../../node_modules/lodash-es/lodash.js",
+      "file": "lodash-es.js",
+      "fileHash": "7b42adc5",
+      "needsInterop": false
+    },
+    "tailwindcss/colors.js": {
+      "src": "../../../../node_modules/tailwindcss/colors.js",
+      "file": "tailwindcss_colors__js.js",
+      "fileHash": "60f92b41",
+      "needsInterop": true
+    },
+    "@popperjs/core/lib/popper-lite": {
+      "src": "../../../../node_modules/@popperjs/core/lib/popper-lite.js",
+      "file": "@popperjs_core_lib_popper-lite.js",
+      "fileHash": "d7a65dca",
+      "needsInterop": false
+    },
+    "@popperjs/core/lib/modifiers/flip": {
+      "src": "../../../../node_modules/@popperjs/core/lib/modifiers/flip.js",
+      "file": "@popperjs_core_lib_modifiers_flip.js",
+      "fileHash": "85e84495",
+      "needsInterop": false
+    },
+    "@popperjs/core/lib/modifiers/offset": {
+      "src": "../../../../node_modules/@popperjs/core/lib/modifiers/offset.js",
+      "file": "@popperjs_core_lib_modifiers_offset.js",
+      "fileHash": "f3292957",
+      "needsInterop": false
+    },
+    "@popperjs/core/lib/modifiers/preventOverflow": {
+      "src": "../../../../node_modules/@popperjs/core/lib/modifiers/preventOverflow.js",
+      "file": "@popperjs_core_lib_modifiers_preventOverflow.js",
+      "fileHash": "25251976",
+      "needsInterop": false
+    },
+    "@popperjs/core/lib/modifiers/computeStyles": {
+      "src": "../../../../node_modules/@popperjs/core/lib/modifiers/computeStyles.js",
+      "file": "@popperjs_core_lib_modifiers_computeStyles.js",
+      "fileHash": "17ba74a4",
+      "needsInterop": false
+    },
+    "@popperjs/core/lib/modifiers/eventListeners": {
+      "src": "../../../../node_modules/@popperjs/core/lib/modifiers/eventListeners.js",
+      "file": "@popperjs_core_lib_modifiers_eventListeners.js",
+      "fileHash": "9f62652c",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "src": "../../../../node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "f5c560f2",
+      "needsInterop": false
+    },
+    "tailwindcss/lib/lib/defaultExtractor.js": {
+      "src": "../../../../node_modules/tailwindcss/lib/lib/defaultExtractor.js",
+      "file": "tailwindcss_lib_lib_defaultExtractor__js.js",
+      "fileHash": "2994c063",
+      "needsInterop": true
+    },
+    "tailwindcss/defaultTheme": {
+      "src": "../../../../node_modules/tailwindcss/defaultTheme.js",
+      "file": "tailwindcss_defaultTheme.js",
+      "fileHash": "1fbffaa7",
+      "needsInterop": true
+    },
+    "tailwindcss/colors": {
+      "src": "../../../../node_modules/tailwindcss/colors.js",
+      "file": "tailwindcss_colors.js",
+      "fileHash": "5c1a30d6",
+      "needsInterop": true
+    },
+    "@tailwindcss/forms": {
+      "src": "../../../../node_modules/@tailwindcss/forms/src/index.js",
+      "file": "@tailwindcss_forms.js",
+      "fileHash": "6e3b9b3e",
+      "needsInterop": true
+    },
+    "@tailwindcss/aspect-ratio": {
+      "src": "../../../../node_modules/@tailwindcss/aspect-ratio/src/index.js",
+      "file": "@tailwindcss_aspect-ratio.js",
+      "fileHash": "0efc64d4",
+      "needsInterop": true
+    },
+    "@tailwindcss/typography": {
+      "src": "../../../../node_modules/@tailwindcss/typography/src/index.js",
+      "file": "@tailwindcss_typography.js",
+      "fileHash": "25928d29",
+      "needsInterop": true
+    },
+    "@tailwindcss/container-queries": {
+      "src": "../../../../node_modules/@tailwindcss/container-queries/dist/index.js",
+      "file": "@tailwindcss_container-queries.js",
+      "fileHash": "9316d352",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-2M6RBOOV": {
+      "file": "chunk-2M6RBOOV.js"
+    },
+    "chunk-N6DXZ52Q": {
+      "file": "chunk-N6DXZ52Q.js"
+    },
+    "chunk-V634PGSD": {
+      "file": "chunk-V634PGSD.js"
+    },
+    "chunk-7RNVGW4Q": {
+      "file": "chunk-7RNVGW4Q.js"
+    },
+    "chunk-LEUC3CDR": {
+      "file": "chunk-LEUC3CDR.js"
+    },
+    "chunk-AWHU7MWE": {
+      "file": "chunk-AWHU7MWE.js"
+    },
+    "chunk-YHXUV4L3": {
+      "file": "chunk-YHXUV4L3.js"
+    },
+    "chunk-YCQHOW27": {
+      "file": "chunk-YCQHOW27.js"
+    },
+    "chunk-FV4WVTWR": {
+      "file": "chunk-FV4WVTWR.js"
+    },
+    "chunk-MEODIGUY": {
+      "file": "chunk-MEODIGUY.js"
+    },
+    "chunk-LAQACTKR": {
+      "file": "chunk-LAQACTKR.js"
+    },
+    "chunk-SMSMZSD4": {
+      "file": "chunk-SMSMZSD4.js"
+    },
+    "chunk-76J2PTFD": {
+      "file": "chunk-76J2PTFD.js"
+    }
+  }
+}

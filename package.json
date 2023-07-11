@@ -1,0 +1,62 @@
+{
+  "name": "stellar-ui",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf dist && vue-tsc && vite build",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "peerDependencies": {
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "rimraf": "^5.0.1",
+    "sass": "^1.63.6",
+    "tailwindcss": "^3.3.2",
+    "typescript": "latest",
+    "vite": "^4.3.9",
+    "vitepress": "^1.0.0-alpha.38",
+    "vue-tsc": "^1.8.3"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=v16.14.0"
+  },
+  "module": "./dist/stellar-ui.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/stellar-ui.es.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wuruoyun/vue-component-lib-starter.git"
+  },
+  "dependencies": {
+    "@egoist/tailwindcss-icons": "^1.1.0",
+    "@headlessui/vue": "^1.7.14",
+    "@iconify-json/heroicons": "^1.1.11",
+    "@iconify-json/lucide": "^1.1.109",
+    "@iconify-json/mdi": "^1.1.53",
+    "@iconify/json": "^2.2.89",
+    "@popperjs/core": "^2.11.8",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "defu": "^6.1.2",
+    "lodash-es": "^4.17.21"
+  }
+}
