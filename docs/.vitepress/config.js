@@ -3,6 +3,7 @@ const path = require('path')
 module.exports = {
     title: 'Stellar UI',
     description: 'Just playing around.',
+    base: '/stellar-ui/',
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
         sidebar: [
