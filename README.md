@@ -19,7 +19,7 @@ to UI when building a Vue app. This includes components, icons, colors, dark mod
 
 Use npm to install.
 
-```json
+```
 npm i stellar-ui
 ```
 

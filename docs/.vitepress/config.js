@@ -4,7 +4,7 @@ module.exports = {
     title: 'Stellar UI',
     description: 'Just playing around.',
     themeConfig: {
-        repo: 'https://github.com/wuruoyun/vue-component-lib-starter',
+        repo: 'https://github.com/ManukMinasyan/stellar-ui',
         sidebar: [
             {
                 text: 'Introduction',
