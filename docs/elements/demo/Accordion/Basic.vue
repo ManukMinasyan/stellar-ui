@@ -1,18 +1,18 @@
 <script setup>
 const items = [{
   label: 'Getting Started',
-  icon: 'i-heroicons-information-circle',
+  icon: 'icon-[heroicons--information-circle]',
   defaultOpen: true,
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }, {
   label: 'Installation',
-  icon: 'i-heroicons-arrow-down-tray',
+  icon: 'icon-[heroicons--arrow-down-tray]',
   disabled: true,
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 },
   {
   label: 'Theming',
-  icon: 'i-heroicons-eye-dropper',
+  icon: 'icon-[heroicons--eye-dropper]',
   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.'
 }]
 </script>

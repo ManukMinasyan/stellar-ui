@@ -1,6 +1,6 @@
 import {
   require_defaultTheme
-} from "./chunk-N6DXZ52Q.js";
-import "./chunk-76J2PTFD.js";
+} from "./chunk-JS7PGN5D.js";
+import "./chunk-WNKWOKNR.js";
 export default require_defaultTheme();
 //# sourceMappingURL=tailwindcss_defaultTheme.js.map

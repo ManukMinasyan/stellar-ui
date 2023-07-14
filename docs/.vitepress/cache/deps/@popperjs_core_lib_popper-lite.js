@@ -1,12 +1,12 @@
 import {
-  getLayoutRect
-} from "./chunk-AWHU7MWE.js";
-import {
-  computeStyles_default
-} from "./chunk-YHXUV4L3.js";
-import {
   eventListeners_default
 } from "./chunk-YCQHOW27.js";
+import {
+  computeStyles_default
+} from "./chunk-4LRPY6RW.js";
+import {
+  getLayoutRect
+} from "./chunk-PKRP5652.js";
 import {
   computeOffsets,
   detectOverflow,
@@ -15,7 +15,7 @@ import {
   getWindowScrollBarX,
   isScrollParent,
   listScrollParents
-} from "./chunk-FV4WVTWR.js";
+} from "./chunk-HKTEMQLV.js";
 import {
   getDocumentElement,
   getNodeName,
@@ -25,12 +25,12 @@ import {
   round
 } from "./chunk-MEODIGUY.js";
 import {
-  modifierPhases
-} from "./chunk-LAQACTKR.js";
-import {
   getWindow
 } from "./chunk-SMSMZSD4.js";
-import "./chunk-76J2PTFD.js";
+import {
+  modifierPhases
+} from "./chunk-LAQACTKR.js";
+import "./chunk-WNKWOKNR.js";
 
 // node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js
 function getHTMLElementScroll(element) {

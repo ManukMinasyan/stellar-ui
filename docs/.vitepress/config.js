@@ -28,9 +28,9 @@ module.exports = {
             {
                 text: 'Forms',
                 items: [
-                    {text: 'Input', link: '/elements/input'},
-                    {text: 'Textarea', link: '/elements/textarea'},
-                    {text: 'Select', link: '/elements/select'},
+                    {text: 'Input', link: '/forms/input'},
+                    {text: 'Textarea', link: '/forms/textarea'},
+                    {text: 'Select', link: '/forms/select'},
                 ],
             }
         ],
@@ -40,7 +40,7 @@ module.exports = {
             alias: {
                 'stellar-ui': path.resolve(__dirname, '../../src'),
             },
-            dedupe: ['vue', /primevue\/.+/], // avoid error when using dependencies that also use Vue
+            dedupe: ['vue'], // avoid error when using dependencies that also use Vue
         }
     }
 }

@@ -1,16 +1,16 @@
 import {
-  require_plugin
-} from "./chunk-2M6RBOOV.js";
-import {
   require_defaultTheme
-} from "./chunk-N6DXZ52Q.js";
+} from "./chunk-JS7PGN5D.js";
 import {
   require_colors
-} from "./chunk-7RNVGW4Q.js";
-import "./chunk-LEUC3CDR.js";
+} from "./chunk-O2FONHVB.js";
+import "./chunk-IP3KHOJO.js";
+import {
+  require_plugin
+} from "./chunk-EA2WWJ7B.js";
 import {
   __commonJS
-} from "./chunk-76J2PTFD.js";
+} from "./chunk-WNKWOKNR.js";
 
 // node_modules/mini-svg-data-uri/shorter-css-color-names.js
 var require_shorter_css_color_names = __commonJS({

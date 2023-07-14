@@ -2,8 +2,6 @@
 
 You may add the usage of the library here.
 
-> If you remove Component B and the [PrimeFaces](https://www.primefaces.org/) (PrimeVue, PrimeIcons and PrimeFlex) dependencies from your library, the setup related to PrimeFaces won't be needed from the guide below.
-
 ## Setup
 
 This setup assumes your client app is created with Vite and vue-ts template, and you use 'npm link' to link to `stellar-ui` locally.
@@ -26,7 +24,7 @@ export default defineConfig({
 });
 ```
 
-In your `main.ts`, you shall import the libraries and CSS:
+In your `index.ts`, you shall import the libraries and CSS:
 
 ```ts
 import 'stellar-ui/dist/style.css';

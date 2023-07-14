@@ -6,6 +6,10 @@ import UAccordion from './elements/Accordion.vue'
 import UIcon from './elements/Icon.vue'
 import UKbd from './elements/Kbd.vue'
 
+import UInput from './forms/Input.vue'
+import UTextarea from './forms/Textarea.vue'
+import USelect from './forms/Select.vue'
+
 export {
     UAvatar,
     UBadge,
@@ -13,5 +17,8 @@ export {
     UDropdown,
     UAccordion,
     UIcon,
-    UKbd
+    UKbd,
+    UInput,
+    UTextarea,
+    USelect
 }

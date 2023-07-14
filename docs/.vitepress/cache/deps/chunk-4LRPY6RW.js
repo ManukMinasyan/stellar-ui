@@ -6,6 +6,9 @@ import {
   round
 } from "./chunk-MEODIGUY.js";
 import {
+  getWindow
+} from "./chunk-SMSMZSD4.js";
+import {
   bottom,
   end,
   getBasePlacement,
@@ -13,9 +16,6 @@ import {
   right,
   top
 } from "./chunk-LAQACTKR.js";
-import {
-  getWindow
-} from "./chunk-SMSMZSD4.js";
 
 // node_modules/@popperjs/core/lib/modifiers/computeStyles.js
 var unsetSides = {
@@ -142,4 +142,4 @@ export {
   mapToStyles,
   computeStyles_default
 };
-//# sourceMappingURL=chunk-YHXUV4L3.js.map
+//# sourceMappingURL=chunk-4LRPY6RW.js.map

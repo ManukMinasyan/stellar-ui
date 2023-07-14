@@ -1,6 +1,6 @@
 import {
   getBoundingClientRect
-} from "./chunk-FV4WVTWR.js";
+} from "./chunk-HKTEMQLV.js";
 
 // node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js
 function getLayoutRect(element) {
@@ -24,4 +24,4 @@ function getLayoutRect(element) {
 export {
   getLayoutRect
 };
-//# sourceMappingURL=chunk-AWHU7MWE.js.map
+//# sourceMappingURL=chunk-PKRP5652.js.map

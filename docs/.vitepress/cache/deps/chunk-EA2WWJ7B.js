@@ -1,6 +1,6 @@
 import {
   __commonJS
-} from "./chunk-76J2PTFD.js";
+} from "./chunk-WNKWOKNR.js";
 
 // node_modules/tailwindcss/lib/util/createPlugin.js
 var require_createPlugin = __commonJS({
@@ -72,4 +72,4 @@ var require_plugin = __commonJS({
 export {
   require_plugin
 };
-//# sourceMappingURL=chunk-2M6RBOOV.js.map
+//# sourceMappingURL=chunk-EA2WWJ7B.js.map

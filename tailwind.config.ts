@@ -7,11 +7,9 @@ import aspectRatio from '@tailwindcss/aspect-ratio'
 import typography from '@tailwindcss/typography'
 import containerQueries from '@tailwindcss/container-queries'
 import { customSafelistExtractor, generateSafelist } from './src/constants/colors'
-import { iconsPlugin, getIconCollections }   from "@egoist/tailwindcss-icons"
+import { addDynamicIconSelectors } from '@iconify/tailwind';
 
 const defaultExtractor = createDefaultExtractor({ tailwindConfig: { separator: ':' } })
-
-
 
 /** @type {import('tailwindcss').Config} */
 export default <Partial<Config>>{
@@ -58,8 +56,7 @@ export default <Partial<Config>>{
         aspectRatio,
         typography,
         containerQueries,
-        // iconsPlugin({
-        //     collections: getIconCollections(["heroicons"]),
-        // }),
+        // Iconify plugin
+        addDynamicIconSelectors(),
     ],
 }

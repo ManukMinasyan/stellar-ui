@@ -14,6 +14,9 @@ import {
   round
 } from "./chunk-MEODIGUY.js";
 import {
+  getWindow
+} from "./chunk-SMSMZSD4.js";
+import {
   basePlacements,
   bottom,
   clippingParents,
@@ -27,9 +30,6 @@ import {
   top,
   viewport
 } from "./chunk-LAQACTKR.js";
-import {
-  getWindow
-} from "./chunk-SMSMZSD4.js";
 
 // node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js
 function getMainAxisFromPlacement(placement) {
@@ -371,4 +371,4 @@ export {
   getFreshSideObject,
   detectOverflow
 };
-//# sourceMappingURL=chunk-FV4WVTWR.js.map
+//# sourceMappingURL=chunk-HKTEMQLV.js.map

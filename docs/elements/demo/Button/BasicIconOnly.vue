@@ -1,3 +1,3 @@
 <template>
-  <UButton icon="i-heroicons-pencil-square" size="sm" color="primary" square variant="solid" />
+  <UButton icon="icon-[heroicons--pencil-square]" size="sm" color="primary" square variant="solid" />
 </template>

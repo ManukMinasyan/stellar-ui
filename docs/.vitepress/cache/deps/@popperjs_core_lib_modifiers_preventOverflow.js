@@ -1,17 +1,18 @@
 import {
   getLayoutRect
-} from "./chunk-AWHU7MWE.js";
+} from "./chunk-PKRP5652.js";
 import {
   detectOverflow,
   getFreshSideObject,
   getMainAxisFromPlacement
-} from "./chunk-FV4WVTWR.js";
+} from "./chunk-HKTEMQLV.js";
 import {
   getOffsetParent,
   getVariation,
   max,
   min
 } from "./chunk-MEODIGUY.js";
+import "./chunk-SMSMZSD4.js";
 import {
   bottom,
   getBasePlacement,
@@ -20,8 +21,7 @@ import {
   start,
   top
 } from "./chunk-LAQACTKR.js";
-import "./chunk-SMSMZSD4.js";
-import "./chunk-76J2PTFD.js";
+import "./chunk-WNKWOKNR.js";
 
 // node_modules/@popperjs/core/lib/utils/getAltAxis.js
 function getAltAxis(axis) {

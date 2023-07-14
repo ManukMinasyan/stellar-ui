@@ -46,7 +46,7 @@ import { Disclosure as HDisclosure, DisclosureButton as HDisclosureButton, Discl
 import { defu } from 'defu'
 import { omit } from 'lodash-es'
 import UIcon from '../elements/Icon.vue'
-import UButton from '../elements/Button.vue'
+import UButton from './Button.vue'
 import StateEmitter from '../../utils/StateEmitter'
 import type { Button } from '../../types/button'
 // @ts-expect-error

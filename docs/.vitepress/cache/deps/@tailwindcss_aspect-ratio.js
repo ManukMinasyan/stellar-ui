@@ -1,9 +1,9 @@
 import {
   require_plugin
-} from "./chunk-2M6RBOOV.js";
+} from "./chunk-EA2WWJ7B.js";
 import {
   __commonJS
-} from "./chunk-76J2PTFD.js";
+} from "./chunk-WNKWOKNR.js";
 
 // node_modules/@tailwindcss/aspect-ratio/src/index.js
 var require_src = __commonJS({

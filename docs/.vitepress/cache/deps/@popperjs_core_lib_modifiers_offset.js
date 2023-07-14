@@ -5,7 +5,7 @@ import {
   right,
   top
 } from "./chunk-LAQACTKR.js";
-import "./chunk-76J2PTFD.js";
+import "./chunk-WNKWOKNR.js";
 
 // node_modules/@popperjs/core/lib/modifiers/offset.js
 function distanceAndSkiddingToXY(placement, rects, offset2) {

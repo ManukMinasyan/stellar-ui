@@ -25,7 +25,7 @@
 import { computed, defineComponent, useSlots } from 'vue'
 import type { PropType } from 'vue'
 import { defu } from 'defu'
-import UIcon from '../elements/Icon.vue'
+import UIcon from './Icon.vue'
 import { classNames } from '../../utils'
 // import { NuxtLink } from '#components'
 // TODO: Remove

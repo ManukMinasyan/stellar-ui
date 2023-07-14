@@ -1,9 +1,10 @@
 import {
   detectOverflow
-} from "./chunk-FV4WVTWR.js";
+} from "./chunk-HKTEMQLV.js";
 import {
   getVariation
 } from "./chunk-MEODIGUY.js";
+import "./chunk-SMSMZSD4.js";
 import {
   auto,
   basePlacements,
@@ -16,8 +17,7 @@ import {
   top,
   variationPlacements
 } from "./chunk-LAQACTKR.js";
-import "./chunk-SMSMZSD4.js";
-import "./chunk-76J2PTFD.js";
+import "./chunk-WNKWOKNR.js";
 
 // node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
 var hash = {

@@ -1,4 +1,4 @@
-import { generateSafelist, excludeColors, customSafelistExtractor } from './colors'
+import { excludeColors } from './colors'
 import defaultColors from 'tailwindcss/colors.js'
 // @ts-ignore
 import tailwindConfig from '../../tailwind.config.ts'
@@ -45,6 +45,4 @@ globalColors.gray = tailwindConfig.theme.extend.colors.gray = {
     950: 'rgb(var(--color-gray-950) / <alpha-value>)'
 }
 
-const colors = excludeColors(globalColors)
-
-export default colors;
+export default excludeColors(globalColors);
