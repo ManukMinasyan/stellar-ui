@@ -2,6 +2,7 @@
 import Basic from './demo/Avatar/Basic.vue';
 import Size from './demo/Avatar/Size.vue';
 import Chip from './demo/Avatar/Chip.vue';
+import Placeholder from './demo/Avatar/Placeholder.vue';
 </script>
 # Avatar
 
@@ -34,3 +35,15 @@ Use the **chip-color**, **chip-text** and **chip-position** props to display a c
 </DemoContainer>
 
 <<< @/elements/demo/Avatar/Chip.vue
+
+## Placeholder
+
+If there is an error loading the **src** of the avatar or **src** is null a background placeholder will be displayed, customizable in **ui.avatar.background**.
+
+If there's an **alt** prop initials will be displayed on top of the background, customizable in **ui.avatar.placeholder**.
+
+<DemoContainer>
+  <Placeholder/>
+</DemoContainer>
+
+<<< @/elements/demo/Avatar/Placeholder.vue
