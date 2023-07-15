@@ -1,4 +1,5 @@
 import UAvatar from './elements/Avatar.vue'
+import UAvatarGroup from './elements/AvatarGroup.vue'
 import UBadge from './elements/Badge.vue'
 // import UButton from './elements/Button.vue'
 export { default as UButton } from './elements/Button.vue'
@@ -17,6 +18,7 @@ import UCheckbox from './forms/Checkbox.vue'
 
 export {
     UAvatar,
+    UAvatarGroup,
     UBadge,
     UDropdown,
     UAccordion,
