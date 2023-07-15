@@ -3,6 +3,7 @@ import Basic from './demo/Avatar/Basic.vue';
 import Size from './demo/Avatar/Size.vue';
 import Chip from './demo/Avatar/Chip.vue';
 import Placeholder from './demo/Avatar/Placeholder.vue';
+import Group from './demo/Avatar/Group.vue';
 </script>
 # Avatar
 
@@ -47,3 +48,17 @@ If there's an **alt** prop initials will be displayed on top of the background, 
 </DemoContainer>
 
 <<< @/elements/demo/Avatar/Placeholder.vue
+
+## Group
+
+To stack avatars as a group, use the **AvatarGroup** component.
+
+- To limit the amount of avatars to show, use the **max** prop. It'll truncate the avatars and show a "+X" label (where X is the remaining avatars)
+- To size all the avatars equally, pass the **size** prop
+- To adjust the spacing or the ring between avatars, customize with **ui.avatarGroup.margin** or **ui.avatarGroup.ring**
+
+<DemoContainer>
+  <Group/>
+</DemoContainer>
+
+<<< @/elements/demo/Avatar/Group.vue
