@@ -25,8 +25,6 @@ import { classNames } from '../../utils'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
 
-// const appConfig = useAppConfig()
-
 export default defineComponent({
   inheritAttrs: false,
   props: {

@@ -59,7 +59,6 @@ import { get } from 'lodash-es'
 import { defu } from 'defu'
 import UIcon from '../elements/Icon.vue'
 import { classNames } from '../../utils'
-// TODO: Remove
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
 
