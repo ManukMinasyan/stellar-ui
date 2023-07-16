@@ -2,6 +2,7 @@
 import Basic from './demo/Badge/Basic.vue';
 import Label from './demo/Badge/Label.vue';
 import Style from './demo/Badge/Style.vue';
+import Size from './demo/Badge/Size.vue';
 </script>
 # Badge
 
@@ -29,4 +30,12 @@ Use the **color** and **variant** props to change the visual style of the Badge.
 
 <DemoContainer>
   <Style/>
+</DemoContainer>
+
+## Size
+
+Use the **size** prop to change the size of the Badge.
+
+<DemoContainer>
+  <Size/>
 </DemoContainer>
