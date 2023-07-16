@@ -1,6 +1,7 @@
 <script setup>
 import Basic from './demo/Badge/Basic.vue';
 import Label from './demo/Badge/Label.vue';
+import Style from './demo/Badge/Style.vue';
 </script>
 # Badge
 
@@ -21,3 +22,11 @@ You can also use the label prop:
 </DemoContainer>
 
 <<< @/elements/demo/Badge/Label.vue
+
+## Style
+
+Use the **color** and **variant** props to change the visual style of the Badge.
+
+<DemoContainer>
+  <Style/>
+</DemoContainer>
