@@ -14,28 +14,28 @@
         v-bind="$attrs"
         @input="onInput"
     >
-    <slot />
+    <slot/>
 
     <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="leadingWrapperIconClass">
       <slot name="leading" :disabled="disabled" :loading="loading">
-        <UIcon :name="leadingIconName" :class="leadingIconClass" />
+        <UIcon :name="leadingIconName" :class="leadingIconClass"/>
       </slot>
     </span>
 
     <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="trailingWrapperIconClass">
       <slot name="trailing" :disabled="disabled" :loading="loading">
-        <UIcon :name="trailingIconName" :class="trailingIconClass" />
+        <UIcon :name="trailingIconName" :class="trailingIconClass"/>
       </slot>
     </span>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, onMounted, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { defu } from 'defu'
+import {ref, computed, onMounted, defineComponent} from 'vue'
+import type {PropType} from 'vue'
+import {defu} from 'defu'
 import UIcon from '../elements/Icon.vue'
-import { classNames } from '../../utils'
+import {classNames} from '../../utils'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
 
@@ -110,21 +110,21 @@ export default defineComponent({
     size: {
       type: String,
       default: () => appConfig.ui.input.default.size,
-      validator (value: string) {
+      validator(value: string) {
         return Object.keys(appConfig.ui.input.size).includes(value)
       }
     },
     color: {
       type: String,
       default: () => appConfig.ui.input.default.color,
-      validator (value: string) {
+      validator(value: string) {
         return [...appConfig.ui.colors, ...Object.keys(appConfig.ui.input.color)].includes(value)
       }
     },
     variant: {
       type: String,
       default: () => appConfig.ui.input.default.variant,
-      validator (value: string) {
+      validator(value: string) {
         return [
           ...Object.keys(appConfig.ui.input.variant),
           ...Object.values(appConfig.ui.input.color).flatMap(value => Object.keys(value))
@@ -137,7 +137,7 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue'],
-  setup (props, { emit, slots }) {
+  setup(props, {emit, slots}) {
     const ui = computed<Partial<typeof appConfig.ui.input>>(() => defu({}, props.ui, appConfig.ui.input))
 
     const input = ref<HTMLInputElement | null>(null)
