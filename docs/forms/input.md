@@ -3,6 +3,7 @@ import Basic from './demo/Input/Basic.vue';
 import Style from './demo/Input/Style.vue';
 import Size from './demo/Input/Size.vue';
 import Placeholder from './demo/Input/Placeholder.vue';
+import Icon from './demo/Input/Icon.vue';
 </script>
 
 # Input
@@ -29,7 +30,8 @@ Use the **color** and **variant** props to change the visual style of the Input.
 
 <<< @/forms/demo/Input/Style.vue
 
-Besides all the colors from the **ui.colors** object, you can also use the **white** (default) and **gray** colors with their
+Besides all the colors from the **ui.colors** object, you can also use the **white** (default) and **gray** colors with
+their
 pre-defined variants.
 
 ## Size
@@ -51,3 +53,16 @@ Use the **placeholder** prop to set a placeholder text.
 </DemoContainer>
 
 <<< @/forms/demo/Input/Placeholder.vue
+
+## Icon
+
+Use any icon from [Iconify](https://icones.js.org/) by setting the **icon** prop by using this pattern: **i-{collection_name}-{icon_name}**.
+
+Use the **leading** and **trailing** props to set the icon position or the **leading-icon** and **trailing-icon** props to set a
+different icon for each position.
+
+<DemoContainer>
+  <Icon/>
+</DemoContainer>
+
+<<< @/forms/demo/Input/Icon.vue
