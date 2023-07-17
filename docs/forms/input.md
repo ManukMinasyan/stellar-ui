@@ -4,6 +4,7 @@ import Style from './demo/Input/Style.vue';
 import Size from './demo/Input/Size.vue';
 import Placeholder from './demo/Input/Placeholder.vue';
 import Icon from './demo/Input/Icon.vue';
+import Disabled from './demo/Input/Disabled.vue';
 </script>
 
 # Input
@@ -66,3 +67,13 @@ different icon for each position.
 </DemoContainer>
 
 <<< @/forms/demo/Input/Icon.vue
+
+## Disabled
+
+Use the **disabled** prop to disable the Input.
+
+<DemoContainer>
+  <Disabled/>
+</DemoContainer>
+
+<<< @/forms/demo/Input/Disabled.vue
