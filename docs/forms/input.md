@@ -2,6 +2,7 @@
 import Basic from './demo/Input/Basic.vue';
 import Style from './demo/Input/Style.vue';
 import Size from './demo/Input/Size.vue';
+import Placeholder from './demo/Input/Placeholder.vue';
 </script>
 
 # Input
@@ -40,3 +41,13 @@ Use the **size** prop to change the size of the Input.
 </DemoContainer>
 
 <<< @/forms/demo/Input/Size.vue
+
+## Placeholder
+
+Use the **placeholder** prop to set a placeholder text.
+
+<DemoContainer>
+  <Placeholder/>
+</DemoContainer>
+
+<<< @/forms/demo/Input/Placeholder.vue
