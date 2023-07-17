@@ -6,6 +6,9 @@ import Placeholder from './demo/Input/Placeholder.vue';
 import Icon from './demo/Input/Icon.vue';
 import Disabled from './demo/Input/Disabled.vue';
 import Loading from './demo/Input/Loading.vue';
+import SlotsLeading from './demo/Input/SlotsLeading.vue';
+import SlotsTrailing from './demo/Input/SlotsTrailing.vue';
+import SlotsTrailingButton from './demo/Input/SlotsTrailingButton.vue';
 </script>
 
 # Input
@@ -85,7 +88,8 @@ Use the **disabled** prop to disable the Input.
 
 Use the **loading** prop to show a loading icon and disable the Input.
 
-Use the **loading-icon** prop to set a different icon or change it globally in **ui.input.default.loadingIcon**. Defaults to
+Use the **loading-icon** prop to set a different icon or change it globally in **ui.input.default.loadingIcon**.
+Defaults to
 **i-heroicons-arrow-path-20-solid**.
 
 <DemoContainer>
@@ -93,3 +97,36 @@ Use the **loading-icon** prop to set a different icon or change it globally in *
 </DemoContainer>
 
 <<< @/forms/demo/Input/Loading.vue
+
+## Slots
+
+### leading
+
+Use the **#leading** slot to set the content of the leading icon.
+
+<DemoContainer>
+  <SlotsLeading />
+</DemoContainer>
+
+<<< @/forms/demo/Input/SlotsLeading.vue
+
+### trailing
+
+Use the **#trailing** slot to set the content of the trailing icon.
+
+<DemoContainer>
+  <SlotsTrailing />
+</DemoContainer>
+
+<<< @/forms/demo/Input/SlotsTrailing.vue
+
+You can for example create a clearable Input by injecting a Button in the **trailing** slot that displays when some text is
+entered.
+
+<DemoContainer>
+  <SlotsTrailingButton />
+</DemoContainer>
+
+<<< @/forms/demo/Input/SlotsTrailingButton.vue
+
+> As leading and trailing icons are wrapped around a **pointer-events-none class**, if you inject a clickable element in the slot, you need to remove this class to make it clickable by adding **:ui="{ icon: { trailing: { pointer: '' } } }"** to the Input.
