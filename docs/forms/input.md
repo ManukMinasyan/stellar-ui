@@ -5,6 +5,7 @@ import Size from './demo/Input/Size.vue';
 import Placeholder from './demo/Input/Placeholder.vue';
 import Icon from './demo/Input/Icon.vue';
 import Disabled from './demo/Input/Disabled.vue';
+import Loading from './demo/Input/Loading.vue';
 </script>
 
 # Input
@@ -57,9 +58,11 @@ Use the **placeholder** prop to set a placeholder text.
 
 ## Icon
 
-Use any icon from [Iconify](https://icones.js.org/) by setting the **icon** prop by using this pattern: **i-{collection_name}-{icon_name}**.
+Use any icon from [Iconify](https://icones.js.org/) by setting the **icon** prop by using this pattern: *
+*i-{collection_name}-{icon_name}**.
 
-Use the **leading** and **trailing** props to set the icon position or the **leading-icon** and **trailing-icon** props to set a
+Use the **leading** and **trailing** props to set the icon position or the **leading-icon** and **trailing-icon** props
+to set a
 different icon for each position.
 
 <DemoContainer>
@@ -77,3 +80,16 @@ Use the **disabled** prop to disable the Input.
 </DemoContainer>
 
 <<< @/forms/demo/Input/Disabled.vue
+
+## Loading
+
+Use the **loading** prop to show a loading icon and disable the Input.
+
+Use the **loading-icon** prop to set a different icon or change it globally in **ui.input.default.loadingIcon**. Defaults to
+**i-heroicons-arrow-path-20-solid**.
+
+<DemoContainer>
+  <Loading/>
+</DemoContainer>
+
+<<< @/forms/demo/Input/Loading.vue
