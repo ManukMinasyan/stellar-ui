@@ -4,6 +4,7 @@ import Style from './demo/Textarea/Style.vue';
 import Size from './demo/Textarea/Size.vue';
 import Placeholder from './demo/Textarea/Placeholder.vue';
 import Rows from './demo/Textarea/Rows.vue';
+import Disabled from './demo/Textarea/Disabled.vue';
 </script>
 
 # Textarea
@@ -62,3 +63,13 @@ Use the **rows** prop to set the number of rows of the Textarea.
 </DemoContainer>
 
 <<< @/forms/demo/Textarea/Rows.vue
+
+## Disabled
+
+Use the **disabled** prop to disable the Textarea.
+
+<DemoContainer>
+  <Disabled/>
+</DemoContainer>
+
+<<< @/forms/demo/Textarea/Disabled.vue
