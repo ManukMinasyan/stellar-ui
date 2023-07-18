@@ -5,6 +5,7 @@ import Size from './demo/Textarea/Size.vue';
 import Placeholder from './demo/Textarea/Placeholder.vue';
 import Rows from './demo/Textarea/Rows.vue';
 import Disabled from './demo/Textarea/Disabled.vue';
+import Autoresize from './demo/Textarea/Autoresize.vue';
 </script>
 
 # Textarea
@@ -73,3 +74,13 @@ Use the **disabled** prop to disable the Textarea.
 </DemoContainer>
 
 <<< @/forms/demo/Textarea/Disabled.vue
+
+## Autoresize
+
+Use the **autoresize** prop to enable the autoresize. Writing more lines than the **rows** prop will make the Textarea grow up.
+
+<DemoContainer>
+  <Autoresize/>
+</DemoContainer>
+
+<<< @/forms/demo/Textarea/Autoresize.vue
