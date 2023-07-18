@@ -3,6 +3,7 @@ import Basic from './demo/Textarea/Basic.vue';
 import Style from './demo/Textarea/Style.vue';
 import Size from './demo/Textarea/Size.vue';
 import Placeholder from './demo/Textarea/Placeholder.vue';
+import Rows from './demo/Textarea/Rows.vue';
 </script>
 
 # Textarea
@@ -51,3 +52,13 @@ Use the **placeholder** prop to set a placeholder text.
 </DemoContainer>
 
 <<< @/forms/demo/Textarea/Placeholder.vue
+
+## Rows
+
+Use the **rows** prop to set the number of rows of the Textarea.
+
+<DemoContainer>
+  <Rows/>
+</DemoContainer>
+
+<<< @/forms/demo/Textarea/Rows.vue
