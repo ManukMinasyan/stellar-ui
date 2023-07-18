@@ -2,6 +2,7 @@
 import Basic from './demo/Textarea/Basic.vue';
 import Style from './demo/Textarea/Style.vue';
 import Size from './demo/Textarea/Size.vue';
+import Placeholder from './demo/Textarea/Placeholder.vue';
 </script>
 
 # Textarea
@@ -40,3 +41,13 @@ Use the **size** prop to change the size of the Textarea.
 </DemoContainer>
 
 <<< @/forms/demo/Textarea/Size.vue
+
+## Placeholder
+
+Use the **placeholder** prop to set a placeholder text.
+
+<DemoContainer>
+  <Placeholder/>
+</DemoContainer>
+
+<<< @/forms/demo/Textarea/Placeholder.vue
