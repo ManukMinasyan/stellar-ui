@@ -19,7 +19,7 @@ to UI when building a Vue app. This includes components, icons, colors, dark mod
 -  Bundled icons
 -  Fully typed
 
-[Documentation](https://manukminasyan.github.io/stellar-ui/)
+[See Documentation](https://manukminasyan.github.io/stellar-ui/)
 
 ## Setup
 
