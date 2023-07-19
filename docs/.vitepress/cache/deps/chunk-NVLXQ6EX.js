@@ -1,10 +1,10 @@
 import {
   __commonJS
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/cloneDeep.js
+// node_modules/tailwindcss/lib/util/cloneDeep.js
 var require_cloneDeep = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/cloneDeep.js"(exports) {
+  "node_modules/tailwindcss/lib/util/cloneDeep.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -30,9 +30,9 @@ var require_cloneDeep = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/stubs/config.full.js
+// node_modules/tailwindcss/stubs/config.full.js
 var require_config_full = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/stubs/config.full.js"(exports, module) {
+  "node_modules/tailwindcss/stubs/config.full.js"(exports, module) {
     module.exports = {
       content: [],
       presets: [],
@@ -51,6 +51,7 @@ var require_config_full = __commonJS({
           bounce: "bounce 1s infinite"
         },
         aria: {
+          busy: 'busy="true"',
           checked: 'checked="true"',
           disabled: 'disabled="true"',
           expanded: 'expanded="true"',
@@ -1026,9 +1027,9 @@ var require_config_full = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/default-theme.js
+// node_modules/tailwindcss/lib/public/default-theme.js
 var require_default_theme = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/default-theme.js"(exports) {
+  "node_modules/tailwindcss/lib/public/default-theme.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -1050,9 +1051,9 @@ var require_default_theme = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/defaultTheme.js
+// node_modules/tailwindcss/defaultTheme.js
 var require_defaultTheme = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/defaultTheme.js"(exports, module) {
+  "node_modules/tailwindcss/defaultTheme.js"(exports, module) {
     var defaultTheme = require_default_theme();
     module.exports = (defaultTheme.__esModule ? defaultTheme : { default: defaultTheme }).default;
   }
@@ -1061,4 +1062,4 @@ var require_defaultTheme = __commonJS({
 export {
   require_defaultTheme
 };
-//# sourceMappingURL=chunk-3VZDZLRJ.js.map
+//# sourceMappingURL=chunk-NVLXQ6EX.js.map

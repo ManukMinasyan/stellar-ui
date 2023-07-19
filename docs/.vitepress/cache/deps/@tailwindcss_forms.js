@@ -1,20 +1,20 @@
 import {
   require_defaultTheme
-} from "./chunk-3VZDZLRJ.js";
+} from "./chunk-NVLXQ6EX.js";
 import {
   require_plugin
-} from "./chunk-5QZFUBU6.js";
+} from "./chunk-DCEQBAEZ.js";
 import {
   require_colors
-} from "./chunk-2TKFV5AT.js";
-import "./chunk-N5DV4BYN.js";
+} from "./chunk-SJYOEBSY.js";
+import "./chunk-MLQ4NW6D.js";
 import {
   __commonJS
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
-// node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/shorter-css-color-names.js
+// node_modules/mini-svg-data-uri/shorter-css-color-names.js
 var require_shorter_css_color_names = __commonJS({
-  "node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/shorter-css-color-names.js"(exports, module) {
+  "node_modules/mini-svg-data-uri/shorter-css-color-names.js"(exports, module) {
     module.exports = {
       aqua: /#00ffff(ff)?(?!\w)|#0ff(f)?(?!\w)/gi,
       azure: /#f0ffff(ff)?(?!\w)/gi,
@@ -74,9 +74,9 @@ var require_shorter_css_color_names = __commonJS({
   }
 });
 
-// node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/index.js
+// node_modules/mini-svg-data-uri/index.js
 var require_mini_svg_data_uri = __commonJS({
-  "node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/index.js"(exports, module) {
+  "node_modules/mini-svg-data-uri/index.js"(exports, module) {
     var shorterNames = require_shorter_css_color_names();
     var REGEX = {
       whitespace: /\s+/g,
@@ -128,15 +128,18 @@ var require_mini_svg_data_uri = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@tailwindcss+forms@0.5.3_tailwindcss@3.3.2/node_modules/@tailwindcss/forms/src/index.js
+// node_modules/@tailwindcss/forms/src/index.js
 var require_src = __commonJS({
-  "node_modules/.pnpm/@tailwindcss+forms@0.5.3_tailwindcss@3.3.2/node_modules/@tailwindcss/forms/src/index.js"(exports, module) {
+  "node_modules/@tailwindcss/forms/src/index.js"(exports, module) {
     var svgToDataUri = require_mini_svg_data_uri();
     var plugin = require_plugin();
     var defaultTheme = require_defaultTheme();
     var colors = require_colors();
     var [baseFontSize, { lineHeight: baseLineHeight }] = defaultTheme.fontSize.base;
     var { spacing, borderWidth, borderRadius } = defaultTheme;
+    function resolveColor(color, opacityVariableName) {
+      return color.replace("<alpha-value>", `var(${opacityVariableName}, 1)`);
+    }
     var forms = plugin.withOptions(function(options = { strategy: void 0 }) {
       return function({ addBase, addComponents, theme }) {
         const strategy = options.strategy === void 0 ? ["base", "class"] : [options.strategy];
@@ -144,6 +147,7 @@ var require_src = __commonJS({
           {
             base: [
               "[type='text']",
+              "input:where(:not([type]))",
               "[type='email']",
               "[type='url']",
               "[type='password']",
@@ -163,7 +167,10 @@ var require_src = __commonJS({
             styles: {
               appearance: "none",
               "background-color": "#fff",
-              "border-color": theme("colors.gray.500", colors.gray[500]),
+              "border-color": resolveColor(
+                theme("colors.gray.500", colors.gray[500]),
+                "--tw-border-opacity"
+              ),
               "border-width": borderWidth["DEFAULT"],
               "border-radius": borderRadius.none,
               "padding-top": spacing[2],
@@ -179,11 +186,17 @@ var require_src = __commonJS({
                 "--tw-ring-inset": "var(--tw-empty,/*!*/ /*!*/)",
                 "--tw-ring-offset-width": "0px",
                 "--tw-ring-offset-color": "#fff",
-                "--tw-ring-color": theme("colors.blue.600", colors.blue[600]),
+                "--tw-ring-color": resolveColor(
+                  theme("colors.blue.600", colors.blue[600]),
+                  "--tw-ring-opacity"
+                ),
                 "--tw-ring-offset-shadow": `var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)`,
                 "--tw-ring-shadow": `var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color)`,
                 "box-shadow": `var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)`,
-                "border-color": theme("colors.blue.600", colors.blue[600])
+                "border-color": resolveColor(
+                  theme("colors.blue.600", colors.blue[600]),
+                  "--tw-border-opacity"
+                )
               }
             }
           },
@@ -191,7 +204,7 @@ var require_src = __commonJS({
             base: ["input::placeholder", "textarea::placeholder"],
             class: [".form-input::placeholder", ".form-textarea::placeholder"],
             styles: {
-              color: theme("colors.gray.500", colors.gray[500]),
+              color: resolveColor(theme("colors.gray.500", colors.gray[500]), "--tw-text-opacity"),
               opacity: "1"
             }
           },
@@ -248,9 +261,9 @@ var require_src = __commonJS({
             class: [".form-select"],
             styles: {
               "background-image": `url("${svgToDataUri(
-                `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${theme(
-                  "colors.gray.500",
-                  colors.gray[500]
+                `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20"><path stroke="${resolveColor(
+                  theme("colors.gray.500", colors.gray[500]),
+                  "--tw-stroke-opacity"
                 )}" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>`
               )}")`,
               "background-position": `right ${spacing[2]} center`,
@@ -261,8 +274,8 @@ var require_src = __commonJS({
             }
           },
           {
-            base: ["[multiple]"],
-            class: null,
+            base: ["[multiple]", '[size]:where(select:not([size="1"]))'],
+            class: ['.form-select:where([size]:not([size="1"]))'],
             styles: {
               "background-image": "initial",
               "background-position": "initial",
@@ -286,9 +299,12 @@ var require_src = __commonJS({
               "flex-shrink": "0",
               height: spacing[4],
               width: spacing[4],
-              color: theme("colors.blue.600", colors.blue[600]),
+              color: resolveColor(theme("colors.blue.600", colors.blue[600]), "--tw-text-opacity"),
               "background-color": "#fff",
-              "border-color": theme("colors.gray.500", colors.gray[500]),
+              "border-color": resolveColor(
+                theme("colors.gray.500", colors.gray[500]),
+                "--tw-border-opacity"
+              ),
               "border-width": borderWidth["DEFAULT"],
               "--tw-shadow": "0 0 #0000"
             }
@@ -316,7 +332,10 @@ var require_src = __commonJS({
               "--tw-ring-inset": "var(--tw-empty,/*!*/ /*!*/)",
               "--tw-ring-offset-width": "2px",
               "--tw-ring-offset-color": "#fff",
-              "--tw-ring-color": theme("colors.blue.600", colors.blue[600]),
+              "--tw-ring-color": resolveColor(
+                theme("colors.blue.600", colors.blue[600]),
+                "--tw-ring-opacity"
+              ),
               "--tw-ring-offset-shadow": `var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color)`,
               "--tw-ring-shadow": `var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)`,
               "box-shadow": `var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)`

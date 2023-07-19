@@ -135,7 +135,7 @@ import UAvatar from '../elements/Avatar.vue'
 import { classNames } from '../../utils'
 import { usePopper } from '../../composables/usePopper'
 import type { PopperOptions } from '../../types'
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
 
 
 export default defineComponent({

@@ -33,7 +33,7 @@ import { computed, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { defu } from 'defu'
 import { classNames } from '../../utils'
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
 
 export default defineComponent({
   inheritAttrs: false,

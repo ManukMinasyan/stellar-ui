@@ -1,13 +1,13 @@
 import {
   require_log
-} from "./chunk-N5DV4BYN.js";
+} from "./chunk-MLQ4NW6D.js";
 import {
   __commonJS
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/colors.js
+// node_modules/tailwindcss/lib/public/colors.js
 var require_colors = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/colors.js"(exports) {
+  "node_modules/tailwindcss/lib/public/colors.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -366,9 +366,9 @@ var require_colors = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/colors.js
+// node_modules/tailwindcss/colors.js
 var require_colors2 = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/colors.js"(exports, module) {
+  "node_modules/tailwindcss/colors.js"(exports, module) {
     var colors = require_colors();
     module.exports = (colors.__esModule ? colors : { default: colors }).default;
   }
@@ -377,4 +377,4 @@ var require_colors2 = __commonJS({
 export {
   require_colors2 as require_colors
 };
-//# sourceMappingURL=chunk-2TKFV5AT.js.map
+//# sourceMappingURL=chunk-SJYOEBSY.js.map

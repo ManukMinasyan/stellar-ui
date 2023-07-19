@@ -4,7 +4,7 @@ var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require
 }) : x)(function(x) {
   if (typeof require !== "undefined")
     return require.apply(this, arguments);
-  throw new Error('Dynamic require of "' + x + '" is not supported');
+  throw Error('Dynamic require of "' + x + '" is not supported');
 });
 var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -14,4 +14,4 @@ export {
   __require,
   __commonJS
 };
-//# sourceMappingURL=chunk-7FP5O474.js.map
+//# sourceMappingURL=chunk-CQXHTUV2.js.map

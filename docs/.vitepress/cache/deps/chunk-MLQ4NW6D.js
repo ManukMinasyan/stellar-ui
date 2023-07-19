@@ -1,10 +1,10 @@
 import {
   __commonJS
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
-// node_modules/.pnpm/picocolors@1.0.0/node_modules/picocolors/picocolors.browser.js
+// node_modules/picocolors/picocolors.browser.js
 var require_picocolors_browser = __commonJS({
-  "node_modules/.pnpm/picocolors@1.0.0/node_modules/picocolors/picocolors.browser.js"(exports, module) {
+  "node_modules/picocolors/picocolors.browser.js"(exports, module) {
     var x = String;
     var create = function() {
       return { isColorSupported: false, reset: x, bold: x, dim: x, italic: x, underline: x, inverse: x, hidden: x, strikethrough: x, black: x, red: x, green: x, yellow: x, blue: x, magenta: x, cyan: x, white: x, gray: x, bgBlack: x, bgRed: x, bgGreen: x, bgYellow: x, bgBlue: x, bgMagenta: x, bgCyan: x, bgWhite: x };
@@ -14,9 +14,9 @@ var require_picocolors_browser = __commonJS({
   }
 });
 
-// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/log.js
+// node_modules/tailwindcss/lib/util/log.js
 var require_log = __commonJS({
-  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/log.js"(exports) {
+  "node_modules/tailwindcss/lib/util/log.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -89,4 +89,4 @@ export {
   require_picocolors_browser,
   require_log
 };
-//# sourceMappingURL=chunk-N5DV4BYN.js.map
+//# sourceMappingURL=chunk-MLQ4NW6D.js.map

@@ -10,7 +10,8 @@ const table = {
     tbody: 'divide-y divide-gray-200 dark:divide-gray-800',
     tr: {
         base: '',
-        selected: 'bg-gray-50 dark:bg-gray-800/50'
+        selected: 'bg-gray-50 dark:bg-gray-800/50',
+        active: 'hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer'
     },
     th: {
         base: 'text-left rtl:text-right',
@@ -68,11 +69,11 @@ const avatar = {
     size: {
         '3xs': 'h-4 w-4 text-[8px]',
         '2xs': 'h-5 w-5 text-[10px]',
-        'xs': 'h-6 w-6 text-[11px]',
-        'sm': 'h-8 w-8 text-xs',
-        'md': 'h-10 w-10 text-sm',
-        'lg': 'h-12 w-12 text-base',
-        'xl': 'h-14 w-14 text-lg',
+        xs: 'h-6 w-6 text-[11px]',
+        sm: 'h-8 w-8 text-xs',
+        md: 'h-10 w-10 text-sm',
+        lg: 'h-12 w-12 text-base',
+        xl: 'h-14 w-14 text-lg',
         '2xl': 'h-16 w-16 text-xl',
         '3xl': 'h-20 w-20 text-2xl'
     },
@@ -452,6 +453,8 @@ const selectMenu = {
     padding: 'p-1',
     ring: 'ring-1 ring-gray-200 dark:ring-gray-700',
     input: 'block w-[calc(100%+0.5rem)] focus:ring-transparent text-sm px-3 py-1.5 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border-0 border-b border-gray-200 dark:border-gray-700 focus:border-inherit sticky -top-1 -mt-1 mb-1 -mx-1 z-10 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none',
+    placeholder: '',
+    divide: '',
     option: {
         base: 'cursor-default select-none relative flex items-center justify-between gap-1',
         rounded: 'rounded-md',

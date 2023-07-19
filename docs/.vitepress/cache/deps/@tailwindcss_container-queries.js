@@ -1,13 +1,13 @@
 import {
   require_plugin
-} from "./chunk-5QZFUBU6.js";
+} from "./chunk-DCEQBAEZ.js";
 import {
   __commonJS
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
-// node_modules/.pnpm/@tailwindcss+container-queries@0.1.1_tailwindcss@3.3.2/node_modules/@tailwindcss/container-queries/dist/index.js
+// node_modules/@tailwindcss/container-queries/dist/index.js
 var require_dist = __commonJS({
-  "node_modules/.pnpm/@tailwindcss+container-queries@0.1.1_tailwindcss@3.3.2/node_modules/@tailwindcss/container-queries/dist/index.js"(exports, module) {
+  "node_modules/@tailwindcss/container-queries/dist/index.js"(exports, module) {
     var _plugin = _interopRequireDefault(require_plugin());
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : {

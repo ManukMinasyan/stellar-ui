@@ -1,10 +1,10 @@
 import {
   require_plugin
-} from "./chunk-5QZFUBU6.js";
+} from "./chunk-DCEQBAEZ.js";
 import {
   __commonJS,
   __require
-} from "./chunk-7FP5O474.js";
+} from "./chunk-CQXHTUV2.js";
 
 // browser-external:fs
 var require_fs = __commonJS({
@@ -19,9 +19,9 @@ var require_fs = __commonJS({
   }
 });
 
-// node_modules/.pnpm/@iconify+tailwind@0.1.3/node_modules/@iconify/tailwind/dist/plugin.js
+// node_modules/@iconify/tailwind/dist/plugin.js
 var require_plugin2 = __commonJS({
-  "node_modules/.pnpm/@iconify+tailwind@0.1.3/node_modules/@iconify/tailwind/dist/plugin.js"(exports) {
+  "node_modules/@iconify/tailwind/dist/plugin.js"(exports) {
     var plugin = require_plugin();
     var fs = require_fs();
     var defaultIconDimensions = Object.freeze(
