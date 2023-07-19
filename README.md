@@ -1,3 +1,5 @@
+<img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/stellar-uu-logo.jpeg?raw=true" width="512" />
+
 # What is Stellar UI?
 
 Fully styled and customizable components for Vue 3.
