@@ -2,8 +2,8 @@
 
 Fully styled and customizable components for Vue 3.
 
-This module has been developed by the NuxtLabs team for Volta and Nuxt Studio, its goal is to provide everything related
-to UI when building a Nuxt app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
+This module has been developed by the Minasyan.info team, its goal is to provide everything related
+to UI when building a Vue app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
 
 # Features
 
