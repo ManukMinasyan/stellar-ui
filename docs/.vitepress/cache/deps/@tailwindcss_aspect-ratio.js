@@ -1,13 +1,13 @@
 import {
   require_plugin
-} from "./chunk-EA2WWJ7B.js";
+} from "./chunk-5QZFUBU6.js";
 import {
   __commonJS
-} from "./chunk-WNKWOKNR.js";
+} from "./chunk-7FP5O474.js";
 
-// node_modules/@tailwindcss/aspect-ratio/src/index.js
+// node_modules/.pnpm/@tailwindcss+aspect-ratio@0.4.2_tailwindcss@3.3.2/node_modules/@tailwindcss/aspect-ratio/src/index.js
 var require_src = __commonJS({
-  "node_modules/@tailwindcss/aspect-ratio/src/index.js"(exports, module) {
+  "node_modules/.pnpm/@tailwindcss+aspect-ratio@0.4.2_tailwindcss@3.3.2/node_modules/@tailwindcss/aspect-ratio/src/index.js"(exports, module) {
     var plugin = require_plugin();
     var baseStyles = {
       position: "relative",

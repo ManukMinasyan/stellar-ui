@@ -1,20 +1,20 @@
 import {
+  require_plugin
+} from "./chunk-5QZFUBU6.js";
+import {
   require_defaultTheme
-} from "./chunk-JS7PGN5D.js";
+} from "./chunk-3VZDZLRJ.js";
 import {
   require_colors
-} from "./chunk-O2FONHVB.js";
-import "./chunk-IP3KHOJO.js";
-import {
-  require_plugin
-} from "./chunk-EA2WWJ7B.js";
+} from "./chunk-2TKFV5AT.js";
+import "./chunk-N5DV4BYN.js";
 import {
   __commonJS
-} from "./chunk-WNKWOKNR.js";
+} from "./chunk-7FP5O474.js";
 
-// node_modules/mini-svg-data-uri/shorter-css-color-names.js
+// node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/shorter-css-color-names.js
 var require_shorter_css_color_names = __commonJS({
-  "node_modules/mini-svg-data-uri/shorter-css-color-names.js"(exports, module) {
+  "node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/shorter-css-color-names.js"(exports, module) {
     module.exports = {
       aqua: /#00ffff(ff)?(?!\w)|#0ff(f)?(?!\w)/gi,
       azure: /#f0ffff(ff)?(?!\w)/gi,
@@ -74,9 +74,9 @@ var require_shorter_css_color_names = __commonJS({
   }
 });
 
-// node_modules/mini-svg-data-uri/index.js
+// node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/index.js
 var require_mini_svg_data_uri = __commonJS({
-  "node_modules/mini-svg-data-uri/index.js"(exports, module) {
+  "node_modules/.pnpm/mini-svg-data-uri@1.4.4/node_modules/mini-svg-data-uri/index.js"(exports, module) {
     var shorterNames = require_shorter_css_color_names();
     var REGEX = {
       whitespace: /\s+/g,
@@ -128,9 +128,9 @@ var require_mini_svg_data_uri = __commonJS({
   }
 });
 
-// node_modules/@tailwindcss/forms/src/index.js
+// node_modules/.pnpm/@tailwindcss+forms@0.5.3_tailwindcss@3.3.2/node_modules/@tailwindcss/forms/src/index.js
 var require_src = __commonJS({
-  "node_modules/@tailwindcss/forms/src/index.js"(exports, module) {
+  "node_modules/.pnpm/@tailwindcss+forms@0.5.3_tailwindcss@3.3.2/node_modules/@tailwindcss/forms/src/index.js"(exports, module) {
     var svgToDataUri = require_mini_svg_data_uri();
     var plugin = require_plugin();
     var defaultTheme = require_defaultTheme();

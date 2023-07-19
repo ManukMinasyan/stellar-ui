@@ -1,13 +1,13 @@
 import {
   getWindow
-} from "./chunk-SMSMZSD4.js";
+} from "./chunk-OWTXACF2.js";
 
-// node_modules/@popperjs/core/lib/utils/math.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/math.js
 var max = Math.max;
 var min = Math.min;
 var round = Math.round;
 
-// node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/instanceOf.js
 function isElement(node) {
   var OwnElement = getWindow(node).Element;
   return node instanceof OwnElement || node instanceof Element;
@@ -24,7 +24,7 @@ function isShadowRoot(node) {
   return node instanceof OwnElement || node instanceof ShadowRoot;
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js
 function getDocumentElement(element) {
   return ((isElement(element) ? element.ownerDocument : (
     // $FlowFixMe[prop-missing]
@@ -32,22 +32,22 @@ function getDocumentElement(element) {
   )) || window.document).documentElement;
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js
 function getComputedStyle(element) {
   return getWindow(element).getComputedStyle(element);
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getNodeName.js
 function getNodeName(element) {
   return element ? (element.nodeName || "").toLowerCase() : null;
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/isTableElement.js
 function isTableElement(element) {
   return ["table", "td", "th"].indexOf(getNodeName(element)) >= 0;
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getParentNode.js
 function getParentNode(element) {
   if (getNodeName(element) === "html") {
     return element;
@@ -64,7 +64,7 @@ function getParentNode(element) {
   );
 }
 
-// node_modules/@popperjs/core/lib/utils/userAgent.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/userAgent.js
 function getUAString() {
   var uaData = navigator.userAgentData;
   if (uaData != null && uaData.brands && Array.isArray(uaData.brands)) {
@@ -75,7 +75,7 @@ function getUAString() {
   return navigator.userAgent;
 }
 
-// node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js
 function getTrueOffsetParent(element) {
   if (!isHTMLElement(element) || // https://github.com/popperjs/popper-core/issues/837
   getComputedStyle(element).position === "fixed") {
@@ -118,7 +118,7 @@ function getOffsetParent(element) {
   return offsetParent || getContainingBlock(element) || window2;
 }
 
-// node_modules/@popperjs/core/lib/utils/getVariation.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/getVariation.js
 function getVariation(placement) {
   return placement.split("-")[1];
 }
@@ -138,4 +138,4 @@ export {
   getOffsetParent,
   getVariation
 };
-//# sourceMappingURL=chunk-MEODIGUY.js.map
+//# sourceMappingURL=chunk-7G442SWZ.js.map

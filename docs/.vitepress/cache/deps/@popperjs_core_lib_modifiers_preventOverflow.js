@@ -1,18 +1,18 @@
 import {
   getLayoutRect
-} from "./chunk-PKRP5652.js";
+} from "./chunk-QT3U6ETE.js";
 import {
   detectOverflow,
   getFreshSideObject,
   getMainAxisFromPlacement
-} from "./chunk-HKTEMQLV.js";
+} from "./chunk-QXFK3CX6.js";
 import {
   getOffsetParent,
   getVariation,
   max,
   min
-} from "./chunk-MEODIGUY.js";
-import "./chunk-SMSMZSD4.js";
+} from "./chunk-7G442SWZ.js";
+import "./chunk-OWTXACF2.js";
 import {
   bottom,
   getBasePlacement,
@@ -20,15 +20,15 @@ import {
   right,
   start,
   top
-} from "./chunk-LAQACTKR.js";
-import "./chunk-WNKWOKNR.js";
+} from "./chunk-BPGIYOIB.js";
+import "./chunk-7FP5O474.js";
 
-// node_modules/@popperjs/core/lib/utils/getAltAxis.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/getAltAxis.js
 function getAltAxis(axis) {
   return axis === "x" ? "y" : "x";
 }
 
-// node_modules/@popperjs/core/lib/utils/within.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/within.js
 function within(min2, value, max2) {
   return max(min2, min(value, max2));
 }
@@ -37,7 +37,7 @@ function withinMaxClamp(min2, value, max2) {
   return v > max2 ? max2 : v;
 }
 
-// node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/preventOverflow.js
 function preventOverflow(_ref) {
   var state = _ref.state, options = _ref.options, name = _ref.name;
   var _options$mainAxis = options.mainAxis, checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis, _options$altAxis = options.altAxis, checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis, boundary = options.boundary, rootBoundary = options.rootBoundary, altBoundary = options.altBoundary, padding = options.padding, _options$tether = options.tether, tether = _options$tether === void 0 ? true : _options$tether, _options$tetherOffset = options.tetherOffset, tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;

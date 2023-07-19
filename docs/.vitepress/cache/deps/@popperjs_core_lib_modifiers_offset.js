@@ -4,10 +4,10 @@ import {
   placements,
   right,
   top
-} from "./chunk-LAQACTKR.js";
-import "./chunk-WNKWOKNR.js";
+} from "./chunk-BPGIYOIB.js";
+import "./chunk-7FP5O474.js";
 
-// node_modules/@popperjs/core/lib/modifiers/offset.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/offset.js
 function distanceAndSkiddingToXY(placement, rects, offset2) {
   var basePlacement = getBasePlacement(placement);
   var invertDistance = [left, top].indexOf(basePlacement) >= 0 ? -1 : 1;

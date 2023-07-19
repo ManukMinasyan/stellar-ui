@@ -1,8 +1,8 @@
 import {
   getWindow
-} from "./chunk-SMSMZSD4.js";
+} from "./chunk-OWTXACF2.js";
 
-// node_modules/@popperjs/core/lib/modifiers/eventListeners.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/eventListeners.js
 var passive = {
   passive: true
 };
@@ -43,4 +43,4 @@ var eventListeners_default = {
 export {
   eventListeners_default
 };
-//# sourceMappingURL=chunk-YCQHOW27.js.map
+//# sourceMappingURL=chunk-DFMSPPG2.js.map

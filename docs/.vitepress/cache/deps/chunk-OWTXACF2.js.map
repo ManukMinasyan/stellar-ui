@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "sources": ["../../../../node_modules/@popperjs/core/lib/dom-utils/getWindow.js"],
+  "sources": ["../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getWindow.js"],
   "sourcesContent": ["export default function getWindow(node) {\n  if (node == null) {\n    return window;\n  }\n\n  if (node.toString() !== '[object Window]') {\n    var ownerDocument = node.ownerDocument;\n    return ownerDocument ? ownerDocument.defaultView || window : window;\n  }\n\n  return node;\n}"],
   "mappings": ";AAAe,SAAR,UAA2B,MAAM;AACtC,MAAI,QAAQ,MAAM;AAChB,WAAO;AAAA,EACT;AAEA,MAAI,KAAK,SAAS,MAAM,mBAAmB;AACzC,QAAI,gBAAgB,KAAK;AACzB,WAAO,gBAAgB,cAAc,eAAe,SAAS;AAAA,EAC/D;AAEA,SAAO;AACT;",
   "names": []

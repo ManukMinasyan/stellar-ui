@@ -1,7 +1,7 @@
 import {
   require_colors
-} from "./chunk-O2FONHVB.js";
-import "./chunk-IP3KHOJO.js";
-import "./chunk-WNKWOKNR.js";
+} from "./chunk-2TKFV5AT.js";
+import "./chunk-N5DV4BYN.js";
+import "./chunk-7FP5O474.js";
 export default require_colors();
 //# sourceMappingURL=tailwindcss_colors.js.map

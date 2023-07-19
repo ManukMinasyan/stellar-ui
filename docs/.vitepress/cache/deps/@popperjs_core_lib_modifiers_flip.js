@@ -1,10 +1,10 @@
 import {
   detectOverflow
-} from "./chunk-HKTEMQLV.js";
+} from "./chunk-QXFK3CX6.js";
 import {
   getVariation
-} from "./chunk-MEODIGUY.js";
-import "./chunk-SMSMZSD4.js";
+} from "./chunk-7G442SWZ.js";
+import "./chunk-OWTXACF2.js";
 import {
   auto,
   basePlacements,
@@ -16,10 +16,10 @@ import {
   start,
   top,
   variationPlacements
-} from "./chunk-LAQACTKR.js";
-import "./chunk-WNKWOKNR.js";
+} from "./chunk-BPGIYOIB.js";
+import "./chunk-7FP5O474.js";
 
-// node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
 var hash = {
   left: "right",
   right: "left",
@@ -32,7 +32,7 @@ function getOppositePlacement(placement) {
   });
 }
 
-// node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
 var hash2 = {
   start: "end",
   end: "start"
@@ -43,7 +43,7 @@ function getOppositeVariationPlacement(placement) {
   });
 }
 
-// node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js
 function computeAutoPlacement(state, options) {
   if (options === void 0) {
     options = {};
@@ -73,7 +73,7 @@ function computeAutoPlacement(state, options) {
   });
 }
 
-// node_modules/@popperjs/core/lib/modifiers/flip.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/flip.js
 function getExpandedFallbackPlacements(placement) {
   if (getBasePlacement(placement) === auto) {
     return [];

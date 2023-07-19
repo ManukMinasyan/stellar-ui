@@ -1,4 +1,4 @@
-// node_modules/@popperjs/core/lib/enums.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/enums.js
 var top = "top";
 var bottom = "bottom";
 var right = "right";
@@ -28,7 +28,7 @@ var write = "write";
 var afterWrite = "afterWrite";
 var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
 
-// node_modules/@popperjs/core/lib/utils/getBasePlacement.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/utils/getBasePlacement.js
 function getBasePlacement(placement) {
   return placement.split("-")[0];
 }
@@ -51,4 +51,4 @@ export {
   modifierPhases,
   getBasePlacement
 };
-//# sourceMappingURL=chunk-LAQACTKR.js.map
+//# sourceMappingURL=chunk-BPGIYOIB.js.map

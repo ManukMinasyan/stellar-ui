@@ -1,10 +1,10 @@
 import {
   __commonJS
-} from "./chunk-WNKWOKNR.js";
+} from "./chunk-7FP5O474.js";
 
-// node_modules/tailwindcss/lib/util/createPlugin.js
+// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/createPlugin.js
 var require_createPlugin = __commonJS({
-  "node_modules/tailwindcss/lib/util/createPlugin.js"(exports) {
+  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/util/createPlugin.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -38,9 +38,9 @@ var require_createPlugin = __commonJS({
   }
 });
 
-// node_modules/tailwindcss/lib/public/create-plugin.js
+// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/create-plugin.js
 var require_create_plugin = __commonJS({
-  "node_modules/tailwindcss/lib/public/create-plugin.js"(exports) {
+  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/public/create-plugin.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: true
@@ -61,9 +61,9 @@ var require_create_plugin = __commonJS({
   }
 });
 
-// node_modules/tailwindcss/plugin.js
+// node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/plugin.js
 var require_plugin = __commonJS({
-  "node_modules/tailwindcss/plugin.js"(exports, module) {
+  "node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/plugin.js"(exports, module) {
     var createPlugin = require_create_plugin();
     module.exports = (createPlugin.__esModule ? createPlugin : { default: createPlugin }).default;
   }
@@ -72,4 +72,4 @@ var require_plugin = __commonJS({
 export {
   require_plugin
 };
-//# sourceMappingURL=chunk-EA2WWJ7B.js.map
+//# sourceMappingURL=chunk-5QZFUBU6.js.map

@@ -1,17 +1,27 @@
 import {
-  require_fs
-} from "./chunk-F6HTLDYI.js";
-import {
   require_plugin
-} from "./chunk-EA2WWJ7B.js";
+} from "./chunk-5QZFUBU6.js";
 import {
   __commonJS,
   __require
-} from "./chunk-WNKWOKNR.js";
+} from "./chunk-7FP5O474.js";
 
-// node_modules/@iconify/tailwind/dist/plugin.js
+// browser-external:fs
+var require_fs = __commonJS({
+  "browser-external:fs"(exports, module) {
+    module.exports = Object.create(new Proxy({}, {
+      get(_, key) {
+        if (key !== "__esModule" && key !== "__proto__" && key !== "constructor" && key !== "splice") {
+          console.warn(`Module "fs" has been externalized for browser compatibility. Cannot access "fs.${key}" in client code. See http://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.`);
+        }
+      }
+    }));
+  }
+});
+
+// node_modules/.pnpm/@iconify+tailwind@0.1.3/node_modules/@iconify/tailwind/dist/plugin.js
 var require_plugin2 = __commonJS({
-  "node_modules/@iconify/tailwind/dist/plugin.js"(exports) {
+  "node_modules/.pnpm/@iconify+tailwind@0.1.3/node_modules/@iconify/tailwind/dist/plugin.js"(exports) {
     var plugin = require_plugin();
     var fs = require_fs();
     var defaultIconDimensions = Object.freeze(

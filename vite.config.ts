@@ -5,13 +5,7 @@ import {PluginPure} from 'rollup-plugin-pure'
 
 module.exports = defineConfig({
     plugins: [
-        vue(),
-        PluginPure({
-            functions: ['defineComponent'],
-            include: [/(?<!im)pure\.js$/],
-            // exclude: [],
-            // sourcemap: true,
-        }),
+        vue()
     ], // to process SFC
     build: {
         cssCodeSplit: true,
@@ -23,7 +17,7 @@ module.exports = defineConfig({
         },
         rollupOptions: {
             // external modules won't be bundled into your library
-            external: ['vue'], // not every external has a global
+            external: ['vue', /@popperjs\/.+/], // not every external has a global
             output: {
                 preserveModules: true,
                 inlineDynamicImports: false,

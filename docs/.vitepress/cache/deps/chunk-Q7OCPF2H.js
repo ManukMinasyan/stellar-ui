@@ -4,10 +4,10 @@ import {
   getOffsetParent,
   getVariation,
   round
-} from "./chunk-MEODIGUY.js";
+} from "./chunk-7G442SWZ.js";
 import {
   getWindow
-} from "./chunk-SMSMZSD4.js";
+} from "./chunk-OWTXACF2.js";
 import {
   bottom,
   end,
@@ -15,9 +15,9 @@ import {
   left,
   right,
   top
-} from "./chunk-LAQACTKR.js";
+} from "./chunk-BPGIYOIB.js";
 
-// node_modules/@popperjs/core/lib/modifiers/computeStyles.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/computeStyles.js
 var unsetSides = {
   top: "auto",
   right: "auto",
@@ -142,4 +142,4 @@ export {
   mapToStyles,
   computeStyles_default
 };
-//# sourceMappingURL=chunk-4LRPY6RW.js.map
+//# sourceMappingURL=chunk-Q7OCPF2H.js.map

@@ -1,4 +1,4 @@
-// node_modules/@popperjs/core/lib/dom-utils/getWindow.js
+// node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/dom-utils/getWindow.js
 function getWindow(node) {
   if (node == null) {
     return window;
@@ -13,4 +13,4 @@ function getWindow(node) {
 export {
   getWindow
 };
-//# sourceMappingURL=chunk-SMSMZSD4.js.map
+//# sourceMappingURL=chunk-OWTXACF2.js.map
