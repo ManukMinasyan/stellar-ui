@@ -2,6 +2,8 @@
     <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/stellar-uu-logo.jpeg?raw=true" width="256" />
 </p>
 
+<a href="https://www.npmjs.com/package/stellar-ui" rel="nofollow"><img src="https://img.shields.io/npm/dw/stellar-ui.svg" style="max-width: 100%;"></a>
+
 # What is Stellar UI?
 
 Fully styled and customizable components for Vue 3.
