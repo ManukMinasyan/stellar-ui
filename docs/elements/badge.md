@@ -32,6 +32,8 @@ Use the **color** and **variant** props to change the visual style of the Badge.
   <Style/>
 </DemoContainer>
 
+<<< @/elements/demo/Badge/Style.vue
+
 ## Size
 
 Use the **size** prop to change the size of the Badge.
@@ -39,3 +41,5 @@ Use the **size** prop to change the size of the Badge.
 <DemoContainer>
   <Size/>
 </DemoContainer>
+
+<<< @/elements/demo/Badge/Size.vue
