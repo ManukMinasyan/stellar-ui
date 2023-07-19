@@ -1,4 +1,6 @@
-<img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/stellar-uu-logo.jpeg?raw=true" width="100%" />
+<p align="center">
+    <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/stellar-uu-logo.jpeg?raw=true" width="256" />
+</p>
 
 # What is Stellar UI?
 
