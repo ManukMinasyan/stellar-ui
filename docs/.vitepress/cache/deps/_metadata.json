@@ -1,164 +1,113 @@
 {
-  "hash": "65e8e65c",
-  "browserHash": "27ac788a",
+  "hash": "b4970eba",
+  "browserHash": "7d33e5f6",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "384c18eb",
+      "fileHash": "2473309f",
       "needsInterop": false
     },
     "defu": {
       "src": "../../../../node_modules/.pnpm/defu@6.1.2/node_modules/defu/dist/defu.mjs",
       "file": "defu.js",
-      "fileHash": "fc115ece",
+      "fileHash": "2ad926c8",
       "needsInterop": false
     },
     "@headlessui/vue": {
       "src": "../../../../node_modules/.pnpm/@headlessui+vue@1.7.14_vue@3.3.4/node_modules/@headlessui/vue/dist/headlessui.esm.js",
       "file": "@headlessui_vue.js",
-      "fileHash": "57263d1a",
+      "fileHash": "3d93f240",
       "needsInterop": false
     },
     "lodash-es": {
       "src": "../../../../node_modules/.pnpm/lodash-es@4.17.21/node_modules/lodash-es/lodash.js",
       "file": "lodash-es.js",
-      "fileHash": "97ed9ab9",
+      "fileHash": "573d8f00",
       "needsInterop": false
     },
     "tailwindcss/colors.js": {
       "src": "../../../../node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/colors.js",
       "file": "tailwindcss_colors__js.js",
-      "fileHash": "0903c8f3",
+      "fileHash": "97370b07",
       "needsInterop": true
     },
-    "@popperjs/core/lib/popper-lite": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/popper-lite.js",
-      "file": "@popperjs_core_lib_popper-lite.js",
-      "fileHash": "da086810",
-      "needsInterop": false
-    },
-    "@popperjs/core/lib/modifiers/flip": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/flip.js",
-      "file": "@popperjs_core_lib_modifiers_flip.js",
-      "fileHash": "48ab6141",
-      "needsInterop": false
-    },
-    "@popperjs/core/lib/modifiers/offset": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/offset.js",
-      "file": "@popperjs_core_lib_modifiers_offset.js",
-      "fileHash": "bd05f56c",
-      "needsInterop": false
-    },
-    "@popperjs/core/lib/modifiers/preventOverflow": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/preventOverflow.js",
-      "file": "@popperjs_core_lib_modifiers_preventOverflow.js",
-      "fileHash": "4b28b373",
-      "needsInterop": false
-    },
-    "@popperjs/core/lib/modifiers/computeStyles": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/computeStyles.js",
-      "file": "@popperjs_core_lib_modifiers_computeStyles.js",
-      "fileHash": "3dad9308",
-      "needsInterop": false
-    },
-    "@popperjs/core/lib/modifiers/eventListeners": {
-      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/modifiers/eventListeners.js",
-      "file": "@popperjs_core_lib_modifiers_eventListeners.js",
-      "fileHash": "8cdde3fb",
+    "@popperjs/core": {
+      "src": "../../../../node_modules/.pnpm/@popperjs+core@2.11.8/node_modules/@popperjs/core/lib/index.js",
+      "file": "@popperjs_core.js",
+      "fileHash": "19e4f60d",
       "needsInterop": false
     },
     "@vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "@vueuse_core.js",
-      "fileHash": "3550ff3e",
+      "fileHash": "0fa2ed6a",
       "needsInterop": false
     },
     "tailwindcss/lib/lib/defaultExtractor.js": {
       "src": "../../../../node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/lib/lib/defaultExtractor.js",
       "file": "tailwindcss_lib_lib_defaultExtractor__js.js",
-      "fileHash": "45e08545",
+      "fileHash": "9d9f74e9",
       "needsInterop": true
     },
     "tailwindcss/defaultTheme": {
       "src": "../../../../node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/defaultTheme.js",
       "file": "tailwindcss_defaultTheme.js",
-      "fileHash": "2198697e",
+      "fileHash": "6a266dab",
       "needsInterop": true
     },
     "tailwindcss/colors": {
       "src": "../../../../node_modules/.pnpm/tailwindcss@3.3.2/node_modules/tailwindcss/colors.js",
       "file": "tailwindcss_colors.js",
-      "fileHash": "0c8d3163",
+      "fileHash": "206ea645",
       "needsInterop": true
     },
     "@tailwindcss/forms": {
       "src": "../../../../node_modules/.pnpm/@tailwindcss+forms@0.5.3_tailwindcss@3.3.2/node_modules/@tailwindcss/forms/src/index.js",
       "file": "@tailwindcss_forms.js",
-      "fileHash": "b1447a94",
+      "fileHash": "3f9f7220",
       "needsInterop": true
     },
     "@tailwindcss/aspect-ratio": {
       "src": "../../../../node_modules/.pnpm/@tailwindcss+aspect-ratio@0.4.2_tailwindcss@3.3.2/node_modules/@tailwindcss/aspect-ratio/src/index.js",
       "file": "@tailwindcss_aspect-ratio.js",
-      "fileHash": "8336f633",
+      "fileHash": "fdcbd069",
       "needsInterop": true
     },
     "@tailwindcss/typography": {
       "src": "../../../../node_modules/.pnpm/@tailwindcss+typography@0.5.9_tailwindcss@3.3.2/node_modules/@tailwindcss/typography/src/index.js",
       "file": "@tailwindcss_typography.js",
-      "fileHash": "add4cea8",
+      "fileHash": "c4c29620",
       "needsInterop": true
     },
     "@tailwindcss/container-queries": {
       "src": "../../../../node_modules/.pnpm/@tailwindcss+container-queries@0.1.1_tailwindcss@3.3.2/node_modules/@tailwindcss/container-queries/dist/index.js",
       "file": "@tailwindcss_container-queries.js",
-      "fileHash": "4052d6e4",
+      "fileHash": "8655bba4",
       "needsInterop": true
     },
     "@iconify/tailwind": {
       "src": "../../../../node_modules/.pnpm/@iconify+tailwind@0.1.3/node_modules/@iconify/tailwind/dist/plugin.js",
       "file": "@iconify_tailwind.js",
-      "fileHash": "8830e4b0",
+      "fileHash": "9df74f8f",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-5QZFUBU6": {
-      "file": "chunk-5QZFUBU6.js"
-    },
     "chunk-3VZDZLRJ": {
       "file": "chunk-3VZDZLRJ.js"
     },
-    "chunk-JKV2V35Q": {
-      "file": "chunk-JKV2V35Q.js"
+    "chunk-5QZFUBU6": {
+      "file": "chunk-5QZFUBU6.js"
     },
     "chunk-2TKFV5AT": {
       "file": "chunk-2TKFV5AT.js"
     },
+    "chunk-JKV2V35Q": {
+      "file": "chunk-JKV2V35Q.js"
+    },
     "chunk-N5DV4BYN": {
       "file": "chunk-N5DV4BYN.js"
-    },
-    "chunk-QT3U6ETE": {
-      "file": "chunk-QT3U6ETE.js"
-    },
-    "chunk-Q7OCPF2H": {
-      "file": "chunk-Q7OCPF2H.js"
-    },
-    "chunk-DFMSPPG2": {
-      "file": "chunk-DFMSPPG2.js"
-    },
-    "chunk-QXFK3CX6": {
-      "file": "chunk-QXFK3CX6.js"
-    },
-    "chunk-7G442SWZ": {
-      "file": "chunk-7G442SWZ.js"
-    },
-    "chunk-OWTXACF2": {
-      "file": "chunk-OWTXACF2.js"
-    },
-    "chunk-BPGIYOIB": {
-      "file": "chunk-BPGIYOIB.js"
     },
     "chunk-7FP5O474": {
       "file": "chunk-7FP5O474.js"

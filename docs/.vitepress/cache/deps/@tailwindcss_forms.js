@@ -1,9 +1,9 @@
 import {
-  require_plugin
-} from "./chunk-5QZFUBU6.js";
-import {
   require_defaultTheme
 } from "./chunk-3VZDZLRJ.js";
+import {
+  require_plugin
+} from "./chunk-5QZFUBU6.js";
 import {
   require_colors
 } from "./chunk-2TKFV5AT.js";

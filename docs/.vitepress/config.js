@@ -42,7 +42,7 @@ module.exports = {
             alias: {
                 'stellar-ui': path.resolve(__dirname, '../../src'),
             },
-            dedupe: ['vue', /@popperjs\/.+/], // avoid error when using dependencies that also use Vue
+            dedupe: ['vue'], // avoid error when using dependencies that also use Vue
         }
     }
 }
