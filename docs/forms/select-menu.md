@@ -1,5 +1,6 @@
 <script setup>
 import Basic from './demo/SelectMenu/Basic.vue';
+import Multiple from './demo/SelectMenu/Multiple.vue';
 </script>
 # Select Menu
 
@@ -15,3 +16,13 @@ Like the Select component, you can use the options prop to pass an array of stri
 </DemoContainer>
 
 <<< @/forms/demo/Select/Basic.vue
+
+## Multiple
+
+You can use the ``multiple`` prop to select multiple values.
+
+<DemoContainer>
+  <Multiple />
+</DemoContainer>
+
+<<< @/forms/demo/SelectMenu/Multiple.vue
