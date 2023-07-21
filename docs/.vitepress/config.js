@@ -37,6 +37,7 @@ module.exports = {
                     {text: 'Textarea', link: '/forms/textarea'},
                     {text: 'Select', link: '/forms/select'},
                     {text: 'Select Menu', link: '/forms/select-menu'},
+                    {text: 'Checkbox', link: '/forms/checkbox'},
                 ],
             }
         ],
