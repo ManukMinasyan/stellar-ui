@@ -6,12 +6,16 @@ module.exports = {
     base: '/stellar-ui/',
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
+        search: {
+            provider: 'local'
+        },
         sidebar: [
             {
-                text: 'Introduction',
+                text: 'Getting Started',
                 items: [
-                    {text: 'What is Stellar UI?', link: '/'},
-                    {text: 'Getting Started', link: '/guide/'},
+                    {text: 'Introduction', link: '/'},
+                    {text: 'Installation', link: '/getting-started/installation'},
+                    {text: 'Theming', link: '/getting-started/theming'},
                 ],
             },
             {

@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*.vp-doc ul{*/
+/*    padding: 0 !important;*/
+/*    margin: 0 !important;*/
+/*}*/
