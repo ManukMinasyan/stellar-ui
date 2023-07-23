@@ -14,6 +14,7 @@ import UTextarea from './forms/Textarea.vue'
 import USelect from './forms/Select.vue'
 import USelectMenu from './forms/SelectMenu.vue'
 import UCheckbox from './forms/Checkbox.vue'
+import URadio from './forms/Radio.vue'
 
 
 export {
@@ -28,5 +29,6 @@ export {
     UTextarea,
     USelect,
     USelectMenu,
-    UCheckbox
+    UCheckbox,
+    URadio
 }
