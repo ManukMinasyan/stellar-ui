@@ -33,7 +33,7 @@ export default <Partial<Config>>{
                 return [
                     ...defaultExtractor(content),
                     // TODO Change colors to tailwind config actual colors
-                    ...customSafelistExtractor('U', content, ['blue', 'green', 'red', 'violet'], ['primary'])
+                    ...customSafelistExtractor('U', content, ['blue', 'green', 'red', 'violet', 'orange'], ['primary'])
                 ]
             }
         }
