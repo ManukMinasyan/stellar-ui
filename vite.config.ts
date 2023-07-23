@@ -1,14 +1,12 @@
 const path = require('path');
 const {defineConfig} = require('vite');
 import vue from '@vitejs/plugin-vue';
-import {PluginPure} from 'rollup-plugin-pure'
 
 module.exports = defineConfig({
     plugins: [
         vue()
     ], // to process SFC
     build: {
-        cssCodeSplit: true,
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             name: 'stellar-ui',
