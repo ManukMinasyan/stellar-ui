@@ -6,7 +6,7 @@
 
 # What is Stellar UI?
 
-Fully styled and customizable components for Vue 3.
+Fully styled and customizable components for Vue 3
 
 This package has been developed by the Minasyan.Info, its goal is to provide everything related
 to UI when building a Vue app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
