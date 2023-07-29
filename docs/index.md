@@ -2,18 +2,18 @@
 
 Fully styled and customizable components for Vue 3.
 
-This module has been developed by the [minasyan.info](https://minasyan.info) team, its goal is to provide everything related
+This module has been developed by the [minasyan.info](https://minasyan.info) team, its goal is to provide everything
+related
 to UI when building a Vue app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
 
 ## Features
 
 - Built with Headless UI and Tailwind CSS
--  HMR support through Nuxt App Config
--  Dark mode support
--  Support for LTR and RTL languages
--  Keyboard shortcuts
--  Bundled icons
--  Fully typed
+- Dark mode support
+- Support for LTR and RTL languages
+- Keyboard shortcuts
+- Icons
+- Fully typed
 
 ## Credits
 

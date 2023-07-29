@@ -14,11 +14,10 @@ to UI when building a Vue app. This includes components, icons, colors, dark mod
 # Features
 
 -  Built with Headless UI and Tailwind CSS
--  HMR support through Nuxt App Config
 -  Dark mode support
 -  Support for LTR and RTL languages
 -  Keyboard shortcuts
--  Bundled icons
+-  Icons
 -  Fully typed
 
 [See Documentation](https://manukminasyan.github.io/stellar-ui/)
