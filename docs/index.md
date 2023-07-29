@@ -17,10 +17,9 @@ to UI when building a Vue app. This includes components, icons, colors, dark mod
 
 ## Credits
 
-- [nuxt/nuxt](https://github.com/nuxt/nuxt)
-- [nuxt-modules/color-mode](https://github.com/nuxt-modules/color-mode)
-- [nuxt-modules/tailwindcss](https://github.com/nuxt-modules/tailwindcss)
+- [nuxtlabs/ui](https://github.com/nuxtlabs/ui)
 - [tailwindlabs/tailwindcss](https://github.com/tailwindlabs/tailwindcss)
 - [tailwindlabs/headlessui](https://github.com/tailwindlabs/headlessui)
 - [vueuse/vueuse](https://github.com/vueuse/vueuse)
+- [@iconify/tailwind](https://github.com/iconify/iconify/tree/main/plugins/tailwind)
 - [egoist/tailwindcss-icons](https://github.com/egoist/tailwindcss-icons)
