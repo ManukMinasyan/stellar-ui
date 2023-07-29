@@ -1,3 +1,3 @@
 <template>
-  <UTextarea rows="1"/>
+  <STextarea rows="1"/>
 </template>

@@ -41,6 +41,6 @@ Import components from this library in your own component:
 
 ```html
 <script setup lang="ts">
-    import { UButton, UDropdown } from 'stellar-ui';
+    import { SButton, SDropdown } from 'stellar-ui';
 </script>
 ```

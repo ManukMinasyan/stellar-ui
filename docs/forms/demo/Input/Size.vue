@@ -1,3 +1,3 @@
 <template>
-  <UInput size="sm" />
+  <SInput size="sm" />
 </template>

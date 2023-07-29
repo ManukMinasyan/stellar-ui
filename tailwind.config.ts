@@ -19,7 +19,7 @@ export default <Partial<Config>>{
     ],
     content: {
         files: [
-            './docs/**/*.{vue,mjs,ts}',
+            // './docs/**/*.{vue,mjs,ts}',
             './src/**/*.{vue,mjs,ts}',
             './src/*.{mjs,js,ts}'
         ],

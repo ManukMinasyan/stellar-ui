@@ -1,3 +1,3 @@
 <template>
-  <UBadge>Badge</UBadge>
+  <SBadge>Badge</SBadge>
 </template>

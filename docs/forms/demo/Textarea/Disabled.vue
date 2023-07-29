@@ -1,3 +1,3 @@
 <template>
-  <UTextarea disabled="true"/>
+  <STextarea disabled="true"/>
 </template>

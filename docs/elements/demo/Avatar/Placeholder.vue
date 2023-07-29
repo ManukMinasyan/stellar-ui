@@ -1,3 +1,3 @@
 <template>
-  <UAvatar alt="John Doe" size="sm" />
+  <SAvatar alt="John Doe" size="sm" />
 </template>

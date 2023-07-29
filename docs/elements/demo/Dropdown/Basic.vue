@@ -32,7 +32,7 @@ const items = [
 </script>
 
 <template>
-  <UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-    <UButton color="white" label="Options" trailing-icon="icon-[heroicons--chevron-down-20-solid]"/>
-  </UDropdown>
+  <SDropdown :items="items" :popper="{ placement: 'bottom-start' }">
+    <SButton color="white" label="Options" trailing-icon="icon-[heroicons--chevron-down-20-solid]"/>
+  </SDropdown>
 </template>

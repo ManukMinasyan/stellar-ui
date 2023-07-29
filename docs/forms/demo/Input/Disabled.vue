@@ -1,3 +1,3 @@
 <template>
-  <UInput disabled="true" />
+  <SInput disabled="true" />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <UButton size="sm" label="Submit"/>
+  <SButton size="sm" label="Submit"/>
 </template>

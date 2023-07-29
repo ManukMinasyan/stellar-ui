@@ -34,10 +34,10 @@ Stellar UI provides out of box Tree Shaking functionalities based on ES Module.
 
 ```html
 <script setup lang="ts">
-  import { UButton } from 'stellar-ui';
+  import { SButton } from 'stellar-ui';
 </script>
 
 <template>
-    <UButton>Submit</UButton>
+    <SButton>Submit</SButton>
 </template>
 ```

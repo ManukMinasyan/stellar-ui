@@ -6,5 +6,5 @@ const selected = ref(people[0])
 </script>
 
 <template>
-  <USelectMenu v-model="selected" :options="people" />
+  <SSelectMenu v-model="selected" :options="people" />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <UTextarea autoresize="true" />
+  <STextarea autoresize="true" />
 </template>

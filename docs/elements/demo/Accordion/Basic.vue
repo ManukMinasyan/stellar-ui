@@ -18,5 +18,5 @@ const items = [{
 </script>
 
 <template>
-  <UAccordion :items="items" />
+  <SAccordion :items="items" />
 </template>

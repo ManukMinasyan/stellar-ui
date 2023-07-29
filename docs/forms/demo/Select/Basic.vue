@@ -7,5 +7,5 @@ const country = ref(countries[0])
 </script>
 
 <template>
-  <USelect v-model="country" :options="countries"/>
+  <SSelect v-model="country" :options="countries"/>
 </template>

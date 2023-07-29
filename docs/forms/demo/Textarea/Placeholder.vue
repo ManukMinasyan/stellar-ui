@@ -1,3 +1,3 @@
 <template>
-  <UTextarea placeholder="Search..." />
+  <STextarea placeholder="Search..." />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <UIcon name="icon-[heroicons--light-bulb]" />
+  <SIcon name="icon-[heroicons--light-bulb]" />
 </template>

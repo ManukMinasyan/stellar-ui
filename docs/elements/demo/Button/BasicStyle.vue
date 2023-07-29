@@ -1,3 +1,3 @@
 <template>
-  <UButton color="red" variant="outline" label="Submit"/>
+  <SButton color="red" variant="outline" label="Submit"/>
 </template>

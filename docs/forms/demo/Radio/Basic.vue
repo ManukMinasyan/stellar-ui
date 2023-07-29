@@ -19,5 +19,5 @@ const selected = ref('sms')
 </script>
 
 <template>
-  <URadio v-for="method of methods" :key="method.name" v-model="selected" v-bind="method"/>
+  <SRadio v-for="method of methods" :key="method.name" v-model="selected" v-bind="method"/>
 </template>

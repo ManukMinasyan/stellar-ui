@@ -1,3 +1,3 @@
 <template>
-  <UInput placeholder="Search..." />
+  <SInput placeholder="Search..." />
 </template>

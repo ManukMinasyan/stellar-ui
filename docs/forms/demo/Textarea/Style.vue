@@ -5,5 +5,5 @@ const value = ref('')
 </script>
 
 <template>
-  <UTextarea v-model="value" color="primary" variant="outline" />
+  <STextarea v-model="value" color="primary" variant="outline" />
 </template>

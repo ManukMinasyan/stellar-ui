@@ -1,3 +1,3 @@
 <template>
-  <UKbd>K</UKbd>
+  <SKbd>K</SKbd>
 </template>

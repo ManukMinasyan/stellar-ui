@@ -1,3 +1,3 @@
 <template>
-  <UButton label="Submit" color="black" />
+  <SButton label="Submit" color="black" />
 </template>
