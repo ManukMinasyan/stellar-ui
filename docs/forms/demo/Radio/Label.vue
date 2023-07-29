@@ -1,3 +1,3 @@
 <template>
-	URadio label="Label" />
+	<SRadio label="Label" />
 </template>

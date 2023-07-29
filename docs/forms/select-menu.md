@@ -19,7 +19,7 @@ Like the Select component, you can use the options prop to pass an array of stri
   <Basic/>
 </DemoContainer>
 
-<<< @/forms/demo/Select/Basic.vue
+<<< @/forms/demo/SelectMenu/Basic.vue
 
 ## Multiple
 
