@@ -40,6 +40,7 @@ module.exports = {
                     {text: 'Checkbox', link: '/forms/checkbox'},
                     {text: 'Radio', link: '/forms/radio'},
                     {text: 'Toggle', link: '/forms/toggle'},
+                    {text: 'Form Group', link: '/forms/form-group'},
                 ],
             }
         ],

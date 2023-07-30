@@ -18,6 +18,7 @@ import SCheckbox from './forms/Checkbox.vue'
 import SRadio from './forms/Radio.vue'
 import SToggle from './forms/Toggle.vue'
 import SRange from './forms/Range.vue'
+import SFormGroup from './forms/FormGroup'
 
 
 export {
@@ -36,5 +37,6 @@ export {
     SCheckbox,
     SRadio,
     SToggle,
-    SRange
+    SRange,
+    SFormGroup
 }
