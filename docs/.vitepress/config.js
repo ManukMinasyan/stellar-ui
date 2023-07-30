@@ -39,6 +39,7 @@ module.exports = {
                     {text: 'Select Menu', link: '/forms/select-menu'},
                     {text: 'Checkbox', link: '/forms/checkbox'},
                     {text: 'Radio', link: '/forms/radio'},
+                    {text: 'Toggle', link: '/forms/toggle'},
                 ],
             }
         ],
