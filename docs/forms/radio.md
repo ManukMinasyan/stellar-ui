@@ -11,7 +11,7 @@ Display a radio field.
 
 Use a ```v-model``` to make the Radio reactive.
 
-<DemoContainer>
+<DemoContainer classes="block">
   <Basic/>
 </DemoContainer>
 

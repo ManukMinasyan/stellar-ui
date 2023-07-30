@@ -1,3 +1,3 @@
 <template>
-	<SRadio label="Label" />
+	<s-radio label="Label" />
 </template>
