@@ -15,6 +15,7 @@ import SSelect from './forms/Select.vue'
 import SSelectMenu from './forms/SelectMenu.vue'
 import SCheckbox from './forms/Checkbox.vue'
 import SRadio from './forms/Radio.vue'
+import SToggle from './forms/Toggle.vue'
 
 
 export {
@@ -31,5 +32,6 @@ export {
     SSelect,
     SSelectMenu,
     SCheckbox,
-    SRadio
+    SRadio,
+    SToggle
 }
