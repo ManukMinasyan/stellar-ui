@@ -139,6 +139,8 @@ import type { PopperOptions } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
 
+// const appConfig = useAppConfig()
+
 export default defineComponent({
   components: {
     HCombobox,

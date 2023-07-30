@@ -503,6 +503,8 @@ const select = {
 
 const selectMenu = {
     wrapper: 'relative',
+    placeholder: '',
+    divide: '',
     container: 'z-20',
     width: 'w-full',
     height: 'max-h-60',
