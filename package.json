@@ -1,6 +1,6 @@
 {
   "name": "stellar-ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && vue-tsc && vite build",
@@ -44,7 +44,6 @@
     "url": "git+https://github.com/ManukMinasyan/stellar-ui.git"
   },
   "dependencies": {
-    "@egoist/tailwindcss-icons": "^1.1.0",
     "@headlessui/vue": "^1.7.14",
     "@iconify-json/heroicons": "^1.1.11",
     "@iconify-json/lucide": "^1.1.109",

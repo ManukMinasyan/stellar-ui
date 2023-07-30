@@ -10,40 +10,6 @@ Iconify plugin for Tailwind CSS makes it easy to use icons in Tailwind CSS.
 
 You can use [over 150,000 open source icons](https://iconify.design/docs/icons/icon-data.html) and custom icons with minimal code.
 
-## Options
-
-There are 2 plugins, developed by different developers:
-
-- [@iconify/tailwind](https://github.com/iconify/iconify/tree/main/plugins/tailwind)
-- [@egoist/tailwindcss-icons](https://github.com/egoist/tailwindcss-icons)
-
-Plugins use different syntax, have different options.
-
-For example, here is syntax to use `mdi-light:home` in HTML:
-
-```vue
-// Usage with @iconify/tailwind
-<s-icon name="icon-[mdi-light--home]" />
-```
-
-```vue
-// Usage with @egoist/tailwindcss-icons
-<s-icon name="i-mdi-light-home" />
-```
-
-Both plugins can be used with custom icon sets.
-
-The biggest difference is in behavior:
-
-- [@iconify/tailwind](https://github.com/iconify/iconify/tree/main/plugins/tailwind) uses dynamic class names, so it generates only CSS for icons Tailwind CSS requests.
-- [@egoist/tailwindcss-icons](https://github.com/egoist/tailwindcss-icons) generates CSS for all icons in icon set, generating thousands of entries, Tailwind CSS chooses which to include in output.
-
-## Documentation
-
-This documentation covers only `@iconify/tailwind`.
-
-For `@egoist/tailwindcss-icons` documentation see [its repository on GitHub](https://github.com/egoist/tailwindcss-icons).
-
 ## Installation
 
 You need to install and configure plugin.
