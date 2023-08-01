@@ -21,11 +21,11 @@ module.exports = {
             {
                 text: 'Elements',
                 items: [
+                    {text: 'Accordion', link: '/elements/accordion'},
                     {text: 'Avatar', link: '/elements/avatar'},
                     {text: 'Badge', link: '/elements/badge'},
                     {text: 'Button', link: '/elements/button'},
                     {text: 'Dropdown', link: '/elements/dropdown'},
-                    {text: 'Accordion', link: '/elements/accordion'},
                     {text: 'Icon', link: '/elements/icon'},
                     {text: 'Kbd', link: '/elements/kbd'},
                 ],

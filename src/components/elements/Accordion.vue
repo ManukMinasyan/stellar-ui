@@ -46,11 +46,13 @@ import { Disclosure as HDisclosure, DisclosureButton as HDisclosureButton, Discl
 import { defu } from 'defu'
 import { omit } from 'lodash-es'
 import UIcon from '../elements/Icon.vue'
-import UButton from './Button.vue'
+import UButton from '../elements/Button.vue'
 import StateEmitter from '../../utils/StateEmitter'
-import type { Button } from '../../types/button'
+import type { AccordionItem } from '../../types/accordion'
+// TODO: Remove
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
+
 
 export default defineComponent({
   components: {
@@ -64,7 +66,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     items: {
-      type: Array as PropType<Partial<Button & { slot: string, disabled: boolean, content: string, defaultOpen: boolean, closeOthers: boolean }>[]>,
+      type: Array as PropType<AccordionItem[]>,
       default: () => []
     },
     defaultOpen: {
