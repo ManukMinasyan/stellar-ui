@@ -34,10 +34,10 @@ export default <Partial<Config>>{
                     ...defaultExtractor(content),
                     // TODO Change colors to tailwind config actual colors
                     ...customSafelistExtractor(
-                        'U', 
+                        'S',
                         content, 
                         ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchisa', 'pink', 'rose'], 
-                        ['primary']
+                        ['primary', 'red']
                         )
                 ]
             }
@@ -52,7 +52,7 @@ export default <Partial<Config>>{
                 '8xl': '90rem'
             },
             colors: {
-                primary: colors.blue,
+                primary: colors.indigo,
             }
         }
     },

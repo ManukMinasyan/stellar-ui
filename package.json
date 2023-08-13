@@ -56,10 +56,11 @@
     "@tailwindcss/forms": "^0.5.4",
     "@tailwindcss/typography": "^0.5.9",
     "@vueuse/math": "^10.3.0",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.15",
     "cssnano": "^6.0.1",
     "defu": "^6.1.2",
     "lodash-es": "^4.17.21",
-    "rollup-plugin-pure": "^0.1.1"
+    "rollup-plugin-pure": "^0.1.1",
+    "tailwind-merge": "^1.14.0"
   }
 }
