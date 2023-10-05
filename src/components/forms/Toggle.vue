@@ -1,9 +1,11 @@
 <template>
   <HSwitch
+      :id="inputId"
       v-model="active"
       :name="name"
       :disabled="disabled"
       :class="switchClass"
+      v-bind="attrs"
   >
     <span :class="[active ? ui.container.active : ui.container.inactive, ui.container.base]">
       <span v-if="onIcon" :class="[active ? ui.icon.active : ui.icon.inactive, ui.icon.base]" aria-hidden="true">
@@ -17,23 +19,33 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { defu } from 'defu'
 import { Switch as HSwitch } from '@headlessui/vue'
+import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import { classNames } from '../../utils'
+import { useUI } from '../../composables/useUI'
+import { useFormGroup } from '../../composables/useFormGroup'
+import { mergeConfig } from '../../utils'
+import type { Strategy } from '../../types'
 // @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
+import { toggle } from '../../ui.config'
+import colors from '#ui-colors'
 
-// const appConfig = useAppConfig()
+const config = mergeConfig<typeof toggle>(appConfig.ui.strategy, appConfig.ui.toggle, toggle)
 
 export default defineComponent({
   components: {
     HSwitch,
     UIcon
   },
+  inheritAttrs: false,
   props: {
+    id: {
+      type: String,
+      default: null
+    },
     name: {
       type: String,
       default: null
@@ -48,27 +60,33 @@ export default defineComponent({
     },
     onIcon: {
       type: String,
-      default: () => appConfig.ui.toggle.default.onIcon
+      default: () => config.default.onIcon
     },
     offIcon: {
       type: String,
-      default: () => appConfig.ui.toggle.default.offIcon
+      default: () => config.default.offIcon
     },
     color: {
-      type: String,
-      default: () => appConfig.ui.toggle.default.color,
+      type: String as PropType<typeof colors[number]>,
+      default: () => config.default.color,
       validator (value: string) {
         return appConfig.ui.colors.includes(value)
       }
     },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.toggle>>,
-      default: () => appConfig.ui.toggle
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
   emits: ['update:modelValue'],
   setup (props, { emit }) {
-    const ui = computed<Partial<typeof appConfig.ui.toggle>>(() => defu({}, props.ui, appConfig.ui.toggle))
+    const { ui, attrs } = useUI('toggle', toRef(props, 'ui'), config)
+
+    const { emitFormChange, color, inputId, name } = useFormGroup(props)
 
     const active = computed({
       get () {
@@ -76,33 +94,38 @@ export default defineComponent({
       },
       set (value) {
         emit('update:modelValue', value)
+        emitFormChange()
       }
     })
 
-    const switchClass = computed(()=>{
-      return classNames(
+    const switchClass = computed(() => {
+      return twMerge(twJoin(
           ui.value.base,
           ui.value.rounded,
-          ui.value.ring.replaceAll('{color}', props.color),
-          (active.value ? ui.value.active : ui.value.inactive).replaceAll('{color}', props.color)
+          ui.value.ring.replaceAll('{color}', color.value),
+          (active.value ? ui.value.active : ui.value.inactive).replaceAll('{color}', color.value)
+      ), props.class)
+    })
+
+    const onIconClass = computed(() => {
+      return twJoin(
+          ui.value.icon.on.replaceAll('{color}', color.value)
       )
     })
 
-    const onIconClass = computed(()=>{
-      return classNames(
-          ui.value.icon.on.replaceAll('{color}', props.color)
-      )
-    })
-
-    const offIconClass = computed(()=>{
-      return classNames(
-          ui.value.icon.off.replaceAll('{color}', props.color)
+    const offIconClass = computed(() => {
+      return twJoin(
+          ui.value.icon.off.replaceAll('{color}', color.value)
       )
     })
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
+      attrs,
+      // eslint-disable-next-line vue/no-dupe-keys
+      name,
+      inputId,
       active,
       switchClass,
       onIconClass,

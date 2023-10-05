@@ -22,37 +22,31 @@ export default <Partial<Config>>{
             './docs/**/*.{vue,mjs,ts}',
             './src/**/*.{vue,mjs,ts}',
             './src/*.{mjs,js,ts}'
-        ],
-        transform: {
-            vue: (content) => {
-                return content.replaceAll(/(?:\r\n|\r|\n)/g, ' ')
-            }
-        },
-        extract: {
-            vue: (content) => {
-                return [
-                    ...defaultExtractor(content),
-                    // TODO Change colors to tailwind config actual colors
-                    ...customSafelistExtractor(
-                        'S',
-                        content, 
-                        ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchisa', 'pink', 'rose'], 
-                        ['primary', 'red']
-                        )
-                ]
-            }
-        }
+        ]
     },
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
-            },
-            maxWidth: {
-                '8xl': '90rem'
+                sans: ['DM Sans', 'DM Sans fallback', ...defaultTheme.fontFamily.sans]
             },
             colors: {
                 primary: colors.indigo,
+                green: {
+                    50: '#EFFDF5',
+                    100: '#D9FBE8',
+                    200: '#B3F5D1',
+                    300: '#75EDAE',
+                    400: '#00DC82',
+                    500: '#00C16A',
+                    600: '#00A155',
+                    700: '#007F45',
+                    800: '#016538',
+                    900: '#0A5331',
+                    950: '#052e16'
+                }
+            },
+            gridRow: {
+                'span-8': 'span 8 / span 8'
             }
         }
     },

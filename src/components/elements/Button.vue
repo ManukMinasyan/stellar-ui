@@ -1,10 +1,5 @@
 <template>
-  <component
-      :is="buttonIs"
-      :class="buttonClass"
-      :aria-label="ariaLabel"
-      v-bind="buttonProps"
-  >
+  <ULink :type="type" :disabled="disabled || loading" :class="buttonClass" v-bind="attrs">
     <slot name="leading" :disabled="disabled" :loading="loading">
       <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="leadingIconClass" aria-hidden="true" />
     </slot>
@@ -18,25 +13,30 @@
     <slot name="trailing" :disabled="disabled" :loading="loading">
       <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="trailingIconClass" aria-hidden="true" />
     </slot>
-  </component>
+  </ULink>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, useSlots } from 'vue'
+import { computed, defineComponent, toRef } from 'vue'
 import type { PropType } from 'vue'
-import { defu } from 'defu'
-import UIcon from './Icon.vue'
-import { classNames } from '../../utils'
-// import { NuxtLink } from '#components'
-// TODO: Remove
+import { twMerge, twJoin } from 'tailwind-merge'
+import UIcon from '../elements/Icon.vue'
+import ULink from '../elements/Link.vue'
+import { useUI } from '../../composables/useUI'
+import { mergeConfig } from '../../utils'
+import type { ButtonColor, ButtonSize, ButtonVariant, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
+import { button } from '../../ui.config.ts'
+
+const config = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.button, button)
 
 export default defineComponent({
   components: {
     UIcon,
-    // NuxtLink
+    ULink
   },
+  inheritAttrs: false,
   props: {
     type: {
       type: String,
@@ -63,26 +63,26 @@ export default defineComponent({
       default: true
     },
     size: {
-      type: String,
-      default: () => appConfig.ui.button.default.size,
+      type: String as PropType<ButtonSize>,
+      default: () => config.default.size,
       validator (value: string) {
-        return Object.keys(appConfig.ui.button.size).includes(value)
+        return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String,
-      default: () => appConfig.ui.button.default.color,
+      type: String as PropType<ButtonColor>,
+      default: () => config.default.color,
       validator (value: string) {
-        return [...appConfig.ui.colors, ...Object.keys(appConfig.ui.button.color)].includes(value)
+        return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String,
-      default: () => appConfig.ui.button.default.variant,
+      type: String as PropType<ButtonVariant>,
+      default: () => config.default.variant,
       validator (value: string) {
         return [
-          ...Object.keys(appConfig.ui.button.variant),
-          ...Object.values(appConfig.ui.button.color).flatMap(value => Object.keys(value))
+          ...Object.keys(config.variant),
+          ...Object.values(config.color).flatMap(value => Object.keys(value))
         ].includes(value)
       }
     },
@@ -92,7 +92,7 @@ export default defineComponent({
     },
     loadingIcon: {
       type: String,
-      default: () => appConfig.ui.button.default.loadingIcon
+      default: () => config.default.loadingIcon
     },
     leadingIcon: {
       type: String,
@@ -110,18 +110,6 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    to: {
-      type: [String, Object] as PropType<string>,
-      default: null
-    },
-    target: {
-      type: String,
-      default: null
-    },
-    ariaLabel: {
-      type: String,
-      default: null
-    },
     square: {
       type: Boolean,
       default: false
@@ -130,34 +118,17 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.button>>,
-      default: () => appConfig.ui.button
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
-  setup (props) {
-    // // TODO: Remove
-    // const appConfig = useAppConfig()
-
-    const ui = computed<Partial<typeof appConfig.ui.button>>(() => defu({}, props.ui, appConfig.ui.button))
-
-    const slots = useSlots()
-
-    const buttonIs = computed(() => {
-      // if (props.to) {
-      //   return 'NuxtLink'
-      // }
-
-      return 'button'
-    })
-
-    const buttonProps = computed(() => {
-      if (props.to) {
-        return { to: props.to, target: props.target }
-      } else {
-        return { disabled: props.disabled || props.loading, type: props.type }
-      }
-    })
+  setup (props, { slots }) {
+    const { ui, attrs } = useUI('button', toRef(props, 'ui'), config)
 
     const isLeading = computed(() => {
       return (props.icon && props.leading) || (props.icon && !props.trailing) || (props.loading && !props.trailing) || props.leadingIcon
@@ -172,7 +143,7 @@ export default defineComponent({
     const buttonClass = computed(() => {
       const variant = ui.value.color?.[props.color as string]?.[props.variant as string] || ui.value.variant[props.variant]
 
-      return classNames(
+      return twMerge(twJoin(
           ui.value.base,
           ui.value.font,
           ui.value.rounded,
@@ -181,7 +152,7 @@ export default defineComponent({
           props.padded && ui.value[isSquare.value ? 'square' : 'padding'][props.size],
           variant?.replaceAll('{color}', props.color),
           props.block ? 'w-full flex justify-center items-center' : 'inline-flex items-center'
-      )
+      ), props.class)
     })
 
     const leadingIconName = computed(() => {
@@ -201,7 +172,7 @@ export default defineComponent({
     })
 
     const leadingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
           ui.value.icon.size[props.size],
           props.loading && 'animate-spin'
@@ -209,7 +180,7 @@ export default defineComponent({
     })
 
     const trailingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
           ui.value.icon.size[props.size],
           props.loading && !isLeading.value && 'animate-spin'
@@ -217,8 +188,7 @@ export default defineComponent({
     })
 
     return {
-      buttonIs,
-      buttonProps,
+      attrs,
       isLeading,
       isTrailing,
       isSquare,

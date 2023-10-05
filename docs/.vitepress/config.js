@@ -42,6 +42,12 @@ module.exports = {
                     {text: 'Toggle', link: '/forms/toggle'},
                     {text: 'Form Group', link: '/forms/form-group'},
                 ],
+            },
+            {
+                text: 'Data',
+                items: [
+                    {text: 'Table', link: '/data/table'},
+                ],
             }
         ],
     },

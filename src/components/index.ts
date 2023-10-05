@@ -20,6 +20,9 @@ import SToggle from './forms/Toggle.vue'
 import SRange from './forms/Range.vue'
 import SFormGroup from './forms/FormGroup.vue'
 
+// Data
+import STable from './data/Table.vue'
+
 
 export {
     SAvatar,
@@ -38,5 +41,6 @@ export {
     SRadio,
     SToggle,
     SRange,
-    SFormGroup
+    SFormGroup,
+    STable
 }

@@ -1,7 +1,7 @@
 <template>
   <div :class="ui.wrapper">
     <textarea
-        :id="name"
+        :id="inputId"
         ref="textarea"
         :value="modelValue"
         :name="name"
@@ -11,19 +11,27 @@
         :placeholder="placeholder"
         class="form-textarea"
         :class="textareaClass"
-        v-bind="$attrs"
+        v-bind="attrs"
         @input="onInput"
+        @blur="onBlur"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed, watch, onMounted, nextTick, defineComponent } from 'vue'
+import { ref, computed, toRef, watch, onMounted, nextTick, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { defu } from 'defu'
-import { classNames } from '../../utils'
+import { twMerge, twJoin } from 'tailwind-merge'
+import { useUI } from '../../composables/useUI'
+import { useFormGroup } from '../../composables/useFormGroup'
+import { mergeConfig } from '../../utils'
+import type { NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
+import { textarea } from '../../ui.config.ts'
+import colors from '#ui-colors'
+
+const config = mergeConfig<typeof textarea>(appConfig.ui.strategy, appConfig.ui.textarea, textarea)
 
 export default defineComponent({
   inheritAttrs: false,
@@ -31,6 +39,10 @@ export default defineComponent({
     modelValue: {
       type: [String, Number],
       default: ''
+    },
+    id: {
+      type: String,
+      default: null
     },
     name: {
       type: String,
@@ -69,39 +81,49 @@ export default defineComponent({
       default: true
     },
     size: {
-      type: String,
-      default: () => appConfig.ui.textarea.default.size,
+      type: String as PropType<keyof typeof config.size>,
+      default: null,
       validator (value: string) {
-        return Object.keys(appConfig.ui.textarea.size).includes(value)
+        return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String,
-      default: () => appConfig.ui.textarea.default.color,
+      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      default: () => config.default.color,
       validator (value: string) {
-        return [...appConfig.ui.colors, ...Object.keys(appConfig.ui.textarea.color)].includes(value)
+        return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String,
-      default: () => appConfig.ui.textarea.default.variant,
+      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      default: () => config.default.variant,
       validator (value: string) {
         return [
-          ...Object.keys(appConfig.ui.textarea.variant),
-          ...Object.values(appConfig.ui.textarea.color).flatMap(value => Object.keys(value))
+          ...Object.keys(config.variant),
+          ...Object.values(config.color).flatMap(value => Object.keys(value))
         ].includes(value)
       }
     },
+    textareaClass: {
+      type: String,
+      default: null
+    },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.textarea>>,
-      default: () => appConfig.ui.textarea
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur'],
   setup (props, { emit }) {
-    const textarea = ref<HTMLTextAreaElement | null>(null)
+    const { ui, attrs } = useUI('textarea', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const ui = computed<Partial<typeof appConfig.ui.textarea>>(() => defu({}, props.ui, appConfig.ui.textarea))
+    const { emitFormBlur, emitFormInput, inputId, color, size, name } = useFormGroup(props, config)
+
+    const textarea = ref<HTMLTextAreaElement | null>(null)
 
     const autoFocus = () => {
       if (props.autofocus) {
@@ -135,7 +157,19 @@ export default defineComponent({
       autoResize()
 
       emit('update:modelValue', (event.target as HTMLInputElement).value)
+      emitFormInput()
     }
+
+    const onBlur = (event: FocusEvent) => {
+      emit('blur', event)
+      emitFormBlur()
+    }
+
+    onMounted(() => {
+      setTimeout(() => {
+        autoFocus()
+      }, 100)
+    })
 
     watch(() => props.modelValue, () => {
       nextTick(autoResize)
@@ -149,25 +183,31 @@ export default defineComponent({
     })
 
     const textareaClass = computed(() => {
-      const variant = ui.value.color?.[props.color as string]?.[props.variant as string] || ui.value.variant[props.variant]
+      const variant = ui.value.color?.[color.value as string]?.[props.variant as string] || ui.value.variant[props.variant]
 
-      return classNames(
+      return twMerge(twJoin(
           ui.value.base,
           ui.value.rounded,
           ui.value.placeholder,
-          ui.value.size[props.size],
-          props.padded ? ui.value.padding[props.size] : 'p-0',
-          variant?.replaceAll('{color}', props.color),
+          ui.value.size[size.value],
+          props.padded ? ui.value.padding[size.value] : 'p-0',
+          variant?.replaceAll('{color}', color.value),
           !props.resize && 'resize-none'
-      )
+      ), props.textareaClass)
     })
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
+      attrs,
+      // eslint-disable-next-line vue/no-dupe-keys
+      name,
+      inputId,
       textarea,
+      // eslint-disable-next-line vue/no-dupe-keys
       textareaClass,
-      onInput
+      onInput,
+      onBlur
     }
   }
 })

@@ -1,9 +1,7 @@
-import colors from './colors.config'
-
 // Data
 
-const table = {
-    wrapper: 'relative',
+export const table = {
+    wrapper: 'relative overflow-x-auto',
     base: 'min-w-full table-fixed',
     divide: 'divide-y divide-gray-300 dark:divide-gray-700',
     thead: '',
@@ -27,6 +25,9 @@ const table = {
         font: '',
         size: 'text-sm'
     },
+    checkbox: {
+        padding: 'ps-4'
+    },
     loadingState: {
         wrapper: 'flex flex-col items-center justify-center flex-1 px-6 py-14 sm:px-14',
         label: 'text-sm text-center text-gray-900 dark:text-white',
@@ -38,10 +39,10 @@ const table = {
         icon: 'w-6 h-6 mx-auto text-gray-400 dark:text-gray-500 mb-4'
     },
     default: {
-        sortAscIcon: 'icon-[heroicons--bars-arrow-up-20-solid]',
-        sortDescIcon: 'icon-[heroicons--bars-arrow-down-20-solid]',
+        sortAscIcon: 'i-heroicons-bars-arrow-up-20-solid',
+        sortDescIcon: 'i-heroicons-bars-arrow-down-20-solid',
         sortButton: {
-            icon: 'icon-[heroicons--arrows-up-down-20-solid]',
+            icon: 'i-heroicons-arrows-up-down-20-solid',
             trailing: true,
             square: true,
             color: 'gray',
@@ -49,11 +50,11 @@ const table = {
             class: '-m-1.5'
         },
         loadingState: {
-            icon: 'icon-[heroicons--arrow-path-20-solid]',
+            icon: 'i-heroicons-arrow-path-20-solid',
             label: 'Loading...'
         },
         emptyState: {
-            icon: 'icon-[heroicons--circle-stack-20-solid]',
+            icon: 'i-heroicons-circle-stack-20-solid',
             label: 'No items.'
         }
     }
@@ -61,21 +62,22 @@ const table = {
 
 // Elements
 
-const avatar = {
-    wrapper: 'relative inline-flex items-center justify-center',
+export const avatar = {
+    wrapper: 'relative inline-flex items-center justify-center flex-shrink-0',
     background: 'bg-gray-100 dark:bg-gray-800',
     rounded: 'rounded-full',
-    placeholder: 'font-medium leading-none text-gray-900 dark:text-white truncate',
+    text: 'font-medium leading-none text-gray-900 dark:text-white truncate',
+    placeholder: 'font-medium leading-none text-gray-500 dark:text-gray-400 truncate',
     size: {
         '3xs': 'h-4 w-4 text-[8px]',
         '2xs': 'h-5 w-5 text-[10px]',
-        xs: 'h-6 w-6 text-[11px]',
-        sm: 'h-8 w-8 text-xs',
-        md: 'h-10 w-10 text-sm',
-        lg: 'h-12 w-12 text-base',
-        xl: 'h-14 w-14 text-lg',
-        '2xl': 'h-16 w-16 text-xl',
-        '3xl': 'h-20 w-20 text-2xl'
+        xs: 'h-6 w-6 text-xs',
+        sm: 'h-8 w-8 text-sm',
+        md: 'h-10 w-10 text-base',
+        lg: 'h-12 w-12 text-lg',
+        xl: 'h-14 w-14 text-xl',
+        '2xl': 'h-16 w-16 text-2xl',
+        '3xl': 'h-20 w-20 text-3xl'
     },
     chip: {
         base: 'absolute rounded-full ring-1 ring-white dark:ring-gray-900 flex items-center justify-center text-white dark:text-gray-900 font-medium',
@@ -98,20 +100,35 @@ const avatar = {
             '3xl': 'h-5 min-w-[1.25rem] text-[14px] p-1'
         }
     },
+    icon: {
+        base: 'text-gray-500 dark:text-gray-400 flex-shrink-0',
+        size: {
+            '3xs': 'h-2 w-2',
+            '2xs': 'h-2.5 w-2.5',
+            xs: 'h-3 w-3',
+            sm: 'h-4 w-4',
+            md: 'h-5 w-5',
+            lg: 'h-6 w-6',
+            xl: 'h-7 w-7',
+            '2xl': 'h-8 w-8',
+            '3xl': 'h-10 w-10'
+        }
+    },
     default: {
         size: 'sm',
+        icon: null,
         chipColor: null,
         chipPosition: 'top-right'
     }
 }
 
-const avatarGroup = {
-    wrapper: 'flex flex-row-reverse',
+export const avatarGroup = {
+    wrapper: 'inline-flex flex-row-reverse justify-end',
     ring: 'ring-2 ring-white dark:ring-gray-900',
     margin: '-me-1.5 first:me-0'
 }
 
-const badge = {
+export const badge = {
     base: 'inline-flex items-center',
     rounded: 'rounded-md',
     font: 'font-medium',
@@ -145,7 +162,7 @@ const badge = {
     }
 }
 
-const button = {
+export const button = {
     base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0',
     font: 'font-medium',
     rounded: 'rounded-md',
@@ -218,17 +235,20 @@ const button = {
         size: 'sm',
         variant: 'solid',
         color: 'primary',
-        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]'
+        loadingIcon: 'i-heroicons-arrow-path-20-solid'
     }
 }
 
-const buttonGroup = {
-    wrapper: 'inline-flex -space-x-px',
+export const buttonGroup = {
+    wrapper: {
+        horizontal: 'inline-flex -space-x-px',
+        vertical: 'inline-flex flex-col -space-y-px'
+    },
     rounded: 'rounded-md',
     shadow: 'shadow-sm'
 }
 
-const dropdown = {
+export const dropdown = {
     wrapper: 'relative inline-flex text-left rtl:text-right',
     container: 'z-20',
     width: 'w-48',
@@ -274,7 +294,7 @@ const dropdown = {
     }
 }
 
-const accordion = {
+export const accordion = {
     wrapper: 'w-full flex flex-col',
     item: {
         base: '',
@@ -288,14 +308,14 @@ const accordion = {
         leaveActiveClass: 'overflow-hidden transition-[height] duration-200 ease-out'
     },
     default: {
-        openIcon: 'icon-[heroicons--chevron-down-20-solid]',
+        openIcon: 'i-heroicons-chevron-down-20-solid',
         closeIcon: '',
         class: 'mb-1.5 w-full',
         variant: 'soft'
     }
 }
 
-const alert = {
+export const alert = {
     wrapper: 'w-full relative overflow-hidden',
     title: 'text-sm font-medium',
     description: 'mt-1 text-sm leading-4 opacity-90',
@@ -333,7 +353,7 @@ const alert = {
     }
 }
 
-const kbd = {
+export const kbd = {
     base: 'inline-flex items-center justify-center text-gray-900 dark:text-white',
     padding: 'px-1',
     size: {
@@ -352,7 +372,7 @@ const kbd = {
 
 // Forms
 
-const input = {
+export const input = {
     wrapper: 'relative',
     base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
     rounded: 'rounded-md',
@@ -368,10 +388,10 @@ const input = {
     gap: {
         '2xs': 'gap-x-1',
         xs: 'gap-x-1.5',
-        sm: 'gap-x-2',
+        sm: 'gap-x-1.5',
         md: 'gap-x-2',
-        lg: 'gap-x-2',
-        xl: 'gap-x-2'
+        lg: 'gap-x-2.5',
+        xl: 'gap-x-2.5'
     },
     padding: {
         '2xs': 'px-2 py-1',
@@ -453,11 +473,11 @@ const input = {
         size: 'sm',
         color: 'white',
         variant: 'outline',
-        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]'
+        loadingIcon: 'i-heroicons-arrow-path-20-solid'
     }
 }
 
-const formGroup = {
+export const formGroup = {
     wrapper: '',
     label: {
         wrapper: 'flex content-center items-center justify-between',
@@ -477,10 +497,13 @@ const formGroup = {
     description: 'text-gray-500 dark:text-gray-400',
     hint: 'text-gray-500 dark:text-gray-400',
     help: 'mt-2 text-gray-500 dark:text-gray-400',
-    error: 'mt-2 text-red-500 dark:text-red-400'
+    error: 'mt-2 text-red-500 dark:text-red-400',
+    default: {
+        size: 'sm'
+    }
 }
 
-const textarea = {
+export const textarea = {
     ...input,
     default: {
         size: 'sm',
@@ -489,22 +512,19 @@ const textarea = {
     }
 }
 
-const select = {
+export const select = {
     ...input,
     placeholder: 'text-gray-900 dark:text-white',
     default: {
         size: 'sm',
         color: 'white',
         variant: 'outline',
-        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]',
-        trailingIcon: 'icon-[heroicons--chevron-down-20-solid]'
+        loadingIcon: 'i-heroicons-arrow-path-20-solid',
+        trailingIcon: 'i-heroicons-chevron-down-20-solid'
     }
 }
 
-const selectMenu = {
-    wrapper: 'relative',
-    placeholder: '',
-    divide: '',
+export const selectMenu = {
     container: 'z-20',
     width: 'w-full',
     height: 'max-h-60',
@@ -555,11 +575,11 @@ const selectMenu = {
         placement: 'bottom-end'
     },
     default: {
-        selectedIcon: 'icon-[heroicons--check-20-solid]'
+        selectedIcon: 'i-heroicons-check-20-solid'
     }
 }
 
-const radio = {
+export const radio = {
     wrapper: 'relative flex items-start',
     base: 'h-4 w-4 dark:checked:bg-current dark:checked:border-transparent disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent',
     color: 'text-{color}-500 dark:text-{color}-400',
@@ -574,7 +594,7 @@ const radio = {
     }
 }
 
-const checkbox = {
+export const checkbox = {
     wrapper: 'relative flex items-start',
     base: 'h-4 w-4 dark:checked:bg-current dark:checked:border-transparent dark:indeterminate:bg-current dark:indeterminate:border-transparent disabled:opacity-50 disabled:cursor-not-allowed focus:ring-0 focus:ring-transparent focus:ring-offset-transparent',
     rounded: 'rounded',
@@ -590,7 +610,7 @@ const checkbox = {
     }
 }
 
-const toggle = {
+export const toggle = {
     base: 'relative inline-flex h-5 w-9 flex-shrink-0 border-2 border-transparent disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none',
     rounded: 'rounded-full',
     ring: 'focus-visible:ring-2 focus-visible:ring-{color}-500 dark:focus-visible:ring-{color}-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900',
@@ -615,7 +635,7 @@ const toggle = {
     }
 }
 
-const range = {
+export const range = {
     wrapper: 'relative w-full flex items-center',
     base: 'w-full absolute appearance-none cursor-pointer disabled:cursor-not-allowed disabled:bg-opacity-50 focus:outline-none peer group',
     rounded: 'rounded-lg',
@@ -643,13 +663,13 @@ const range = {
         }
     },
     track: {
-        base: '[&::-webkit-slider-runnable-track]:group-disabled:bg-opacity-50 [&::-moz-slider-runnable-track]:group-disabled:bg-opacity-50',
-        background: '[&::-webkit-slider-runnable-track]:bg-gray-200 [&::-moz-slider-runnable-track]:bg-gray-200 [&::-webkit-slider-runnable-track]:dark:bg-gray-700 [&::-moz-slider-runnable-track]:dark:bg-gray-700',
-        rounded: '[&::-webkit-slider-runnable-track]:rounded-lg [&::-moz-slider-runnable-track]:rounded-lg',
+        base: '[&::-webkit-slider-runnable-track]:group-disabled:bg-opacity-50 [&::-moz-range-track]:group-disabled:bg-opacity-50',
+        background: '[&::-webkit-slider-runnable-track]:bg-gray-200 [&::-moz-range-track]:bg-gray-200 [&::-webkit-slider-runnable-track]:dark:bg-gray-700 [&::-moz-range-track]:dark:bg-gray-700',
+        rounded: '[&::-webkit-slider-runnable-track]:rounded-lg [&::-moz-range-track]:rounded-lg',
         size: {
-            sm: '[&::-webkit-slider-runnable-track]:h-1 [&::-moz-slider-runnable-track]:h-1',
-            md: '[&::-webkit-slider-runnable-track]:h-2 [&::-moz-slider-runnable-track]:h-2',
-            lg: '[&::-webkit-slider-runnable-track]:h-3 [&::-moz-slider-runnable-track]:h-3'
+            sm: '[&::-webkit-slider-runnable-track]:h-1 [&::-moz-range-track]:h-1',
+            md: '[&::-webkit-slider-runnable-track]:h-2 [&::-moz-range-track]:h-2',
+            lg: '[&::-webkit-slider-runnable-track]:h-3 [&::-moz-range-track]:h-3'
         }
     },
     size: {
@@ -665,7 +685,7 @@ const range = {
 
 // Layout
 
-const card = {
+export const card = {
     base: 'overflow-hidden',
     background: 'bg-white dark:bg-gray-900',
     divide: 'divide-y divide-gray-200 dark:divide-gray-800',
@@ -689,13 +709,13 @@ const card = {
     }
 }
 
-const container = {
+export const container = {
     base: 'mx-auto',
     padding: 'px-4 sm:px-6 lg:px-8',
     constrained: 'max-w-7xl'
 }
 
-const skeleton = {
+export const skeleton = {
     base: 'animate-pulse',
     background: 'bg-gray-100 dark:bg-gray-800',
     rounded: 'rounded-md'
@@ -703,7 +723,7 @@ const skeleton = {
 
 // Navigation
 
-const verticalNavigation = {
+export const verticalNavigation = {
     wrapper: 'relative',
     base: 'group relative flex items-center gap-2 focus:outline-none focus-visible:outline-none dark:focus-visible:outline-none focus-visible:before:ring-inset focus-visible:before:ring-1 focus-visible:before:ring-primary-500 dark:focus-visible:before:ring-primary-400 before:absolute before:inset-px before:rounded-md disabled:cursor-not-allowed disabled:opacity-75',
     ring: 'focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400',
@@ -731,7 +751,7 @@ const verticalNavigation = {
     }
 }
 
-const commandPalette = {
+export const commandPalette = {
     wrapper: 'flex flex-col flex-1 min-h-0 divide-y divide-gray-100 dark:divide-gray-800',
     container: 'relative flex-1 overflow-y-auto divide-y divide-gray-100 dark:divide-gray-800 scroll-py-2',
     input: {
@@ -775,7 +795,7 @@ const commandPalette = {
             },
             avatar: {
                 base: 'flex-shrink-0',
-                size: '3xs'
+                size: '3xs' as const
             },
             chip: {
                 base: 'flex-shrink-0 w-2 h-2 mx-1 rounded-full'
@@ -787,19 +807,19 @@ const commandPalette = {
         inactive: 'flex-shrink-0 text-gray-500 dark:text-gray-400'
     },
     default: {
-        icon: 'icon-[heroicons--magnifying-glass-20-solid]',
-        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]',
+        icon: 'i-heroicons-magnifying-glass-20-solid',
+        loadingIcon: 'i-heroicons-arrow-path-20-solid',
         emptyState: {
-            icon: 'icon-[heroicons--magnifying-glass-20-solid]',
+            icon: 'i-heroicons-magnifying-glass-20-solid',
             label: 'We couldn\'t find any items.',
             queryLabel: 'We couldn\'t find any items with that term. Please try again.'
         },
         closeButton: null,
-        selectedIcon: 'icon-[heroicons--check-20-solid]'
+        selectedIcon: 'i-heroicons-check-20-solid'
     }
 }
 
-const pagination = {
+export const pagination = {
     wrapper: 'flex items-center -space-x-px',
     base: '',
     rounded: 'first:rounded-s-md last:rounded-e-md',
@@ -814,17 +834,17 @@ const pagination = {
         prevButton: {
             color: 'white',
             class: 'rtl:[&_span:first-child]:rotate-180',
-            icon: 'icon-[heroicons--chevron-left-20-solid]'
+            icon: 'i-heroicons-chevron-left-20-solid'
         },
         nextButton: {
             color: 'white',
             class: 'rtl:[&_span:last-child]:rotate-180',
-            icon: 'icon-[heroicons--chevron-right-20-solid '
+            icon: 'i-heroicons-chevron-right-20-solid '
         }
     }
 }
 
-const tabs = {
+export const tabs = {
     wrapper: 'relative space-y-2',
     container: 'relative w-full',
     base: 'focus:outline-none',
@@ -844,7 +864,7 @@ const tabs = {
             shadow: 'shadow-sm'
         },
         tab: {
-            base: 'relative inline-flex items-center justify-center flex-shrink-0 w-full whitespace-nowrap focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors duration-200 ease-out',
+            base: 'relative inline-flex items-center justify-center flex-shrink-0 w-full whitespace-nowrap ui-focus-visible:outline-0 ui-focus-visible:ring-2 ui-focus-visible:ring-primary-500 dark:ui-focus-visible:ring-primary-400 ui-not-focus-visible:outline-none focus:outline-none disabled:cursor-not-allowed disabled:opacity-75 transition-colors duration-200 ease-out',
             background: '',
             active: 'text-gray-900 dark:text-white',
             inactive: 'text-gray-500 dark:text-gray-400',
@@ -860,12 +880,13 @@ const tabs = {
 
 // Overlays
 
-const modal = {
+export const modal = {
     wrapper: 'relative z-50',
     inner: 'fixed inset-0 overflow-y-auto',
     container: 'flex min-h-full items-end sm:items-center justify-center text-center',
     padding: 'p-4 sm:p-0',
-    base: 'relative text-left rtl:text-right overflow-hidden sm:my-8 w-full flex flex-col',
+    margin: 'sm:my-8',
+    base: 'relative text-left rtl:text-right overflow-hidden w-full flex flex-col',
     overlay: {
         base: 'fixed inset-0 transition-opacity',
         background: 'bg-gray-200/75 dark:bg-gray-800/75',
@@ -896,7 +917,7 @@ const modal = {
     }
 }
 
-const slideover = {
+export const slideover = {
     wrapper: 'fixed inset-0 flex z-50',
     overlay: {
         base: 'fixed inset-0 transition-opacity',
@@ -925,7 +946,7 @@ const slideover = {
     }
 }
 
-const tooltip = {
+export const tooltip = {
     wrapper: 'relative inline-flex',
     container: 'z-20',
     width: 'max-w-xs',
@@ -934,7 +955,7 @@ const tooltip = {
     shadow: 'shadow',
     rounded: 'rounded',
     ring: 'ring-1 ring-gray-200 dark:ring-gray-800',
-    base: 'invisible lg:visible h-6 px-2 py-1 text-xs font-normal truncate',
+    base: '[@media(pointer:coarse)]:hidden h-6 px-2 py-1 text-xs font-normal truncate',
     shortcuts: 'hidden md:inline-flex flex-shrink-0 gap-0.5',
     // Syntax for `<Transition>` component https://vuejs.org/guide/built-ins/transition.html#css-based-transitions
     transition: {
@@ -950,7 +971,7 @@ const tooltip = {
     }
 }
 
-const popover = {
+export const popover = {
     wrapper: 'relative',
     container: 'z-20',
     width: '',
@@ -973,7 +994,7 @@ const popover = {
     }
 }
 
-const contextMenu = {
+export const contextMenu = {
     wrapper: 'relative',
     container: 'z-20',
     width: '',
@@ -997,7 +1018,7 @@ const contextMenu = {
     }
 }
 
-const notification = {
+export const notification = {
     wrapper: 'w-full pointer-events-auto',
     container: 'relative overflow-hidden',
     title: 'text-sm font-medium text-gray-900 dark:text-white',
@@ -1013,7 +1034,7 @@ const notification = {
     },
     avatar: {
         base: 'flex-shrink-0 self-center',
-        size: 'md'
+        size: 'md' as const
     },
     progress: {
         base: 'absolute bottom-0 end-0 start-0 h-1',
@@ -1032,7 +1053,7 @@ const notification = {
         color: 'primary',
         icon: null,
         closeButton: {
-            icon: 'icon-[heroicons--x-mark-20-solid]',
+            icon: 'i-heroicons-x-mark-20-solid',
             color: 'gray',
             variant: 'link',
             padded: false
@@ -1044,49 +1065,9 @@ const notification = {
     }
 }
 
-const notifications = {
+export const notifications = {
     wrapper: 'fixed flex flex-col justify-end z-[55]',
     position: 'bottom-0 end-0',
     width: 'w-full sm:w-96',
     container: 'px-4 sm:px-6 py-6 space-y-3 overflow-y-auto'
-}
-
-export default {
-    ui: {
-        strategy: 'merge',
-        table,
-        avatar,
-        avatarGroup,
-        badge,
-        button,
-        buttonGroup,
-        dropdown,
-        kbd,
-        accordion,
-        alert,
-        input,
-        formGroup,
-        textarea,
-        select,
-        selectMenu,
-        checkbox,
-        radio,
-        toggle,
-        range,
-        card,
-        container,
-        skeleton,
-        verticalNavigation,
-        commandPalette,
-        pagination,
-        tabs,
-        modal,
-        slideover,
-        popover,
-        tooltip,
-        contextMenu,
-        notification,
-        notifications,
-        colors
-    }
 }

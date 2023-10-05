@@ -8,7 +8,7 @@
       :multiple="multiple"
       :disabled="disabled || loading"
       as="div"
-      :class="uiMenu.wrapper"
+      :class="ui.wrapper"
       @update:model-value="onUpdate"
   >
     <input
@@ -28,7 +28,7 @@
         class="inline-flex w-full"
     >
       <slot :open="open" :disabled="disabled" :loading="loading">
-        <button :class="selectClass" :disabled="disabled || loading" type="button" v-bind="$attrs">
+        <button :id="inputId" :class="selectClass" :disabled="disabled || loading" type="button" v-bind="attrs">
           <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="leadingWrapperIconClass">
             <slot name="leading" :disabled="disabled" :loading="loading">
               <UIcon :name="leadingIconName" :class="leadingIconClass" />
@@ -37,7 +37,7 @@
 
           <slot name="label">
             <span v-if="multiple && Array.isArray(modelValue) && modelValue.length" class="block truncate">{{ modelValue.length }} selected</span>
-            <span v-else-if="!multiple && modelValue" class="block truncate">{{ typeof modelValue === 'string' ? modelValue : modelValue[optionAttribute] }}</span>
+            <span v-else-if="!multiple && modelValue" class="block truncate">{{ ['string', 'number'].includes(typeof modelValue) ? modelValue : modelValue[optionAttribute] }}</span>
             <span v-else class="block truncate" :class="uiMenu.placeholder">{{ placeholder || '&nbsp;' }}</span>
           </slot>
 
@@ -85,7 +85,7 @@
                   />
                   <span v-else-if="option.chip" :class="uiMenu.option.chip.base" :style="{ background: `#${option.chip}` }" />
 
-                  <span class="truncate">{{ typeof option === 'string' ? option : option[optionAttribute] }}</span>
+                  <span class="truncate">{{ ['string', 'number'].includes(typeof option) ? option : option[optionAttribute] }}</span>
                 </slot>
               </div>
 
@@ -116,7 +116,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, watch, defineComponent } from 'vue'
+import { ref, computed, toRef, watch, defineComponent } from 'vue'
 import type { PropType, ComponentPublicInstance } from 'vue'
 import {
   Combobox as HCombobox,
@@ -131,15 +131,22 @@ import {
 } from '@headlessui/vue'
 import { computedAsync, useDebounceFn } from '@vueuse/core'
 import { defu } from 'defu'
+import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
 import UAvatar from '../elements/Avatar.vue'
-import { classNames } from '../../utils'
+import { useUI } from '../../composables/useUI'
 import { usePopper } from '../../composables/usePopper'
-import type { PopperOptions } from '../../types'
+import { useFormGroup } from '../../composables/useFormGroup'
+import { mergeConfig } from '../../utils'
+import type { PopperOptions, NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
+import { select, selectMenu } from '../../ui.config.ts'
+import colors from '#ui-colors'
 
-// const appConfig = useAppConfig()
+const config = mergeConfig<typeof select>(appConfig.ui.strategy, appConfig.ui.select, select)
+
+const configMenu = mergeConfig<typeof selectMenu>(appConfig.ui.strategy, appConfig.ui.selectMenu, selectMenu)
 
 export default defineComponent({
   components: {
@@ -169,6 +176,10 @@ export default defineComponent({
       type: Array as PropType<{ [key: string]: any, disabled?: boolean }[] | string[]>,
       default: () => []
     },
+    id: {
+      type: String,
+      default: null
+    },
     name: {
       type: String,
       default: null
@@ -183,7 +194,7 @@ export default defineComponent({
     },
     loadingIcon: {
       type: String,
-      default: () => appConfig.ui.input.default.loadingIcon
+      default: () => config.default.loadingIcon
     },
     leadingIcon: {
       type: String,
@@ -191,7 +202,7 @@ export default defineComponent({
     },
     trailingIcon: {
       type: String,
-      default: () => appConfig.ui.select.default.trailingIcon
+      default: () => config.default.trailingIcon
     },
     trailing: {
       type: Boolean,
@@ -207,7 +218,7 @@ export default defineComponent({
     },
     selectedIcon: {
       type: String,
-      default: () => appConfig.ui.selectMenu.default.selectedIcon
+      default: () => configMenu.default.selectedIcon
     },
     disabled: {
       type: Boolean,
@@ -242,26 +253,26 @@ export default defineComponent({
       default: true
     },
     size: {
-      type: String,
-      default: () => appConfig.ui.select.default.size,
+      type: String as PropType<keyof typeof config.size>,
+      default: null,
       validator (value: string) {
-        return Object.keys(appConfig.ui.select.size).includes(value)
+        return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String,
-      default: () => appConfig.ui.select.default.color,
+      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      default: () => config.default.color,
       validator (value: string) {
-        return [...appConfig.ui.colors, ...Object.keys(appConfig.ui.select.color)].includes(value)
+        return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String,
-      default: () => appConfig.ui.select.default.variant,
+      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      default: () => config.default.variant,
       validator (value: string) {
         return [
-          ...Object.keys(appConfig.ui.select.variant),
-          ...Object.values(appConfig.ui.select.color).flatMap(value => Object.keys(value))
+          ...Object.keys(config.variant),
+          ...Object.values(config.color).flatMap(value => Object.keys(value))
         ].includes(value)
       }
     },
@@ -281,42 +292,52 @@ export default defineComponent({
       type: Object as PropType<PopperOptions>,
       default: () => ({})
     },
+    selectClass: {
+      type: String,
+      default: null
+    },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.select>>,
-      default: () => appConfig.ui.select
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     },
     uiMenu: {
-      type: Object as PropType<Partial<typeof appConfig.ui.selectMenu>>,
-      default: () => appConfig.ui.selectMenu
+      type: Object as PropType<Partial<typeof configMenu & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
-  emits: ['update:modelValue', 'open', 'close'],
+  emits: ['update:modelValue', 'open', 'close', 'change'],
   setup (props, { emit, slots }) {
-    const ui = computed<Partial<typeof appConfig.ui.select>>(() => defu({}, props.ui, appConfig.ui.select))
-    const uiMenu = computed<Partial<typeof appConfig.ui.selectMenu>>(() => defu({}, props.uiMenu, appConfig.ui.selectMenu))
+    const { ui, attrs } = useUI('select', toRef(props, 'ui'), config, toRef(props, 'class'))
+
+    const { ui: uiMenu } = useUI('selectMenu', toRef(props, 'uiMenu'), configMenu)
 
     const popper = computed<PopperOptions>(() => defu({}, props.popper, uiMenu.value.popper as PopperOptions))
 
     const [trigger, container] = usePopper(popper.value)
+    const { emitFormBlur, emitFormChange, inputId, color, size, name } = useFormGroup(props, config)
 
     const query = ref('')
     const searchInput = ref<ComponentPublicInstance<HTMLElement>>()
 
     const selectClass = computed(() => {
-      const variant = ui.value.color?.[props.color as string]?.[props.variant as string] || ui.value.variant[props.variant]
+      const variant = ui.value.color?.[color.value as string]?.[props.variant as string] || ui.value.variant[props.variant]
 
-      return classNames(
+      return twMerge(twJoin(
           ui.value.base,
           ui.value.rounded,
           'text-left cursor-default',
-          ui.value.size[props.size],
-          ui.value.gap[props.size],
-          props.padded ? ui.value.padding[props.size] : 'p-0',
-          variant?.replaceAll('{color}', props.color),
-          (isLeading.value || slots.leading) && ui.value.leading.padding[props.size],
-          (isTrailing.value || slots.trailing) && ui.value.trailing.padding[props.size],
+          ui.value.size[size.value],
+          ui.value.gap[size.value],
+          props.padded ? ui.value.padding[size.value] : 'p-0',
+          variant?.replaceAll('{color}', color.value),
+          (isLeading.value || slots.leading) && ui.value.leading.padding[size.value],
+          (isTrailing.value || slots.trailing) && ui.value.trailing.padding[size.value],
           'inline-flex items-center'
-      )
+      ), props.selectClass)
     })
 
     const isLeading = computed(() => {
@@ -344,35 +365,35 @@ export default defineComponent({
     })
 
     const leadingWrapperIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.leading.wrapper,
           ui.value.icon.leading.pointer,
-          ui.value.icon.leading.padding[props.size]
+          ui.value.icon.leading.padding[size.value]
       )
     })
 
     const leadingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(props.color) && ui.value.icon.color.replaceAll('{color}', props.color),
-          ui.value.icon.size[props.size],
+          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          ui.value.icon.size[size.value],
           props.loading && 'animate-spin'
       )
     })
 
     const trailingWrapperIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.trailing.wrapper,
           ui.value.icon.trailing.pointer,
-          ui.value.icon.trailing.padding[props.size]
+          ui.value.icon.trailing.padding[size.value]
       )
     })
 
     const trailingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(props.color) && ui.value.icon.color.replaceAll('{color}', props.color),
-          ui.value.icon.size[props.size],
+          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          ui.value.icon.size[size.value],
           props.loading && !isLeading.value && 'animate-spin'
       )
     })
@@ -390,7 +411,7 @@ export default defineComponent({
 
       return (props.options as any[]).filter((option: any) => {
         return (props.searchAttributes?.length ? props.searchAttributes : [props.optionAttribute]).some((searchAttribute: any) => {
-          return typeof option === 'string' ? option.search(new RegExp(query.value, 'i')) !== -1 : (option[searchAttribute] && option[searchAttribute].search(new RegExp(query.value, 'i')) !== -1)
+          return ['string', 'number'].includes(typeof option) ? option.toString().search(new RegExp(query.value, 'i')) !== -1 : (option[searchAttribute] && option[searchAttribute].search(new RegExp(query.value, 'i')) !== -1)
         })
       })
     })
@@ -404,6 +425,7 @@ export default defineComponent({
         emit('open')
       } else {
         emit('close')
+        emitFormBlur()
       }
     })
 
@@ -414,15 +436,24 @@ export default defineComponent({
         searchInput.value.$el.value = ''
       }
       emit('update:modelValue', event)
+      emit('change', event)
+      emitFormChange()
     }
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys
+      ui,
+      // eslint-disable-next-line vue/no-dupe-keys
       uiMenu,
+      attrs,
+      // eslint-disable-next-line vue/no-dupe-keys
+      name,
+      inputId,
       trigger,
       container,
       isLeading,
       isTrailing,
+      // eslint-disable-next-line vue/no-dupe-keys
       selectClass,
       leadingIconName,
       leadingIconClass,

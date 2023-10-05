@@ -1,15 +1,16 @@
 <template>
   <div :class="ui.wrapper">
     <select
-        :id="name"
+        :id="inputId"
         :name="name"
         :value="modelValue"
         :required="required"
         :disabled="disabled || loading"
         class="form-select"
         :class="selectClass"
-        v-bind="$attrs"
+        v-bind="attrs"
         @input="onInput"
+        @change="onChange"
     >
       <template v-for="(option, index) in normalizedOptionsWithPlaceholder">
         <optgroup
@@ -53,16 +54,20 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, toRef, defineComponent } from 'vue'
 import type { PropType, ComputedRef } from 'vue'
-import { get } from 'lodash-es'
-import { defu } from 'defu'
+import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import { classNames } from '../../utils'
+import { useUI } from '../../composables/useUI'
+import { useFormGroup } from '../../composables/useFormGroup'
+import { mergeConfig, get } from '../../utils'
+import type { NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
+import { select } from '../../ui.config.ts'
+import colors from '#ui-colors'
 
-// const appConfig = useAppConfig()
+const config = mergeConfig<typeof select>(appConfig.ui.strategy, appConfig.ui.select, select)
 
 export default defineComponent({
   components: {
@@ -73,6 +78,10 @@ export default defineComponent({
     modelValue: {
       type: [String, Number, Object],
       default: ''
+    },
+    id: {
+      type: String,
+      default: null
     },
     name: {
       type: String,
@@ -96,7 +105,7 @@ export default defineComponent({
     },
     loadingIcon: {
       type: String,
-      default: () => appConfig.ui.input.default.loadingIcon
+      default: () => config.default.loadingIcon
     },
     leadingIcon: {
       type: String,
@@ -104,7 +113,7 @@ export default defineComponent({
     },
     trailingIcon: {
       type: String,
-      default: () => appConfig.ui.select.default.trailingIcon
+      default: () => config.default.trailingIcon
     },
     trailing: {
       type: Boolean,
@@ -127,26 +136,26 @@ export default defineComponent({
       default: () => []
     },
     size: {
-      type: String,
-      default: () => appConfig.ui.select.default.size,
+      type: String as PropType<keyof typeof config.size>,
+      default: null,
       validator (value: string) {
-        return Object.keys(appConfig.ui.select.size).includes(value)
+        return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String,
-      default: () => appConfig.ui.select.default.color,
+      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      default: () => config.default.color,
       validator (value: string) {
-        return [...appConfig.ui.colors, ...Object.keys(appConfig.ui.select.color)].includes(value)
+        return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String,
-      default: () => appConfig.ui.select.default.variant,
+      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      default: () => config.default.variant,
       validator (value: string) {
         return [
-          ...Object.keys(appConfig.ui.select.variant),
-          ...Object.values(appConfig.ui.select.color).flatMap(value => Object.keys(value))
+          ...Object.keys(config.variant),
+          ...Object.values(config.color).flatMap(value => Object.keys(value))
         ].includes(value)
       }
     },
@@ -158,17 +167,32 @@ export default defineComponent({
       type: String,
       default: 'value'
     },
+    selectClass: {
+      type: String,
+      default: null
+    },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.select>>,
-      default: () => appConfig.ui.select
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'change'],
   setup (props, { emit, slots }) {
-    const ui = computed<Partial<typeof appConfig.ui.select>>(() => defu({}, props.ui, appConfig.ui.select))
+    const { ui, attrs } = useUI('select', toRef(props, 'ui'), config, toRef(props, 'class'))
+
+    const { emitFormChange, inputId, color, size, name } = useFormGroup(props, config)
 
     const onInput = (event: InputEvent) => {
       emit('update:modelValue', (event.target as HTMLInputElement).value)
+    }
+
+    const onChange = (event: Event) => {
+      emitFormChange()
+      emit('change', event)
     }
 
     const guessOptionValue = (option: any) => {
@@ -224,17 +248,17 @@ export default defineComponent({
     })
 
     const selectClass = computed(() => {
-      const variant = ui.value.color?.[props.color as string]?.[props.variant as string] || ui.value.variant[props.variant]
+      const variant = ui.value.color?.[color.value as string]?.[props.variant as string] || ui.value.variant[props.variant]
 
-      return classNames(
+      return twMerge(twJoin(
           ui.value.base,
           ui.value.rounded,
-          ui.value.size[props.size],
-          props.padded ? ui.value.padding[props.size] : 'p-0',
-          variant?.replaceAll('{color}', props.color),
-          (isLeading.value || slots.leading) && ui.value.leading.padding[props.size],
-          (isTrailing.value || slots.trailing) && ui.value.trailing.padding[props.size]
-      )
+          ui.value.size[size.value],
+          props.padded ? ui.value.padding[size.value] : 'p-0',
+          variant?.replaceAll('{color}', color.value),
+          (isLeading.value || slots.leading) && ui.value.leading.padding[size.value],
+          (isTrailing.value || slots.trailing) && ui.value.trailing.padding[size.value]
+      ), props.selectClass)
     })
 
     const isLeading = computed(() => {
@@ -262,35 +286,35 @@ export default defineComponent({
     })
 
     const leadingWrapperIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.leading.wrapper,
           ui.value.icon.leading.pointer,
-          ui.value.icon.leading.padding[props.size]
+          ui.value.icon.leading.padding[size.value]
       )
     })
 
     const leadingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(props.color) && ui.value.icon.color.replaceAll('{color}', props.color),
-          ui.value.icon.size[props.size],
+          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          ui.value.icon.size[size.value],
           props.loading && 'animate-spin'
       )
     })
 
     const trailingWrapperIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.trailing.wrapper,
           ui.value.icon.trailing.pointer,
-          ui.value.icon.trailing.padding[props.size]
+          ui.value.icon.trailing.padding[size.value]
       )
     })
 
     const trailingIconClass = computed(() => {
-      return classNames(
+      return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(props.color) && ui.value.icon.color.replaceAll('{color}', props.color),
-          ui.value.icon.size[props.size],
+          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          ui.value.icon.size[size.value],
           props.loading && !isLeading.value && 'animate-spin'
       )
     })
@@ -298,10 +322,15 @@ export default defineComponent({
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
+      attrs,
+      // eslint-disable-next-line vue/no-dupe-keys
+      name,
+      inputId,
       normalizedOptionsWithPlaceholder,
       normalizedValue,
       isLeading,
       isTrailing,
+      // eslint-disable-next-line vue/no-dupe-keys
       selectClass,
       leadingIconName,
       leadingIconClass,
@@ -309,7 +338,8 @@ export default defineComponent({
       trailingIconName,
       trailingIconClass,
       trailingWrapperIconClass,
-      onInput
+      onInput,
+      onChange
     }
   }
 })

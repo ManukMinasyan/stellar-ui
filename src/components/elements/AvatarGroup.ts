@@ -1,18 +1,26 @@
 import { h, cloneVNode, computed, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { defu } from 'defu'
-import { classNames, getSlotsChildren } from '../../utils'
-import Avatar from './Avatar.vue'
+import { twMerge, twJoin } from 'tailwind-merge'
+import UAvatar from './Avatar.vue'
+import { useUI } from '../../composables/useUI'
+import { mergeConfig, getSlotsChildren } from '../../utils'
+import type { AvatarSize, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
+import { avatar, avatarGroup } from '../../ui.config'
+
+const avatarConfig = mergeConfig<typeof avatar>(appConfig.ui.strategy, appConfig.ui.avatar, avatar)
+
+const avatarGroupConfig = mergeConfig<typeof avatarGroup>(appConfig.ui.strategy, appConfig.ui.avatarGroup, avatarGroup)
 
 export default defineComponent({
+    inheritAttrs: false,
     props: {
         size: {
-            type: String,
+            type: String as PropType<keyof typeof avatarConfig.size>,
             default: null,
             validator (value: string) {
-                return Object.keys(appConfig.ui.avatar.size).includes(value)
+                return Object.keys(avatarConfig.size).includes(value)
             }
         },
         max: {
@@ -20,12 +28,12 @@ export default defineComponent({
             default: null
         },
         ui: {
-            type: Object as PropType<Partial<typeof appConfig.ui.avatarGroup>>,
-            default: () => appConfig.ui.avatarGroup
+            type: Object as PropType<Partial<typeof avatarGroupConfig & { strategy?: Strategy }>>,
+            default: undefined
         }
     },
     setup (props, { slots }) {
-        const ui = computed<Partial<typeof appConfig.ui.avatarGroup>>(() => defu({}, props.ui, appConfig.ui.avatarGroup))
+        const { ui, attrs } = useUI('avatarGroup', props.ui, avatarGroupConfig, { mergeWrapper: true })
 
         const children = computed(() => getSlotsChildren(slots))
 
@@ -40,28 +48,22 @@ export default defineComponent({
                 }
 
                 vProps.class = node.props.class || ''
-                vProps.class += ` ${classNames(
-                    ui.value.ring,
-                    ui.value.margin
-                )}`
+                vProps.class = twMerge(twJoin(vProps.class, ui.value.ring, ui.value.margin), vProps.class)
 
                 return cloneVNode(node, vProps)
             }
 
             if (max.value !== undefined && index === max.value) {
-                return h(Avatar, {
-                    size: props.size,
+                return h(UAvatar, {
+                    size: props.size || (avatarConfig.default.size as AvatarSize),
                     text: `+${children.value.length - max.value}`,
-                    class: classNames(
-                        ui.value.ring,
-                        ui.value.margin
-                    )
+                    class: twJoin(ui.value.ring, ui.value.margin)
                 })
             }
 
             return null
         }).filter(Boolean).reverse())
 
-        return () => h('div', { class: ui.value.wrapper }, clones.value)
+        return () => h('div', { class: ui.value.wrapper, ...attrs.value }, clones.value)
     }
 })
