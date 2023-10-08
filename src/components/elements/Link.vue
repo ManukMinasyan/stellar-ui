@@ -40,6 +40,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    activeClass: {
+      type: String,
+      default: undefined
+    },
     inactiveClass: {
       type: String,
       default: undefined

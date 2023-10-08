@@ -20,15 +20,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, toRef, watch } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { AvatarSize, AvatarChipColor, AvatarChipPosition, Strategy } from '../../types'
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
 import { avatar } from '../../ui.config'
 
 const config = mergeConfig<typeof avatar>(appConfig.ui.strategy, appConfig.ui.avatar, avatar)
@@ -84,13 +83,17 @@ export default defineComponent({
       type: String,
       default: ''
     },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
       type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
       default: undefined
     }
   },
   setup (props) {
-    const { ui, attrs, attrsClass } = useUI('avatar', props.ui, config)
+    const { ui, attrs } = useUI('avatar', toRef(props, 'ui'), config)
 
     const url = computed(() => {
       if (typeof props.src === 'boolean') {
@@ -109,7 +112,7 @@ export default defineComponent({
           (error.value || !url.value) && ui.value.background,
           ui.value.rounded,
           ui.value.size[props.size]
-      ), attrsClass)
+      ), props.class)
     })
 
     const imgClass = computed(() => {

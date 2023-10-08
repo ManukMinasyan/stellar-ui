@@ -17,7 +17,7 @@ const defuTwMerge = createDefu((obj, key, value, namespace) => {
 })
 
 
-export function mergeConfig<T> (strategy: Strategy, ...configs): T {
+export function mergeConfig<T> (strategy: string, ...configs): T {
   if (strategy === 'override') {
     return defu({}, ...configs) as T
   }

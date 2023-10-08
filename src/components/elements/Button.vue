@@ -27,7 +27,7 @@ import { mergeConfig } from '../../utils'
 import type { ButtonColor, ButtonSize, ButtonVariant, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
-import { button } from '../../ui.config.ts'
+import { button } from '../../ui.config'
 
 const config = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.button, button)
 

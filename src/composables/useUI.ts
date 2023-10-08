@@ -3,7 +3,7 @@ import appConfig from '../constants/app.config'
 import { mergeConfig, omit, get } from '../utils'
 import { Strategy } from '../types'
 
-export const useUI = <T>(key, $ui: Partial<T & { strategy: Strategy }>, $config?: T, { mergeWrapper = false }: { mergeWrapper?: boolean } = {}) => {
+export const useUI = <T>(key, $ui: any, $config?: T, mergeWrapper:any = false ) => {
     const $attrs = useAttrs()
 
     const ui = computed(() => mergeConfig<T>(

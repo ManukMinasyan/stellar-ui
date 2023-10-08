@@ -14,7 +14,7 @@ import type { NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
 import { badge } from '../../ui.config'
-import colors from '#ui-colors'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof badge>(appConfig.ui.strategy, appConfig.ui.badge, badge)
 

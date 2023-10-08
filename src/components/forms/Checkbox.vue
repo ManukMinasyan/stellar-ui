@@ -40,8 +40,8 @@ import { uid } from '../../utils/uid'
 import type { Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
-import { checkbox } from '../../ui.config.ts'
-import colors from '#ui-colors'
+import { checkbox } from '../../ui.config'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof checkbox>(appConfig.ui.strategy, appConfig.ui.checkbox, checkbox)
 

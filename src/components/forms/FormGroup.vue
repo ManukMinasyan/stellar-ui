@@ -43,7 +43,6 @@ import type { Ref, PropType } from 'vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { FormError, InjectedFormGroupValue, Strategy } from '../../types'
-// @ts-expect-error
 import appConfig from '../../constants/app.config'
 import { formGroup } from '../../ui.config'
 import { uid } from '../../utils/uid'

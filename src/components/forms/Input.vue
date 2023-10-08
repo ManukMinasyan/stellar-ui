@@ -40,9 +40,9 @@ import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
 import type { NestedKeyOf, Strategy } from '../../types'
-import { input } from '../../ui.config.ts'
-import appConfig from '../../constants/app.config.ts'
-import colors from '#ui-colors'
+import { input } from '../../ui.config'
+import appConfig from '../../constants/app.config'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof input>(appConfig.ui.strategy, appConfig.ui.input, input)
 

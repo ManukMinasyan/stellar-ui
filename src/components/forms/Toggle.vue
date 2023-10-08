@@ -28,11 +28,9 @@ import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
 import type { Strategy } from '../../types'
-// @ts-expect-error
 import appConfig from '../../constants/app.config'
 import { toggle } from '../../ui.config'
-import colors from '#ui-colors'
-
+import colors from '../../constants/colors.config'
 const config = mergeConfig<typeof toggle>(appConfig.ui.strategy, appConfig.ui.toggle, toggle)
 
 export default defineComponent({

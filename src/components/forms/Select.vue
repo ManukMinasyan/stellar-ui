@@ -64,8 +64,8 @@ import { mergeConfig, get } from '../../utils'
 import type { NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
-import { select } from '../../ui.config.ts'
-import colors from '#ui-colors'
+import { select } from '../../ui.config'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof select>(appConfig.ui.strategy, appConfig.ui.select, select)
 

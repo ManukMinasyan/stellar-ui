@@ -139,10 +139,9 @@ import { usePopper } from '../../composables/usePopper'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
 import type { PopperOptions, NestedKeyOf, Strategy } from '../../types'
-// @ts-expect-error
 import appConfig from '../../constants/app.config'
-import { select, selectMenu } from '../../ui.config.ts'
-import colors from '#ui-colors'
+import { select, selectMenu } from '../../ui.config'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof select>(appConfig.ui.strategy, appConfig.ui.select, select)
 

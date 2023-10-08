@@ -20,22 +20,22 @@
         <HMenuItems :class="[ui.base, ui.divide, ui.ring, ui.rounded, ui.shadow, ui.background, ui.height]" static>
           <div v-for="(subItems, index) of items" :key="index" :class="ui.padding">
             <HMenuItem v-for="(item, subIndex) of subItems" :key="subIndex" v-slot="{ active, disabled: itemDisabled }" :disabled="item.disabled">
-              <ULinkCustom
+              <SLinkCustom
                   v-bind="omit(item, ['label', 'icon', 'iconClass', 'avatar', 'shortcuts', 'click'])"
                   :class="[ui.item.base, ui.item.padding, ui.item.size, ui.item.rounded, active ? ui.item.active : ui.item.inactive, itemDisabled && ui.item.disabled]"
                   @click="item.click"
               >
                 <slot :name="item.slot || 'item'" :item="item">
-                  <UIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
-                  <UAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
+                  <SIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
+                  <SAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
 
                   <span class="truncate">{{ item.label }}</span>
 
                   <span v-if="item.shortcuts?.length" :class="ui.item.shortcuts">
-                    <UKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</UKbd>
+                    <SKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</SKbd>
                   </span>
                 </slot>
-              </ULinkCustom>
+              </SLinkCustom>
             </HMenuItem>
           </div>
         </HMenuItems>
@@ -50,15 +50,14 @@ import type { PropType } from 'vue'
 import { Menu as HMenu, MenuButton as HMenuButton, MenuItems as HMenuItems, MenuItem as HMenuItem } from '@headlessui/vue'
 import { defu } from 'defu'
 import { omit } from 'lodash-es'
-import UIcon from '../elements/Icon.vue'
-import UAvatar from '../elements/Avatar.vue'
-import UKbd from '../elements/Kbd.vue'
-import ULinkCustom from '../elements/LinkCustom.vue'
+import SIcon from '../elements/Icon.vue'
+import SAvatar from '../elements/Avatar.vue'
+import SKbd from '../elements/Kbd.vue'
+import SLinkCustom from '../elements/LinkCustom.vue'
 import { usePopper } from '../../composables/usePopper'
 import type { Avatar } from '../../types/avatar'
 import type { PopperOptions } from '../../types'
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
+import appConfig from '../../constants/app.config'
 
 
 export default defineComponent({
@@ -67,10 +66,10 @@ export default defineComponent({
     HMenuButton,
     HMenuItems,
     HMenuItem,
-    UIcon,
-    UAvatar,
-    UKbd,
-    ULinkCustom
+    SIcon,
+    SAvatar,
+    SKbd,
+    SLinkCustom
   },
   props: {
     items: {

@@ -28,8 +28,8 @@ import { mergeConfig } from '../../utils'
 import type { NestedKeyOf, Strategy } from '../../types'
 // @ts-expect-error
 import appConfig from '../../constants/app.config.ts'
-import { textarea } from '../../ui.config.ts'
-import colors from '#ui-colors'
+import { textarea } from '../../ui.config'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof textarea>(appConfig.ui.strategy, appConfig.ui.textarea, textarea)
 

@@ -27,10 +27,9 @@ import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
 import type { Strategy } from '../../types'
-// @ts-expect-error
 import appConfig from '../../constants/app.config'
 import { range } from '../../ui.config'
-import colors from '#ui-colors'
+import colors from '../../constants/colors.config'
 
 const config = mergeConfig<typeof range>(appConfig.ui.strategy, appConfig.ui.range, range)
 
