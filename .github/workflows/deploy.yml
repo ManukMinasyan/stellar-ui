@@ -6,7 +6,10 @@ on:
       - main
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
     permissions:
       contents: read
       pages: write
@@ -21,11 +24,13 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8    
-      - uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}    
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-      - run: pnpm install
+      - name: Install dependencies    
+        run: pnpm install
       - name: Build
         run: pnpm run docs:build
       - uses: actions/configure-pages@v2
