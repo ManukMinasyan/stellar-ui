@@ -24,7 +24,11 @@ import SFormGroup from './forms/FormGroup.vue'
 import STable from './data/Table.vue'
 
 // Overlays
+import SModal from './overlays/Modal.vue'
 import SPopover from './overlays/Popover.vue'
+
+// Layout
+import SCard from './layout/Card.vue'
 
 
 export {
@@ -46,5 +50,7 @@ export {
     SRange,
     SFormGroup,
     STable,
-    SPopover
+    SModal,
+    SPopover,
+    SCard,
 }

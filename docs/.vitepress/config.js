@@ -52,7 +52,14 @@ module.exports = {
             {
                 text: 'Overlays',
                 items: [
+                    {text: 'Modal', link: '/overlays/modal'},
                     {text: 'Popover', link: '/overlays/popover'},
+                ],
+            },
+            {
+                text: 'Layout',
+                items: [
+                    {text: 'Card', link: '/layout/card'}
                 ],
             }
         ],
