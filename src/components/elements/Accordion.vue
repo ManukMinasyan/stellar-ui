@@ -3,7 +3,7 @@
     <HDisclosure v-for="(item, index) in items" v-slot="{ open, close }" :key="index" :default-open="defaultOpen || item.defaultOpen">
       <HDisclosureButton :ref="() => buttonRefs[index] = close" as="template" :disabled="item.disabled">
         <slot :item="item" :index="index" :open="open" :close="close">
-          <UButton v-bind="{ ...omit(ui.default, ['openIcon', 'closeIcon']), ...$attrs, ...omit(item, ['slot', 'disabled', 'content', 'defaultOpen']) }">
+          <UButton v-bind="{ ...omit(ui.default, ['openIcon', 'closeIcon']), ...attrs, ...omit(item, ['slot', 'disabled', 'content', 'defaultOpen']) }">
             <template #trailing>
               <UIcon
                   :name="!open ? openIcon : closeIcon ? closeIcon : openIcon"
@@ -40,19 +40,21 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, defineComponent } from 'vue'
+import { ref, computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { Disclosure as HDisclosure, DisclosureButton as HDisclosureButton, DisclosurePanel as HDisclosurePanel } from '@headlessui/vue'
-import { defu } from 'defu'
-import { omit } from 'lodash-es'
 import UIcon from '../elements/Icon.vue'
 import UButton from '../elements/Button.vue'
+import { useUI } from '../../composables/useUI'
+import { mergeConfig, omit } from '../../utils'
 import StateEmitter from '../../utils/StateEmitter'
-import type { AccordionItem } from '../../types/accordion'
-// TODO: Remove
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
+import type { AccordionItem, Strategy } from '../../types'
+import appConfig from '../../constants/app.config'
+import { accordion, button } from '../../ui.config'
 
+const config = mergeConfig<typeof accordion>(appConfig.ui.strategy, appConfig.ui.accordion, accordion)
+
+const configButton = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.button, button)
 
 export default defineComponent({
   components: {
@@ -75,38 +77,47 @@ export default defineComponent({
     },
     openIcon: {
       type: String,
-      default: () => appConfig.ui.accordion.default.openIcon
+      default: () => config.default.openIcon
     },
     closeIcon: {
       type: String,
-      default: () => appConfig.ui.accordion.default.closeIcon
+      default: () => config.default.closeIcon
     },
     multiple: {
       type: Boolean,
       default: false
     },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.accordion>>,
-      default: () => appConfig.ui.accordion
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
   setup (props) {
-    const ui = computed<Partial<typeof appConfig.ui.accordion>>(() => defu({}, props.ui, appConfig.ui.accordion))
+    const { ui, attrs } = useUI('accordion', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const uiButton = computed<Partial<typeof appConfig.ui.button>>(() => appConfig.ui.button)
+    const uiButton = computed<Partial<typeof configButton>>(() => configButton)
 
     const buttonRefs = ref<Function[]>([])
 
-    function closeOthers (itemIndex: number) {
-      if (!props.items[itemIndex].closeOthers && props.multiple) {
+    function closeOthers (currentIndex: number) {
+      if (!props.items[currentIndex].closeOthers && props.multiple) {
         return
       }
 
-      buttonRefs.value.forEach((close, index) => {
-        if (index === itemIndex) return
+      const totalItems = buttonRefs.value.length
 
+      const order = Array.from({ length: totalItems }, (_, i) => (currentIndex + i) % totalItems)
+          .filter(index => index !== currentIndex)
+          .reverse()
+
+      for (const index of order) {
+        const close = buttonRefs.value[index]
         close()
-      })
+      }
     }
 
     function onEnter (el: HTMLElement, done) {
@@ -136,6 +147,7 @@ export default defineComponent({
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
       uiButton,
+      attrs,
       buttonRefs,
       closeOthers,
       omit,

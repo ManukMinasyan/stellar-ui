@@ -1,26 +1,33 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "allowJs": true,
+    "noEmit": true,
+    "noUnusedLocals": false,
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "strict": false,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "lib": [
       "esnext",
       "dom"
     ],
     "declaration": true,
-    "emitDeclarationOnly": true,
     "declarationDir": "./dist/types",
     "isolatedModules": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "types": [
       "vite/client",
@@ -34,5 +41,7 @@
     "src/**/*.vue",
     "src/index.js"
   ],
-  "exclude": ["docs"]
+  "exclude": [
+    "docs"
+  ]
 }

@@ -1,5 +1,5 @@
 <template>
-  <HMenu v-slot="{ open }" as="div" :class="ui.wrapper" @mouseleave="onMouseLeave">
+  <HMenu v-slot="{ open }" as="div" :class="ui.wrapper" v-bind="attrs" @mouseleave="onMouseLeave">
     <HMenuButton
         ref="trigger"
         as="div"
@@ -20,22 +20,22 @@
         <HMenuItems :class="[ui.base, ui.divide, ui.ring, ui.rounded, ui.shadow, ui.background, ui.height]" static>
           <div v-for="(subItems, index) of items" :key="index" :class="ui.padding">
             <HMenuItem v-for="(item, subIndex) of subItems" :key="subIndex" v-slot="{ active, disabled: itemDisabled }" :disabled="item.disabled">
-              <SLinkCustom
-                  v-bind="omit(item, ['label', 'icon', 'iconClass', 'avatar', 'shortcuts', 'click'])"
+              <ULink
+                  v-bind="omit(item, ['label', 'slot', 'icon', 'iconClass', 'avatar', 'shortcuts', 'disabled', 'click'])"
                   :class="[ui.item.base, ui.item.padding, ui.item.size, ui.item.rounded, active ? ui.item.active : ui.item.inactive, itemDisabled && ui.item.disabled]"
                   @click="item.click"
               >
                 <slot :name="item.slot || 'item'" :item="item">
-                  <SIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
-                  <SAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
+                  <UIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
+                  <UAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
 
                   <span class="truncate">{{ item.label }}</span>
 
                   <span v-if="item.shortcuts?.length" :class="ui.item.shortcuts">
-                    <SKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</SKbd>
+                    <UKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</UKbd>
                   </span>
                 </slot>
-              </SLinkCustom>
+              </ULink>
             </HMenuItem>
           </div>
         </HMenuItems>
@@ -45,20 +45,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue'
+import { defineComponent, ref, computed, toRef, onMounted } from 'vue'
 import type { PropType } from 'vue'
 import { Menu as HMenu, MenuButton as HMenuButton, MenuItems as HMenuItems, MenuItem as HMenuItem } from '@headlessui/vue'
 import { defu } from 'defu'
-import { omit } from 'lodash-es'
-import SIcon from '../elements/Icon.vue'
-import SAvatar from '../elements/Avatar.vue'
-import SKbd from '../elements/Kbd.vue'
-import SLinkCustom from '../elements/LinkCustom.vue'
+import UIcon from '../elements/Icon.vue'
+import UAvatar from '../elements/Avatar.vue'
+import UKbd from '../elements/Kbd.vue'
+import ULink from '../elements/Link.vue'
+import { useUI } from '../../composables/useUI'
 import { usePopper } from '../../composables/usePopper'
-import type { Avatar } from '../../types/avatar'
-import type { PopperOptions } from '../../types'
+import { mergeConfig, omit } from '../../utils'
+import type { DropdownItem, PopperOptions, Strategy } from '../../types'
 import appConfig from '../../constants/app.config'
+import { dropdown } from '../../ui.config'
 
+const config = mergeConfig<typeof dropdown>(appConfig.ui.strategy, appConfig.ui.dropdown, dropdown)
 
 export default defineComponent({
   components: {
@@ -66,33 +68,21 @@ export default defineComponent({
     HMenuButton,
     HMenuItems,
     HMenuItem,
-    SIcon,
-    SAvatar,
-    SKbd,
-    SLinkCustom
+    UIcon,
+    UAvatar,
+    UKbd,
+    ULink
   },
+  inheritAttrs: false,
   props: {
     items: {
-      type: Array as PropType<{
-        to?: string
-        exact?: boolean
-        label: string
-        slot?: string
-        icon?: string
-        iconClass?: string
-        avatar?: Partial<Avatar>
-        shortcuts?: string[]
-        disabled?: boolean
-        click?: Function
-      }[][]>,
+      type: Array as PropType<DropdownItem[][]>,
       default: () => []
     },
     mode: {
-      type: String,
+      type: String as PropType<'click' | 'hover'>,
       default: 'click',
-      validator: (value: string) => {
-        return ['click', 'hover'].includes(value)
-      }
+      validator: (value: string) => ['click', 'hover'].includes(value)
     },
     disabled: {
       type: Boolean,
@@ -104,21 +94,23 @@ export default defineComponent({
     },
     openDelay: {
       type: Number,
-      default: 50
+      default: 0
     },
     closeDelay: {
       type: Number,
       default: 0
     },
+    class: {
+      type: [String, Object, Array] as PropType<any>,
+      default: undefined
+    },
     ui: {
-      type: Object as PropType<Partial<typeof appConfig.ui.dropdown>>,
-      default: () => appConfig.ui.dropdown
+      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
+      default: undefined
     }
   },
   setup (props) {
-    // TODO: Remove
-
-    const ui = computed<Partial<typeof appConfig.ui.dropdown>>(() => defu({}, props.ui, appConfig.ui.dropdown))
+    const { ui, attrs } = useUI('dropdown', toRef(props, 'ui'), config, toRef(props, 'class'))
 
     const popper = computed<PopperOptions>(() => defu(props.mode === 'hover' ? { offsetDistance: 0 } : {}, props.popper, ui.value.popper as PopperOptions))
 
@@ -191,6 +183,7 @@ export default defineComponent({
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
+      attrs,
       trigger,
       container,
       containerStyle,
