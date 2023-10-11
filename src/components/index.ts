@@ -23,6 +23,9 @@ import SFormGroup from './forms/FormGroup.vue'
 // Data
 import STable from './data/Table.vue'
 
+// Overlays
+import SPopover from './overlays/Popover.vue'
+
 
 export {
     SAvatar,
@@ -42,5 +45,6 @@ export {
     SToggle,
     SRange,
     SFormGroup,
-    STable
+    STable,
+    SPopover
 }

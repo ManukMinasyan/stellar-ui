@@ -15,7 +15,7 @@ const defaultExtractor = createDefaultExtractor({ tailwindConfig: { separator: '
 export default <Partial<Config>>{
     darkMode: 'class',
     safelist:[
-        ...generateSafelist(['primary'])
+        ...generateSafelist(['primary', 'blue', 'red', 'green'])
     ],
     content: {
         files: [

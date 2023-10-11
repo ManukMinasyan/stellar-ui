@@ -48,6 +48,12 @@ module.exports = {
                 items: [
                     {text: 'Table', link: '/data/table'},
                 ],
+            },
+            {
+                text: 'Overlays',
+                items: [
+                    {text: 'Popover', link: '/overlays/popover'},
+                ],
             }
         ],
     },
