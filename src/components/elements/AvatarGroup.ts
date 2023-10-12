@@ -1,13 +1,12 @@
-import { h, cloneVNode, computed, defineComponent } from 'vue'
+import { h, cloneVNode, computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UAvatar from './Avatar.vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig, getSlotsChildren } from '../../utils'
 import type { AvatarSize, Strategy } from '../../types'
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
-import { avatar, avatarGroup } from '../../ui.config'
+import appConfig from '@/constants/app.config'
+import { avatar, avatarGroup } from '@/ui.config'
 
 const avatarConfig = mergeConfig<typeof avatar>(appConfig.ui.strategy, appConfig.ui.avatar, avatar)
 
@@ -27,13 +26,17 @@ export default defineComponent({
             type: Number,
             default: null
         },
+        class: {
+            type: [String, Object, Array] as PropType<any>,
+            default: undefined
+        },
         ui: {
             type: Object as PropType<Partial<typeof avatarGroupConfig & { strategy?: Strategy }>>,
             default: undefined
         }
     },
     setup (props, { slots }) {
-        const { ui, attrs } = useUI('avatarGroup', props.ui, avatarGroupConfig, { mergeWrapper: true })
+        const { ui, attrs } = useUI('avatarGroup', toRef(props, 'ui'), avatarGroupConfig, toRef(props, 'class'))
 
         const children = computed(() => getSlotsChildren(slots))
 
