@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/stellar-uu-logo.jpeg?raw=true" width="256" />
+    <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/logo.png?raw=true" width="256" />
 </p>
 
 <a href="https://www.npmjs.com/package/stellar-ui" rel="nofollow"><img src="https://img.shields.io/npm/dw/stellar-ui.svg" style="max-width: 100%;"></a>
