@@ -1,5 +1,5 @@
 import { avatar } from '../ui.config'
-import colors from '../../constants/colors.config'
+import colors from '@/constants/colors.config'
 
 export type AvatarSize = keyof typeof avatar.size
 export type AvatarChipColor = 'gray' | typeof colors[number]

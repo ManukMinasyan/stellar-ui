@@ -67,6 +67,8 @@ module.exports = {
     vite: {
         resolve: {
             alias: {
+                '@': path.resolve(__dirname, '../../src'),
+                '#constants': path.resolve(__dirname, '../../src/constants'),
                 'stellar-ui': path.resolve(__dirname, '../../src'),
             },
             dedupe: ['vue'], // avoid error when using dependencies that also use Vue

@@ -42,10 +42,10 @@ import { computed, defineComponent, provide, inject, ref, toRef } from 'vue'
 import type { Ref, PropType } from 'vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
-import type { FormError, InjectedFormGroupValue, Strategy } from '../../types'
-import appConfig from '../../constants/app.config'
-import { formGroup } from '../../ui.config'
-import { uid } from '../../utils/uid'
+import type { FormError, InjectedFormGroupValue, Strategy } from '@/types'
+import appConfig from '#constants/app.config'
+import { formGroup } from '@/ui.config'
+import { uid } from '@/utils/uid'
 
 const config = mergeConfig<typeof formGroup>(appConfig.ui.strategy, appConfig.ui.formGroup, formGroup)
 

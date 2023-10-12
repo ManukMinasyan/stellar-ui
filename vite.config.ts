@@ -6,6 +6,17 @@ module.exports = defineConfig({
     plugins: [
         vue()
     ],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, './src'),
+            '#constants': path.resolve(__dirname, './src/constants'),
+        },
+    },
+    server: {
+        fs: {
+            allow: [".."],
+        },
+    },
     build: {
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),

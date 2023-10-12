@@ -27,6 +27,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "#constants/*": [
+        "src/constants/*"
       ]
     },
     "types": [
