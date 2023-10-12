@@ -39,10 +39,10 @@ export const table = {
         icon: 'w-6 h-6 mx-auto text-gray-400 dark:text-gray-500 mb-4'
     },
     default: {
-        sortAscIcon: 'i-heroicons-bars-arrow-up-20-solid',
-        sortDescIcon: 'i-heroicons-bars-arrow-down-20-solid',
+        sortAscIcon: 'icon-[heroicons--bars-arrow-up-20-solid]',
+        sortDescIcon: 'icon-[heroicons--bars-arrow-down-20-solid]',
         sortButton: {
-            icon: 'i-heroicons-arrows-up-down-20-solid',
+            icon: 'icon-[heroicons--arrows-up-down-20-solid]',
             trailing: true,
             square: true,
             color: 'gray',
@@ -50,11 +50,11 @@ export const table = {
             class: '-m-1.5'
         },
         loadingState: {
-            icon: 'i-heroicons-arrow-path-20-solid',
+            icon: 'icon-[heroicons--arrow-path-20-solid]',
             label: 'Loading...'
         },
         emptyState: {
-            icon: 'i-heroicons-circle-stack-20-solid',
+            icon: 'icon-[heroicons--circle-stack-20-solid]',
             label: 'No items.'
         }
     }
@@ -235,7 +235,7 @@ export const button = {
         size: 'sm',
         variant: 'solid',
         color: 'primary',
-        loadingIcon: 'i-heroicons-arrow-path-20-solid'
+        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]'
     }
 }
 
@@ -308,7 +308,7 @@ export const accordion = {
         leaveActiveClass: 'overflow-hidden transition-[height] duration-200 ease-out'
     },
     default: {
-        openIcon: 'i-heroicons-chevron-down-20-solid',
+        openIcon: 'icon-[heroicons--chevron-down-20-solid]',
         closeIcon: '',
         class: 'mb-1.5 w-full',
         variant: 'soft'
@@ -473,7 +473,7 @@ export const input = {
         size: 'sm',
         color: 'white',
         variant: 'outline',
-        loadingIcon: 'i-heroicons-arrow-path-20-solid'
+        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]'
     }
 }
 
@@ -519,8 +519,8 @@ export const select = {
         size: 'sm',
         color: 'white',
         variant: 'outline',
-        loadingIcon: 'i-heroicons-arrow-path-20-solid',
-        trailingIcon: 'i-heroicons-chevron-down-20-solid'
+        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]',
+        trailingIcon: 'icon-[heroicons--chevron-down-20-solid]'
     }
 }
 
@@ -575,7 +575,7 @@ export const selectMenu = {
         placement: 'bottom-end'
     },
     default: {
-        selectedIcon: 'i-heroicons-check-20-solid'
+        selectedIcon: 'icon-[heroicons--check-20-solid]'
     }
 }
 
@@ -807,15 +807,15 @@ export const commandPalette = {
         inactive: 'flex-shrink-0 text-gray-500 dark:text-gray-400'
     },
     default: {
-        icon: 'i-heroicons-magnifying-glass-20-solid',
-        loadingIcon: 'i-heroicons-arrow-path-20-solid',
+        icon: 'icon-[heroicons--magnifying-glass-20-solid]',
+        loadingIcon: 'icon-[heroicons--arrow-path-20-solid]',
         emptyState: {
-            icon: 'i-heroicons-magnifying-glass-20-solid',
+            icon: 'icon-[heroicons--magnifying-glass-20-solid]',
             label: 'We couldn\'t find any items.',
             queryLabel: 'We couldn\'t find any items with that term. Please try again.'
         },
         closeButton: null,
-        selectedIcon: 'i-heroicons-check-20-solid'
+        selectedIcon: 'icon-[heroicons--check-20-solid]'
     }
 }
 
@@ -834,12 +834,12 @@ export const pagination = {
         prevButton: {
             color: 'white',
             class: 'rtl:[&_span:first-child]:rotate-180',
-            icon: 'i-heroicons-chevron-left-20-solid'
+            icon: 'icon-[heroicons--chevron-left-20-solid]'
         },
         nextButton: {
             color: 'white',
             class: 'rtl:[&_span:last-child]:rotate-180',
-            icon: 'i-heroicons-chevron-right-20-solid '
+            icon: 'icon-[heroicons--chevron-right-20-solid ]'
         }
     }
 }
@@ -1053,7 +1053,7 @@ export const notification = {
         color: 'primary',
         icon: null,
         closeButton: {
-            icon: 'i-heroicons-x-mark-20-solid',
+            icon: 'icon-[heroicons--x-mark-20-solid]',
             color: 'gray',
             variant: 'link',
             padded: false
