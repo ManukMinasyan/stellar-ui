@@ -22,8 +22,6 @@ to UI when building a Vue app. This includes components, icons, colors, dark mod
 -  Icons
 -  Fully typed
 
-[See Documentation](https://manukminasyan.github.io/stellar-ui/)
-
 ## Setup
 
 Use npm to install.
@@ -32,16 +30,53 @@ Use npm to install.
 npm i stellar-ui
 ```
 
-In your `index.ts`, you shall import the libraries and CSS:
+### Full Import
+
+If you don’t care about the bundle size so much, it’s more convenient to use full import.
+
 
 ```ts
-import 'stellar-ui/dist/style.css';
+// main.ts
+import { createApp } from 'vue'
+import StellarUI from 'stellar-ui'
+import 'stellar-ui/dist/index.css';
+import App from './App.vue'
+
+const app = createApp(App)
+
+app.use(StellarUI)
+app.mount('#app')
 ```
 
-Import components from this library in your own component:
+### Manually import
+
+Stellar UI provides out of box Tree Shaking functionalities based on ES Module.
 
 ```html
 <script setup lang="ts">
-    import { SButton, SDropdown } from 'stellar-ui';
+  import { SButton } from 'stellar-ui';
 </script>
+
+<template>
+    <SButton>Submit</SButton>
+</template>
 ```
+
+
+## Documentation
+
+Visit https://manukminasyan.github.io/stellar-ui/ to explore the documentation.
+
+
+## Credits
+
+- [nuxtlabs/ui](https://github.com/nuxtlabs/ui)
+- [tailwindlabs/tailwindcss](https://github.com/tailwindlabs/tailwindcss)
+- [tailwindlabs/headlessui](https://github.com/tailwindlabs/headlessui)
+- [vueuse/vueuse](https://github.com/vueuse/vueuse)
+- [@iconify/tailwind](https://github.com/iconify/iconify/tree/main/plugins/tailwind)
+
+
+## License
+
+Licensed under the [MIT license](https://github.com/ManukMinasyan/stellar-ui/blob/main/LICENSE).
