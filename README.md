@@ -2,9 +2,9 @@
     <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/logo.png?raw=true" width="256" />
 </p>
 
-![npm](https://img.shields.io/npm/v/stellar-ui)
-![GitHub](https://img.shields.io/github/license/ManukMinasyan/stellar-ui)
-![npm](https://img.shields.io/npm/dt/stellar-ui)
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
 
 # What is Stellar UI?
 
@@ -80,3 +80,14 @@ Visit https://manukminasyan.github.io/stellar-ui/ to explore the documentation.
 ## License
 
 Licensed under the [MIT license](https://github.com/ManukMinasyan/stellar-ui/blob/main/LICENSE).
+
+
+<!-- Badges -->
+[npm-version-src]: https://img.shields.io/npm/v/stellar-ui/latest.svg?style=flat&colorA=18181B&colorB=5BC339
+[npm-version-href]: https://npmjs.com/package/stellar-ui
+
+[npm-downloads-src]: https://img.shields.io/npm/dm/stellar-ui.svg?style=flat&colorA=18181B&colorB=5BC339
+[npm-downloads-href]: https://npmjs.com/package/stellar-ui
+
+[license-src]: https://img.shields.io/github/license/ManukMinasyan/stellar-ui.svg?style=flat&colorA=18181B&colorB=5BC339
+[license-href]: https://github.com/ManukMinasyan/stellar-ui/blob/main/LICENSE
