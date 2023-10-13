@@ -5,5 +5,5 @@ const value = ref('')
 </script>
 
 <template>
-  <SInput v-model="value"/>
+  <s-input v-model="value"/>
 </template>

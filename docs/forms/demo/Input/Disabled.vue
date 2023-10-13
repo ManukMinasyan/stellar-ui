@@ -1,3 +1,3 @@
 <template>
-  <SInput :disabled="true" />
+  <s-input :disabled="true" />
 </template>

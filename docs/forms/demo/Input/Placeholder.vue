@@ -1,3 +1,3 @@
 <template>
-  <SInput placeholder="Search..." />
+  <s-input placeholder="Search..." />
 </template>

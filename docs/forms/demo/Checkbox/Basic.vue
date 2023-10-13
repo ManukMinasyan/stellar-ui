@@ -5,5 +5,5 @@ const selected = ref(true)
 </script>
 
 <template>
-  <SCheckbox v-model="selected" name="notifications" label="Notifications"/>
+  <s-checkbox v-model="selected" name="notifications" label="Notifications"/>
 </template>

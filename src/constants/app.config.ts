@@ -3,7 +3,7 @@ import * as ui from '@/ui.config'
 
 export default {
     ui: {
-        strategy: 'merge',
+        strategy: 'override',
         ...ui,
         colors
     }

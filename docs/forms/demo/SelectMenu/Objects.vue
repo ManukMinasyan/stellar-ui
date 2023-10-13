@@ -2,18 +2,18 @@
 import {ref} from 'vue';
 
 const people = [{
-  id: 'benjamincanac',
-  label: 'benjamincanac',
-  href: 'https://github.com/benjamincanac',
+  id: 'ManukMinasyan',
+  label: 'ManukMinasyan',
+  href: 'https://github.com/ManukMinasyan',
   target: '_blank',
-  avatar: { src: 'https://avatars.githubusercontent.com/u/739984?v=4' }
+  avatar: { src: 'https://avatars.githubusercontent.com/u/2556185?v=4' }
 },
   {
-    id: 'Atinux',
-    label: 'Atinux',
-    href: 'https://github.com/Atinux',
+    id: 'Ilyapashayan20',
+    label: 'Ilyapashayan',
+    href: 'https://github.com/Ilyapashayan20',
     target: '_blank',
-    avatar: { src: 'https://avatars.githubusercontent.com/u/904724?v=4' }
+    avatar: { src: 'https://avatars.githubusercontent.com/u/77129709?v=4' }
   },
   {
     id: 'smarroufin',
@@ -25,7 +25,7 @@ const people = [{
   {
     id: 'nobody',
     label: 'Nobody',
-    icon: 'i-heroicons-user-circle'
+    icon: 'icon-[heroicons--user-circle]'
   }]
 
 const selected = ref(people[0])

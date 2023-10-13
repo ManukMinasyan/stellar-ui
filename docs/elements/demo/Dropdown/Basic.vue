@@ -3,7 +3,7 @@ const items = [
   [{
     label: 'Profile',
     avatar: {
-      src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+      src: 'https://avatars.githubusercontent.com/u/2556185?v=4'
     }
   }], [{
     label: 'Edit',
@@ -32,7 +32,7 @@ const items = [
 </script>
 
 <template>
-  <SDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-    <SButton color="white" label="Options" trailing-icon="icon-[heroicons--chevron-down-20-solid]"/>
-  </SDropdown>
+  <s-dropdown :items="items" :popper="{ placement: 'bottom-start' }">
+    <s-button color="white" label="Options" trailing-icon="icon-[heroicons--chevron-down-20-solid]"/>
+  </s-dropdown>
 </template>

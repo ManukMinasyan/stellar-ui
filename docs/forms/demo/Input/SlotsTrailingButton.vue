@@ -5,16 +5,16 @@ const q = ref('')
 </script>
 
 <template>
-  <SInput v-model="q" name="q" placeholder="Search..." icon="i-heroicons-magnifying-glass-20-solid" :ui="{ icon: { trailing: { pointer: '' } } }">
+  <s-input v-model="q" name="q" placeholder="Search..." icon="icon-[heroicons--magnifying-glass-20-solid]" :ui="{ icon: { trailing: { pointer: '' } } }">
     <template #trailing>
-      <SButton
+      <s-button
           v-show="q !== ''"
           color="gray"
           variant="link"
-          icon="i-heroicons-x-mark-20-solid"
+          icon="icon-[heroicons--x-mark-20-solid]"
           :padded="false"
           @click="q = ''"
       />
     </template>
-  </SInput>
+  </s-input>
 </template>

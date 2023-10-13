@@ -1,3 +1,3 @@
 <template>
-  <SInput size="sm" />
+  <s-input size="sm" />
 </template>

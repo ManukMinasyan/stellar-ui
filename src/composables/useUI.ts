@@ -1,10 +1,10 @@
 import { computed, toValue, useAttrs } from 'vue'
 import type { Ref } from 'vue'
-import appConfig from '../constants/app.config'
-import { mergeConfig, omit, get } from '../utils'
-import { Strategy } from '../types'
+import appConfig from '#constants/app.config'
+import { mergeConfig, omit, get } from '@/utils'
+import { Strategy } from '@/types'
 
-export const useUI = <T>(key, $ui: Ref<Partial<T & { strategy: Strategy }> | undefined>, $config?: Ref<T> | T, $wrapperClass?: Ref<string>) => {
+export const useUI = <T>(key, $ui: Ref<Partial<T & { strategy: Strategy }> | undefined>, $config?: Ref<T> | T, $wrapperClass?: Ref<string>, withAppConfig: boolean = false) => {
     const $attrs = useAttrs()
 
     const ui = computed(() => {
@@ -16,7 +16,7 @@ export const useUI = <T>(key, $ui: Ref<Partial<T & { strategy: Strategy }> | und
             _ui?.strategy || (appConfig.ui?.strategy as Strategy),
             _wrapperClass ? { wrapper: _wrapperClass } : {},
             _ui || {},
-            import.meta.env.DEV ? get(appConfig.ui, key, {}) : {},
+            (import.meta.env.DEV || withAppConfig) ? get(appConfig.ui, key, {}) : {},
             _config || {}
         )
     })

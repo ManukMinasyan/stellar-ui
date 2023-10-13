@@ -1,3 +1,3 @@
 <template>
-  <SInput color="primary" variant="outline" />
+  <s-input color="primary" variant="outline" />
 </template>

@@ -3,7 +3,6 @@ import defaultColors from 'tailwindcss/colors.js'
 // @ts-ignore
 import tailwindConfig from '../../tailwind.config.ts'
 
-console.log({tailwindConfig})
 const globalColors: any = {
     ...(tailwindConfig.theme.colors || defaultColors),
     ...tailwindConfig.theme.extend?.colors
