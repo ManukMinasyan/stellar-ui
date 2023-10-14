@@ -30,9 +30,10 @@ const sharedToastState = () => {
     }
 }
 
+// @ts-expect-error
 export const useToastSharedState: any = useStateEffect(sharedToastState, {
     name: 'sharedToastState',
-    debug: true,
+    debug: false,
     destroy: false,
 })
 
