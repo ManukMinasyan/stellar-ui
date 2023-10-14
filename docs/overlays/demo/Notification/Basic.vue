@@ -1,5 +1,5 @@
 <script setup>
-import {useToast} from "@/composables/useToast";
+import {useToast} from "stellar-ui";
 
 const toast = useToast()
 </script>

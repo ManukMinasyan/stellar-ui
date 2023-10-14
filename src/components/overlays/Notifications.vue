@@ -21,7 +21,7 @@
 import {computed, toRef, defineComponent} from 'vue'
 import type {PropType} from 'vue'
 import {twMerge, twJoin} from 'tailwind-merge'
-import UNotification from './Notification.vue'
+import SNotification from './Notification.vue'
 import {useUI} from '../../composables/useUI'
 import {useToast, useToastSharedState} from '../../composables/useToast'
 import {mergeConfig} from '../../utils'
@@ -33,7 +33,7 @@ const config = mergeConfig<typeof notifications>(appConfig.ui.strategy, appConfi
 
 export default defineComponent({
   components: {
-    UNotification
+    SNotification
   },
   inheritAttrs: false,
   props: {
