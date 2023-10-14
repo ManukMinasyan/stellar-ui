@@ -26,6 +26,8 @@ import STable from './data/Table.vue'
 // Overlays
 import SModal from './overlays/Modal.vue'
 import SPopover from './overlays/Popover.vue'
+import SNotification from './overlays/Notification.vue'
+import SNotifications from './overlays/Notifications.vue'
 
 // Layout
 import SCard from './layout/Card.vue'
@@ -52,5 +54,7 @@ export {
     STable,
     SModal,
     SPopover,
+    SNotification,
+    SNotifications,
     SCard,
 }

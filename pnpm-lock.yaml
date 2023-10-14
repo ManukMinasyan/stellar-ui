@@ -86,6 +86,9 @@ dependencies:
   vue:
     specifier: ^3.3.4
     version: 3.3.4
+  vue-demi:
+    specifier: ^0.14.6
+    version: 0.14.6(vue@3.3.4)
 
 devDependencies:
   '@rollup/plugin-alias':

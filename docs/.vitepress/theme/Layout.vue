@@ -10,6 +10,7 @@ import VPSidebar from './components/VPSidebar.vue'
 import VPSkipLink from './components/VPSkipLink.vue'
 import { useData } from './composables/data'
 import { useCloseSidebarOnEscape, useSidebar } from './composables/sidebar'
+import {SNotifications} from "stellar-ui";
 
 const {
   isOpen: isSidebarOpen,
@@ -31,6 +32,8 @@ provide('hero-image-slot-exists', heroImageSlotExists)
 </script>
 
 <template>
+  <s-notifications />
+
   <div v-if="frontmatter.layout !== false" class="Layout" :class="frontmatter.pageClass" >
     <slot name="layout-top" />
     <VPSkipLink />

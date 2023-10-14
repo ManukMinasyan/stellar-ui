@@ -54,6 +54,7 @@ module.exports = {
                 items: [
                     {text: 'Modal', link: '/overlays/modal'},
                     {text: 'Popover', link: '/overlays/popover'},
+                    {text: 'Notification', link: '/overlays/notification'},
                 ],
             },
             {
