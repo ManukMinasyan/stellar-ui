@@ -3,6 +3,7 @@ import Basic from './demo/Accordion/Basic.vue';
 import Style from './demo/Accordion/Style.vue';
 import Icon from './demo/Accordion/Icon.vue';
 import Multiple from './demo/Accordion/Multiple.vue';
+import Open from './demo/Accordion/Open.vue';
 </script>
 
 # Accordion
@@ -60,3 +61,13 @@ Use the `multiple` prop to to allow multiple elements to be opened at the same t
 </DemoContainer>
 
 <<< @/elements/demo/Accordion/Multiple.vue
+
+## Open
+
+Use the `default-open` prop to open all items by default. Works better when the multiple prop is set to `true`.
+
+<DemoContainer>
+<Open/>
+</DemoContainer>
+
+<<< @/elements/demo/Accordion/Open.vue
