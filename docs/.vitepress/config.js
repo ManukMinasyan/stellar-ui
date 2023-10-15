@@ -73,6 +73,15 @@ module.exports = {
                 'stellar-ui': path.resolve(__dirname, '../../src'),
             },
             dedupe: ['vue'], // avoid error when using dependencies that also use Vue
-        }
+        },
+        define: {
+            STELLAR_UI_APP_CONFIG: JSON.stringify({
+                ui: {
+                    avatar: {
+                        background: 'bg-gray-50 dark:bg-gray-800',
+                    },
+                }
+            })
+        },
     }
 }
