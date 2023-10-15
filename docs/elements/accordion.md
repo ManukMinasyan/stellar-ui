@@ -4,6 +4,7 @@ import Style from './demo/Accordion/Style.vue';
 import Icon from './demo/Accordion/Icon.vue';
 import Multiple from './demo/Accordion/Multiple.vue';
 import Open from './demo/Accordion/Open.vue';
+import Slots from './demo/Accordion/Slots.vue';
 </script>
 
 # Accordion
@@ -39,7 +40,8 @@ You can also pass any prop from the Button component directly to the Accordion c
 
 ## Icon
 
-Use any icon from [Iconify](https://icones.js.org/) by setting the `open-icon` and `close-icon` props by using this pattern:
+Use any icon from [Iconify](https://icones.js.org/) by setting the `open-icon` and `close-icon` props by using this
+pattern:
 `icon-[{collection_name}--{icon_name}]` or change it globally in `ui.accordion.default.openIcon` and
 `ui.accordion.default.closeIcon`.
 
@@ -71,3 +73,18 @@ Use the `default-open` prop to open all items by default. Works better when the 
 </DemoContainer>
 
 <<< @/elements/demo/Accordion/Open.vue
+
+## Slots
+
+You can use slots to customize the buttons and items content of the Accordion.
+
+### default
+
+Use the `#default` slot to customize the trigger buttons. You will have access to the `item`, `index`, `open` properties and
+`close` method in the slot scope.
+
+<DemoContainer>
+<Slots/>
+</DemoContainer>
+
+<<< @/elements/demo/Accordion/Slots.vue
