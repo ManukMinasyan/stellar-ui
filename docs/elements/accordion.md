@@ -1,6 +1,7 @@
 <script setup>
 import Basic from './demo/Accordion/Basic.vue';
 import Style from './demo/Accordion/Style.vue';
+import Icon from './demo/Accordion/Icon.vue';
 </script>
 
 # Accordion
@@ -33,3 +34,17 @@ You can also pass any prop from the Button component directly to the Accordion c
 </DemoContainer>
 
 <<< @/elements/demo/Accordion/Style.vue
+
+## Icon
+
+Use any icon from [Iconify](https://icones.js.org/) by setting the `open-icon` and `close-icon` props by using this pattern:
+`icon-[{collection_name}--{icon_name}]` or change it globally in `ui.accordion.default.openIcon` and
+`ui.accordion.default.closeIcon`.
+
+You can also set them to `null` to hide the icons.
+
+<DemoContainer>
+<Icon/>
+</DemoContainer>
+
+<<< @/elements/demo/Accordion/Icon.vue
