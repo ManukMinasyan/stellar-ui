@@ -2,6 +2,7 @@
 import Basic from './demo/Accordion/Basic.vue';
 import Style from './demo/Accordion/Style.vue';
 import Icon from './demo/Accordion/Icon.vue';
+import Multiple from './demo/Accordion/Multiple.vue';
 </script>
 
 # Accordion
@@ -48,3 +49,14 @@ You can also set them to `null` to hide the icons.
 </DemoContainer>
 
 <<< @/elements/demo/Accordion/Icon.vue
+
+## Multiple
+
+Use the `multiple` prop to to allow multiple elements to be opened at the same time.
+
+
+<DemoContainer>
+<Multiple/>
+</DemoContainer>
+
+<<< @/elements/demo/Accordion/Multiple.vue
