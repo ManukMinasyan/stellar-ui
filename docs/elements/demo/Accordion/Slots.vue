@@ -26,7 +26,7 @@ const items = [
 <template>
   <s-accordion :items="items" :ui="{ wrapper: 'flex flex-col w-full' }">
     <template #default="{ item, index, open }">
-      <a-button color="gray" variant="ghost" class="border-b border-gray-200 dark:border-gray-700"
+      <s-button color="gray" variant="ghost" class="border-b border-gray-200 dark:border-gray-700"
                 :ui="{ rounded :'rounded-none', padding: { sm:'p-3' } }">
         <template #leading>
           <div class="w-6 h-6 rounded-full bg-primary-500 dark:bg-primary-400 flex items-center justify-center -my-1">
@@ -43,7 +43,7 @@ const items = [
               :class="[open && 'rotate-90']"
           />
         </template>
-      </a-button>
+      </s-button>
     </template>
   </s-accordion>
 </template>
