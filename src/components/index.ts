@@ -19,6 +19,7 @@ import SRadio from './forms/Radio.vue'
 import SToggle from './forms/Toggle.vue'
 import SRange from './forms/Range.vue'
 import SFormGroup from './forms/FormGroup.vue'
+import SForm from './forms/Form.vue'
 
 // Data
 import STable from './data/Table.vue'
@@ -51,6 +52,7 @@ export {
     SToggle,
     SRange,
     SFormGroup,
+    SForm,
     STable,
     SModal,
     SPopover,

@@ -44,6 +44,7 @@ module.exports = {
                     {text: 'Radio', link: '/forms/radio'},
                     {text: 'Toggle', link: '/forms/toggle'},
                     {text: 'Form Group', link: '/forms/form-group'},
+                    {text: 'Form', link: '/forms/form'},
                 ],
             },
             {
