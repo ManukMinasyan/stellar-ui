@@ -12,6 +12,7 @@ module.exports = {
         sidebar: [
             {
                 text: 'Getting Started',
+                collapsed: false,
                 items: [
                     {text: 'Introduction', link: '/'},
                     {text: 'Installation', link: '/getting-started/installation'},
@@ -20,6 +21,7 @@ module.exports = {
             },
             {
                 text: 'Elements',
+                collapsed: false,
                 items: [
                     {text: 'Accordion', link: '/elements/accordion'},
                     {text: 'Avatar', link: '/elements/avatar'},
@@ -32,6 +34,7 @@ module.exports = {
             },
             {
                 text: 'Forms',
+                collapsed: false,
                 items: [
                     {text: 'Input', link: '/forms/input'},
                     {text: 'Textarea', link: '/forms/textarea'},
@@ -45,12 +48,14 @@ module.exports = {
             },
             {
                 text: 'Data',
+                collapsed: false,
                 items: [
                     {text: 'Table', link: '/data/table'},
                 ],
             },
             {
                 text: 'Overlays',
+                collapsed: false,
                 items: [
                     {text: 'Modal', link: '/overlays/modal'},
                     {text: 'Popover', link: '/overlays/popover'},
@@ -59,6 +64,7 @@ module.exports = {
             },
             {
                 text: 'Layout',
+                collapsed: false,
                 items: [
                     {text: 'Card', link: '/layout/card'}
                 ],

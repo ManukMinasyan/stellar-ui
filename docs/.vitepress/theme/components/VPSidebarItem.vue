@@ -113,6 +113,12 @@ function onCaretClick() {
   padding-bottom: 24px;
 }
 
+.VPSidebarItem.level-1 {
+  margin-left: 6px;
+  padding-left: 9px;
+  border-left: 1px solid #e6e6e6;
+}
+
 .VPSidebarItem.collapsed.level-0 {
   padding-bottom: 10px;
 }
@@ -129,14 +135,19 @@ function onCaretClick() {
 
 .indicator {
   position: absolute;
-  top: 6px;
+  top: 4px;
   bottom: 6px;
   left: -17px;
-  width: 2px;
+  width: 1px;
   border-radius: 2px;
   transition: background-color 0.25s;
 }
 
+.VPSidebarItem.level-1.is-active > .item > .indicator {
+  left: -10px;
+}
+
+.VPSidebarItem.level-1.is-active > .item > .indicator,
 .VPSidebarItem.level-2.is-active > .item > .indicator,
 .VPSidebarItem.level-3.is-active > .item > .indicator,
 .VPSidebarItem.level-4.is-active > .item > .indicator,
