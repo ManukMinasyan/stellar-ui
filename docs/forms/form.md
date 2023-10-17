@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Form/Basic.vue';
 import Yup from './demo/Form/Yup.vue';
@@ -26,12 +30,12 @@ The Form component requires the `validate` and `state` props for form validation
 
 <<< @/forms/demo/Form/Basic.vue
 
-# Schema
+## Schema
 
 You can provide a schema from Yup, Zod or Joi, Valibot through the `schema` prop to validate the state. It's important to
 note that **none of these libraries are included** by default, so make sure to **install the one you need**.
 
-## Yup
+### Yup
 
 <DemoContainer>
   <Yup/>
@@ -39,7 +43,7 @@ note that **none of these libraries are included** by default, so make sure to *
 
 <<< @/forms/demo/Form/Yup.vue
 
-## Zod
+### Zod
 
 <DemoContainer>
   <Zod/>
@@ -47,7 +51,7 @@ note that **none of these libraries are included** by default, so make sure to *
 
 <<< @/forms/demo/Form/Zod.vue
 
-## Joi
+### Joi
 
 <DemoContainer>
   <Joi/>
@@ -55,7 +59,7 @@ note that **none of these libraries are included** by default, so make sure to *
 
 <<< @/forms/demo/Form/Joi.vue
 
-## Valibot
+### Valibot
 
 <DemoContainer>
   <Valibot/>

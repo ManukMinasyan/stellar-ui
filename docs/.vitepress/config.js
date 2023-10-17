@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     title: 'Stellar UI',
-    description: 'Just playing around.',
+    description: 'Fully styled and customizable components for Vue 3',
     base: '/stellar-ui/',
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
