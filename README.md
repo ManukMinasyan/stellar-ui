@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/logo.png?raw=true" width="256" />
-</p>
+<img src="https://github.com/ManukMinasyan/stellar-ui/blob/main/art/components.png?raw=true" width="100%" />
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
