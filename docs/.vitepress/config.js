@@ -7,6 +7,8 @@ module.exports = {
     head: [['link', { rel: 'icon', href: '/stellar-ui/favicon.ico' }]],
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
+        logo: { light: '/logo-light.svg', dark: '/logo-dark.svg', alt: 'Stellar UI Logo' },
+        siteTitle: '',
         socialLinks: [
             {icon: 'github', link: 'https://github.com/ManukMinasyan/stellar-ui'}
         ],
