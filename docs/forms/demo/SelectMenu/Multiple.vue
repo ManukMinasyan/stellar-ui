@@ -6,5 +6,5 @@ const selected = ref([])
 </script>
 
 <template>
-  <SSelectMenu v-model="selected" :options="people" multiple placeholder="Select people" />
+  <s-select-menu v-model="selected" :options="people" multiple placeholder="Select people" />
 </template>

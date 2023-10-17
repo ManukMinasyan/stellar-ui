@@ -5,9 +5,9 @@ const isOpen = ref(false)
 </script>
 <template>
   <div>
-    <SButton label="Open" @click="isOpen = true" />
-    <SModal v-model="isOpen">
-      <SCard :ui="{ divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+    <s-button label="Open" @click="isOpen = true" />
+    <s-modal v-model="isOpen">
+      <s-card :ui="{ divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
         <template #header>
           <!-- Content -->
           <div class="p-5 border border-dashed">
@@ -25,7 +25,7 @@ const isOpen = ref(false)
             Footer
           </div>
         </template>
-      </SCard>
-    </SModal>
+      </s-card>
+    </s-modal>
   </div>
 </template>

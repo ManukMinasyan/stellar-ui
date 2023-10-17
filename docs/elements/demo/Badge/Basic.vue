@@ -1,3 +1,3 @@
 <template>
-  <SBadge>Badge</SBadge>
+  <s-badge>Badge</s-badge>
 </template>

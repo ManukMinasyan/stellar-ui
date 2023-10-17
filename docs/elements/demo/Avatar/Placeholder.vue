@@ -1,3 +1,3 @@
 <template>
-  <SAvatar alt="John Doe" size="sm" />
+  <s-avatar alt="John Doe" size="sm" />
 </template>

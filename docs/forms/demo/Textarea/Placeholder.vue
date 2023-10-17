@@ -1,3 +1,3 @@
 <template>
-  <STextarea placeholder="Search..." />
+  <s-textarea placeholder="Search..." />
 </template>

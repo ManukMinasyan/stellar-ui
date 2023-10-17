@@ -1,7 +1,7 @@
 <template>
   <s-input>
     <template #leading>
-      <SAvatar src="https://avatars.githubusercontent.com/u/2556185?v=4" size="3xs" />
+      <s-avatar src="https://avatars.githubusercontent.com/u/2556185?v=4" size="3xs" />
     </template>
   </s-input>
 </template>

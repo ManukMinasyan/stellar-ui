@@ -1,3 +1,3 @@
 <template>
-  <SKbd value="K" />
+  <s-kbd value="K" />
 </template>

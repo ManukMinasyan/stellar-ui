@@ -32,12 +32,12 @@ const selected = ref(people[0])
 </script>
 
 <template>
-  <SSelectMenu v-model="selected" :options="people">
+  <s-select-menu v-model="selected" :options="people">
     <template #label>
-      <SIcon v-if="selected.icon" :name="selected.icon" class="w-4 h-4" />
-      <SAvatar v-else-if="selected.avatar" v-bind="selected.avatar" size="3xs" />
+      <s-icon v-if="selected.icon" :name="selected.icon" class="w-4 h-4" />
+      <s-avatar v-else-if="selected.avatar" v-bind="selected.avatar" size="3xs" />
 
       {{ selected.label }}
     </template>
-  </SSelectMenu>
+  </s-select-menu>
 </template>

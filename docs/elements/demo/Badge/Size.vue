@@ -1,3 +1,3 @@
 <template>
-  <SBadge size="sm" label="Badge" />
+  <s-badge size="sm" label="Badge" />
 </template>

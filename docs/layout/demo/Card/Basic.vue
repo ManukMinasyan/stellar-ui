@@ -1,5 +1,5 @@
 <template>
-  <SCard class="w-full">
+  <s-card class="w-full">
     <template #header>
       Header
     </template>
@@ -11,7 +11,7 @@
     <template #footer>
       Footer
     </template>
-  </SCard>
+  </s-card>
 </template>
 <script setup lang="ts">
 </script>

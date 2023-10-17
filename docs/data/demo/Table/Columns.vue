@@ -55,5 +55,5 @@ const people = [{
 </script>
 
 <template>
-  <STable :columns="columns"  :rows="people" />
+  <s-table :columns="columns"  :rows="people" />
 </template>

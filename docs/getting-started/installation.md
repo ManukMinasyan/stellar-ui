@@ -38,6 +38,6 @@ Stellar UI provides out of box Tree Shaking functionalities based on ES Module.
 </script>
 
 <template>
-    <SButton>Submit</SButton>
+    <s-button>Submit</s-button>
 </template>
 ```

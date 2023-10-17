@@ -1,3 +1,3 @@
 <template>
-  <STextarea autoresize="true" />
+  <s-textarea autoresize="true" />
 </template>

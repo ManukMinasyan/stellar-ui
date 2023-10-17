@@ -1,3 +1,3 @@
 <template>
-  <STextarea rows="1"/>
+  <s-textarea rows="1"/>
 </template>

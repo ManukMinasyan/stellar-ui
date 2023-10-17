@@ -5,5 +5,5 @@ const value = ref('')
 </script>
 
 <template>
-  <STextarea size="sm" />
+  <s-textarea size="sm" />
 </template>

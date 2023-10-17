@@ -13,5 +13,5 @@ const items = [{
 </script>
 
 <template>
-  <SAccordion :items="items" color="primary" variant="outline" size="sm" />
+  <s-accordion :items="items" color="primary" variant="outline" size="sm" />
 </template>

@@ -1,3 +1,3 @@
 <template>
-  <SButton size="sm" label="Submit"/>
+  <s-button size="sm" label="Submit"/>
 </template>
