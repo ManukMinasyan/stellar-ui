@@ -6,6 +6,9 @@ module.exports = {
     base: '/stellar-ui/',
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
+        socialLinks: [
+            {icon: 'github', link: 'https://github.com/ManukMinasyan/stellar-ui'}
+        ],
         search: {
             provider: 'local'
         },
