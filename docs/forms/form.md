@@ -1,5 +1,6 @@
 <script setup>
 import Basic from './demo/Form/Basic.vue';
+import Yup from './demo/Form/Yup.vue';
 </script>
 
 # Form
@@ -10,14 +11,27 @@ elements.
 
 The Form component requires the `validate` and `state` props for form validation.
 
-
 - `state` - a reactive object that holds the current state of the form.
-- `validate` - a function that takes the form's state as input and returns an array of `FormError` objects with the following fields:
-  - `message` - the error message to display.
-  - `path` - the path to the form element matching the name.
+- `validate` - a function that takes the form's state as input and returns an array of `FormError` objects with the
+  following fields:
+    - `message` - the error message to display.
+    - `path` - the path to the form element matching the name.
 
 <DemoContainer>
   <Basic/>
 </DemoContainer>
 
 <<< @/forms/demo/Form/Basic.vue
+
+# Schema
+
+You can provide a schema from Yup, Zod or Joi, Valibot through the `schema` prop to validate the state. It's important to
+note that **none of these libraries are included** by default, so make sure to **install the one you need**.
+
+## Yup
+
+<DemoContainer>
+  <Yup/>
+</DemoContainer>
+
+<<< @/forms/demo/Form/Yup.vue
