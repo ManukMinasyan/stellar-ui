@@ -1,5 +1,6 @@
 // Elements
 import SAvatar from './elements/Avatar.vue'
+import SAlert from './elements/Alert.vue'
 import SAvatarGroup from './elements/AvatarGroup'
 import SBadge from './elements/Badge.vue'
 import SButton from './elements/Button.vue'
@@ -36,6 +37,7 @@ import SCard from './layout/Card.vue'
 
 export {
     SAvatar,
+    SAlert,
     SAvatarGroup,
     SBadge,
     SButton,

@@ -27,6 +27,7 @@ module.exports = {
                 collapsed: false,
                 items: [
                     {text: 'Accordion', link: '/elements/accordion'},
+                    {text: 'Alert', link: '/elements/alert'},
                     {text: 'Avatar', link: '/elements/avatar'},
                     {text: 'Badge', link: '/elements/badge'},
                     {text: 'Button', link: '/elements/button'},
