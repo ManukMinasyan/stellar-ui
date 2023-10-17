@@ -1,6 +1,7 @@
 <script setup>
 import Basic from './demo/Form/Basic.vue';
 import Yup from './demo/Form/Yup.vue';
+import Zod from './demo/Form/Zod.vue';
 </script>
 
 # Form
@@ -35,3 +36,11 @@ note that **none of these libraries are included** by default, so make sure to *
 </DemoContainer>
 
 <<< @/forms/demo/Form/Yup.vue
+
+## Zod
+
+<DemoContainer>
+  <Zod/>
+</DemoContainer>
+
+<<< @/forms/demo/Form/Zod.vue
