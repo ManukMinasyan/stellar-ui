@@ -2,6 +2,7 @@
 import Basic from './demo/Form/Basic.vue';
 import Yup from './demo/Form/Yup.vue';
 import Zod from './demo/Form/Zod.vue';
+import Joi from './demo/Form/Joi.vue';
 </script>
 
 # Form
@@ -44,3 +45,11 @@ note that **none of these libraries are included** by default, so make sure to *
 </DemoContainer>
 
 <<< @/forms/demo/Form/Zod.vue
+
+## Joi
+
+<DemoContainer>
+  <Joi/>
+</DemoContainer>
+
+<<< @/forms/demo/Form/Joi.vue
