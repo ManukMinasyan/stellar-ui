@@ -7,6 +7,7 @@ import Basic from './demo/Alert/Basic.vue';
 import Description from './demo/Alert/Description.vue';
 import Icon from './demo/Alert/Icon.vue';
 import Avatar from './demo/Alert/Avatar.vue';
+import Style from './demo/Alert/Style.vue';
 </script>
 
 # Alert
@@ -53,3 +54,16 @@ Use the [avatar](/elements/avatar) prop as an `object` and configure it with any
 </DemoContainer>
 
 <<< @/elements/demo/Alert/Avatar.vue
+
+### Style
+
+Use the `color` and `variant` props to change the visual style of the Alert.
+
+- `color` can be any color from the `ui.colors` object or `white` (default).
+- `variant` can be `solid` (default), `outline`, `soft` or `subtle`.
+
+<DemoContainer>
+<Style/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/Style.vue
