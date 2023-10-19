@@ -5,6 +5,7 @@ outline: deep
 <script setup>
 import Basic from './demo/Alert/Basic.vue';
 import Description from './demo/Alert/Description.vue';
+import Icon from './demo/Alert/Icon.vue';
 </script>
 
 # Alert
@@ -30,3 +31,14 @@ You can add a `description` in addition of the title.
 </DemoContainer>
 
 <<< @/elements/demo/Alert/Description.vue
+
+### Icon
+
+Use any icon from [Iconify](https://icones.js.org/) by setting the `icon` prop by using this pattern: `icon-[{collection_name}--{icon_name}]` or change it
+globally in `ui.alert.default.icon`.
+
+<DemoContainer>
+<Icon/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/Icon.vue
