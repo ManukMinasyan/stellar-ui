@@ -6,6 +6,7 @@ outline: deep
 import Basic from './demo/Alert/Basic.vue';
 import Description from './demo/Alert/Description.vue';
 import Icon from './demo/Alert/Icon.vue';
+import Avatar from './demo/Alert/Avatar.vue';
 </script>
 
 # Alert
@@ -42,3 +43,13 @@ globally in `ui.alert.default.icon`.
 </DemoContainer>
 
 <<< @/elements/demo/Alert/Icon.vue
+
+### Avatar
+
+Use the [avatar](/elements/avatar) prop as an `object` and configure it with any of its props.
+
+<DemoContainer>
+<Avatar/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/Avatar.vue
