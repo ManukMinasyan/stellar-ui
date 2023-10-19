@@ -74,11 +74,11 @@ import { defu } from 'defu'
 import UButton from '../elements/Button.vue'
 import UIcon from '../elements/Icon.vue'
 import UCheckbox from '../forms/Checkbox.vue'
-import { useUI } from '../../composables/useUI'
-import { mergeConfig, omit, get } from '../../utils'
-import type { Strategy, Button } from '../../types'
-import appConfig from '../../constants/app.config'
-import { table } from '../../ui.config'
+import { useUI } from '@/composables/useUI'
+import { mergeConfig, omit, get } from '@/utils'
+import type { Strategy, Button } from '@/types'
+import appConfig from '#constants/app.config'
+import { table } from '@/ui.config'
 
 const config = mergeConfig<typeof table>(appConfig.ui.strategy, appConfig.ui.table, table)
 
@@ -151,13 +151,15 @@ export default defineComponent({
       default: undefined
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'update:sort'],
   setup (props, { emit, attrs: $attrs }) {
     const { ui, attrs } = useUI('table', toRef(props, 'ui'), config, toRef(props, 'class'))
 
     const columns = computed(() => props.columns ?? Object.keys(omit(props.rows[0] ?? {}, ['click'])).map((key) => ({ key, label: upperFirst(key), sortable: false })))
 
     const sort = ref(defu({}, props.sort, { column: null, direction: 'asc' }))
+
+    const defaultSort = { column: sort.value.column, direction: null }
 
     const rows = computed(() => {
       if (!sort.value?.column) {
@@ -167,8 +169,8 @@ export default defineComponent({
       const { column, direction } = sort.value
 
       return props.rows.slice().sort((a, b) => {
-        const aValue = a[column]
-        const bValue = b[column]
+        const aValue = get(a, column)
+        const bValue = get(b, column)
 
         if (aValue === bValue) {
           return 0
@@ -224,13 +226,15 @@ export default defineComponent({
         const direction = !column.direction || column.direction === 'asc' ? 'desc' : 'asc'
 
         if (sort.value.direction === direction) {
-          sort.value = defu({}, props.sort, { column: null, direction: 'asc' })
+          sort.value = defu({}, defaultSort, { column: null, direction: 'asc' })
         } else {
           sort.value.direction = sort.value.direction === 'asc' ? 'desc' : 'asc'
         }
       } else {
         sort.value = { column: column.key, direction: column.direction || 'asc' }
       }
+
+      emit('update:sort', sort.value)
     }
 
     function onSelect (row) {
