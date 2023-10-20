@@ -10,6 +10,7 @@ import Avatar from './demo/Alert/Avatar.vue';
 import Style from './demo/Alert/Style.vue';
 import Close from './demo/Alert/Close.vue';
 import Actions from './demo/Alert/Actions.vue';
+import ActionsWithDescription from './demo/Alert/ActionsWithDescription.vue';
 </script>
 
 # Alert
@@ -102,3 +103,11 @@ customize the default style for the actions globally through `ui.alert.default.a
 </DemoContainer>
 
 <<< @/elements/demo/Alert/Actions.vue
+
+Actions will render differently whether you have a `description` set.
+
+<DemoContainer>
+<ActionsWithDescription/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/ActionsWithDescription.vue
