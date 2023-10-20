@@ -37,7 +37,7 @@ If you don’t care about the bundle size so much, it’s more convenient to use
 // main.ts
 import { createApp } from 'vue'
 import StellarUI from 'stellar-ui'
-import 'stellar-ui/dist/index.css';
+import 'stellar-ui/dist/style.css';
 import App from './App.vue'
 
 const app = createApp(App)
