@@ -8,6 +8,7 @@ import Description from './demo/Alert/Description.vue';
 import Icon from './demo/Alert/Icon.vue';
 import Avatar from './demo/Alert/Avatar.vue';
 import Style from './demo/Alert/Style.vue';
+import Close from './demo/Alert/Close.vue';
 </script>
 
 # Alert
@@ -36,7 +37,8 @@ You can add a `description` in addition of the title.
 
 ### Icon
 
-Use any icon from [Iconify](https://icones.js.org/) by setting the `icon` prop by using this pattern: `icon-[{collection_name}--{icon_name}]` or change it
+Use any icon from [Iconify](https://icones.js.org/) by setting the `icon` prop by using this
+pattern: `icon-[{collection_name}--{icon_name}]` or change it
 globally in `ui.alert.default.icon`.
 
 <DemoContainer>
@@ -67,3 +69,19 @@ Use the `color` and `variant` props to change the visual style of the Alert.
 </DemoContainer>
 
 <<< @/elements/demo/Alert/Style.vue
+
+### Close
+
+Use the `close-button` prop to hide or customize the close button on the Alert.
+
+You can pass all the props of the [Button](/elements/button) component to customize it through the `close-button` prop or globally through
+`ui.alert.default.closeButton`.
+
+It defaults to `null` which means no close button will be displayed. A `close` event will be emitted when the close button
+is clicked.
+
+<DemoContainer>
+<Close/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/Close.vue
