@@ -1,8 +1,13 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Badge/Basic.vue';
 import Label from './demo/Badge/Label.vue';
 import Style from './demo/Badge/Style.vue';
 import Size from './demo/Badge/Size.vue';
+import Rounded from './demo/Badge/Rounded.vue';
 </script>
 # Badge
 
@@ -43,3 +48,13 @@ Use the **size** prop to change the size of the Badge.
 </DemoContainer>
 
 <<< @/elements/demo/Badge/Size.vue
+
+## Rounded
+
+To customize the border radius of the Badge, you can use the `ui` prop.
+
+<DemoContainer>
+  <Rounded/>
+</DemoContainer>
+
+<<< @/elements/demo/Badge/Rounded.vue
