@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Accordion/Basic.vue';
 import Style from './demo/Accordion/Style.vue';
@@ -5,6 +9,7 @@ import Icon from './demo/Accordion/Icon.vue';
 import Multiple from './demo/Accordion/Multiple.vue';
 import Open from './demo/Accordion/Open.vue';
 import Slots from './demo/Accordion/Slots.vue';
+import SlotsItem from './demo/Accordion/SlotsItem.vue';
 </script>
 
 # Accordion
@@ -28,7 +33,7 @@ such as label, icon, color, variant, size, etc. but also:
 
 <<< @/elements/demo/Accordion/Basic.vue
 
-## Style
+### Style
 
 You can also pass any prop from the Button component directly to the Accordion component to style the buttons.
 
@@ -38,7 +43,7 @@ You can also pass any prop from the Button component directly to the Accordion c
 
 <<< @/elements/demo/Accordion/Style.vue
 
-## Icon
+### Icon
 
 Use any icon from [Iconify](https://icones.js.org/) by setting the `open-icon` and `close-icon` props by using this
 pattern:
@@ -53,7 +58,7 @@ You can also set them to `null` to hide the icons.
 
 <<< @/elements/demo/Accordion/Icon.vue
 
-## Multiple
+### Multiple
 
 Use the `multiple` prop to to allow multiple elements to be opened at the same time.
 
@@ -64,7 +69,7 @@ Use the `multiple` prop to to allow multiple elements to be opened at the same t
 
 <<< @/elements/demo/Accordion/Multiple.vue
 
-## Open
+### Open
 
 Use the `default-open` prop to open all items by default. Works better when the multiple prop is set to `true`.
 
@@ -78,9 +83,10 @@ Use the `default-open` prop to open all items by default. Works better when the 
 
 You can use slots to customize the buttons and items content of the Accordion.
 
-### default
+### `default`
 
-Use the `#default` slot to customize the trigger buttons. You will have access to the `item`, `index`, `open` properties and
+Use the `#default` slot to customize the trigger buttons. You will have access to the `item`, `index`, `open` properties
+and
 `close` method in the slot scope.
 
 <DemoContainer>
@@ -88,3 +94,14 @@ Use the `#default` slot to customize the trigger buttons. You will have access t
 </DemoContainer>
 
 <<< @/elements/demo/Accordion/Slots.vue
+
+### `item`
+
+Use the `#item` slot to customize the items content or pass a `slot` property to customize a specific item. You will have
+access to the `item`, `index`, `open` properties and `close` method in the slot scope.
+
+<DemoContainer>
+<SlotsItem/>
+</DemoContainer>
+
+<<< @/elements/demo/Accordion/SlotsItem.vue
