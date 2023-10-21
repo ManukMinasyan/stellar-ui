@@ -11,6 +11,7 @@ import Style from './demo/Alert/Style.vue';
 import Close from './demo/Alert/Close.vue';
 import Actions from './demo/Alert/Actions.vue';
 import ActionsWithDescription from './demo/Alert/ActionsWithDescription.vue';
+import Slots from './demo/Alert/Slots.vue';
 </script>
 
 # Alert
@@ -94,7 +95,8 @@ is clicked.
 
 Use the `actions` prop to add actions to the Alert.
 
-Like for `closeButton`, you can pass all the props of the [Button](/elements/button) component plus a `click` function in the action but also
+Like for `closeButton`, you can pass all the props of the [Button](/elements/button) component plus a `click` function
+in the action but also
 
 customize the default style for the actions globally through `ui.alert.default.actionButton`.
 
@@ -111,3 +113,18 @@ Actions will render differently whether you have a `description` set.
 </DemoContainer>
 
 <<< @/elements/demo/Alert/ActionsWithDescription.vue
+
+### Slots
+
+#### `title` / `description`
+
+Use the `#title` and `#description` slots to customize the Alert.
+
+This can be handy when you want to display HTML content. To achieve this, you can define those slots and use the `v-html`
+directive.
+
+<DemoContainer>
+<Slots/>
+</DemoContainer>
+
+<<< @/elements/demo/Alert/Slots.vue
