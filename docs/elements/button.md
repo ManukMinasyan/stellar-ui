@@ -5,6 +5,7 @@ import BasicStyle from './demo/Button/BasicStyle.vue';
 import BasicSize from './demo/Button/BasicSize.vue';
 import BasicIcon from './demo/Button/BasicIcon.vue';
 import BasicIconOnly from './demo/Button/BasicIconOnly.vue';
+import Disabled from './demo/Button/Disabled.vue';
 </script>
 # Button
 
@@ -64,3 +65,13 @@ The **label** as prop or slot is optional so you can use the Button as an icon-o
 </DemoContainer>
 
 <<< @/elements/demo/Button/BasicIconOnly.vue
+
+## Disabled
+
+Use the `disabled` prop to disable the Button.
+
+<DemoContainer>
+  <Disabled />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Disabled.vue
