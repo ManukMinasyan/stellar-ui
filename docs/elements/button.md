@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Button/Basic.vue';
 import BasicLabel from './demo/Button/BasicLabel.vue';
@@ -6,7 +10,9 @@ import BasicSize from './demo/Button/BasicSize.vue';
 import BasicIcon from './demo/Button/BasicIcon.vue';
 import BasicIconOnly from './demo/Button/BasicIconOnly.vue';
 import Disabled from './demo/Button/Disabled.vue';
+import Loading from './demo/Button/Loading.vue';
 </script>
+
 # Button
 
 Create a button with icon or link capabilities.
@@ -29,7 +35,8 @@ You can also use the label prop.
 
 <<< @/elements/demo/Button/BasicLabel.vue
 
-## Style
+### Style
+
 Use the **color** and **variant** props to change the visual style of the Button.
 
 <DemoContainer>
@@ -38,7 +45,8 @@ Use the **color** and **variant** props to change the visual style of the Button
 
 <<< @/elements/demo/Button/BasicStyle.vue
 
-## Size
+### Size
+
 Use the **size** prop to change the size of the Button.
 
 <DemoContainer>
@@ -47,10 +55,13 @@ Use the **size** prop to change the size of the Button.
 
 <<< @/elements/demo/Button/BasicSize.vue
 
-## Icon
-Use any icon from [Iconify](https://icones.js.org/) by setting the **icon** prop by using this pattern: **i-{collection_name}-{icon_name}**.
+### Icon
 
-Use the **leading** and **trailing** props to set the icon position or the **leading-icon** and **trailing-icon** props to set a different icon for each position.
+Use any icon from [Iconify](https://icones.js.org/) by setting the **icon** prop by using this pattern: *
+*i-{collection_name}-{icon_name}**.
+
+Use the **leading** and **trailing** props to set the icon position or the **leading-icon** and **trailing-icon** props
+to set a different icon for each position.
 
 <DemoContainer>
   <BasicIcon />
@@ -66,7 +77,7 @@ The **label** as prop or slot is optional so you can use the Button as an icon-o
 
 <<< @/elements/demo/Button/BasicIconOnly.vue
 
-## Disabled
+### Disabled
 
 Use the `disabled` prop to disable the Button.
 
@@ -75,3 +86,16 @@ Use the `disabled` prop to disable the Button.
 </DemoContainer>
 
 <<< @/elements/demo/Button/Disabled.vue
+
+### Loading
+
+Use the `loading` prop to show a loading icon and disable the Button.
+
+Use the `loading-icon` prop to set a different icon or change it globally in `ui.button.default.loadingIcon`. Defaults to
+`icon-[heroicons--arrow-path-20-solid]`.
+
+<DemoContainer>
+<Loading />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Loading.vue
