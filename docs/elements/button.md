@@ -11,6 +11,7 @@ import BasicIcon from './demo/Button/BasicIcon.vue';
 import BasicIconOnly from './demo/Button/BasicIconOnly.vue';
 import Disabled from './demo/Button/Disabled.vue';
 import Loading from './demo/Button/Loading.vue';
+import Block from './demo/Button/Block.vue';
 </script>
 
 # Button
@@ -99,3 +100,13 @@ Use the `loading-icon` prop to set a different icon or change it globally in `ui
 </DemoContainer>
 
 <<< @/elements/demo/Button/Loading.vue
+
+### Block
+
+Use the `block` prop to make the Button fill the width of its container.
+
+<DemoContainer>
+<Block />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Block.vue
