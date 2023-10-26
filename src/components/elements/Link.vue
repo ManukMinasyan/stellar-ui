@@ -1,21 +1,63 @@
 <template>
   <component
       :is="as"
+      v-if="!to"
       :disabled="disabled"
       v-bind="$attrs"
       :class="inactiveClass"
   >
-    <slot />
+    <slot/>
   </component>
+  <a
+      v-else
+      v-bind="$attrs"
+      :href="to.toString()"
+      :aria-disabled="disabled ? 'true' : undefined"
+      :role="disabled ? 'link' : undefined"
+      :rel="rel"
+      :target="target"
+      class="no-underline	"
+  >
+    <slot />
+  </a>
 </template>
 
 <script lang="ts">
-import { isEqual } from 'ohash'
-import { defineComponent } from 'vue'
+import {defineComponent} from 'vue'
+import type { PropType } from 'vue'
 
 export default defineComponent({
   inheritAttrs: false,
   props: {
+    to: {
+      type: [String, Object],
+      default: undefined,
+      required: false
+    },
+    href: {
+      type: [String, Object],
+      default: undefined,
+      required: false
+    },
+
+    // Attributes
+    target: {
+      type: String as PropType<string>,
+      default: undefined,
+      required: false
+    },
+    rel: {
+      type: String as PropType<string>,
+      default: undefined,
+      required: false
+    },
+    noRel: {
+      type: Boolean as PropType<boolean>,
+      default: undefined,
+      required: false
+    },
+
+
     as: {
       type: String,
       default: 'button'
@@ -40,42 +82,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    activeClass: {
-      type: String,
-      default: undefined
-    },
     inactiveClass: {
       type: String,
       default: undefined
     }
   },
-  setup (props) {
-    function resolveLinkClass (route, $route, { isActive, isExactActive }: { isActive: boolean, isExactActive: boolean }) {
-      if (props.active) {
-        return props.activeClass
-      }
-
-      if (props.exactQuery && !isEqual(route.query, $route.query)) {
-        return props.inactiveClass
-      }
-      if (props.exactHash && route.hash !== $route.hash) {
-        return props.inactiveClass
-      }
-
-      if (props.exact && isExactActive) {
-        return props.activeClass
-      }
-
-      if (!props.exact && isActive) {
-        return props.activeClass
-      }
-
-      return props.inactiveClass
-    }
-
-    return {
-      resolveLinkClass
-    }
-  }
 })
 </script>

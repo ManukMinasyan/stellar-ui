@@ -1,7 +1,7 @@
 <template>
-  <ULink :type="type" :disabled="disabled || loading" :class="buttonClass" v-bind="attrs">
+  <s-link :type="type" :disabled="disabled || loading" :class="buttonClass" v-bind="attrs">
     <slot name="leading" :disabled="disabled" :loading="loading">
-      <UIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="leadingIconClass" aria-hidden="true" />
+      <s-icon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="leadingIconClass" aria-hidden="true" />
     </slot>
 
     <slot>
@@ -11,17 +11,17 @@
     </slot>
 
     <slot name="trailing" :disabled="disabled" :loading="loading">
-      <UIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="trailingIconClass" aria-hidden="true" />
+      <s-icon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="trailingIconClass" aria-hidden="true" />
     </slot>
-  </ULink>
+  </s-link>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, toRef } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
-import UIcon from '../elements/Icon.vue'
-import ULink from '../elements/Link.vue'
+import SIcon from '../elements/Icon.vue'
+import SLink from '../elements/Link.vue'
 import { useUI } from '@/composables/useUI'
 import { mergeConfig } from '@/utils'
 import type { ButtonColor, ButtonSize, ButtonVariant, Strategy } from '@/types'
@@ -32,8 +32,8 @@ const config = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.bu
 
 export default defineComponent({
   components: {
-    UIcon,
-    ULink
+    SIcon,
+    SLink
   },
   inheritAttrs: false,
   props: {

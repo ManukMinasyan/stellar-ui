@@ -106,7 +106,7 @@
     transition: color 0.5s;
 }
 
-.vp-doc a {
+.vp-doc > div > a {
     font-weight: 500;
     color: var(--vp-c-brand-1);
     text-decoration: underline;

@@ -12,6 +12,7 @@ import BasicIconOnly from './demo/Button/BasicIconOnly.vue';
 import Disabled from './demo/Button/Disabled.vue';
 import Loading from './demo/Button/Loading.vue';
 import Block from './demo/Button/Block.vue';
+import Link from './demo/Button/Link.vue';
 </script>
 
 # Button
@@ -110,3 +111,13 @@ Use the `block` prop to make the Button fill the width of its container.
 </DemoContainer>
 
 <<< @/elements/demo/Button/Block.vue
+
+### Link
+
+Use the `to` prop to make the Button a link.
+
+<DemoContainer>
+<Link />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Link.vue
