@@ -2,7 +2,7 @@
   <div :class="ui.wrapper">
     <div class="flex items-center h-5">
       <input
-          :id="inputId"
+          :id="id"
           v-model="pick"
           :name="name"
           :required="required"
@@ -14,8 +14,8 @@
           v-bind="attrs"
       >
     </div>
-    <div v-if="label || $slots.label" class="ms-3 text-sm">
-      <label :for="inputId" :class="ui.label">
+    <div v-if="label || $slots.label" class="ms-3 flex flex-col">
+      <label :for="id" :class="ui.label">
         <slot name="label">{{ label }}</slot>
         <span v-if="required" :class="ui.required">*</span>
       </label>
@@ -27,17 +27,17 @@
 </template>
 
 <script lang="ts">
-import { computed, toRef, defineComponent } from 'vue'
+import { computed, defineComponent, inject, toRef } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
-import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
 import type { Strategy } from '../../types'
-import appConfig from '../../constants/app.config'
-import { radio } from '../../ui.config'
-import colors from '../../constants/colors.config'
+import appConfig from '#constants/app.config'
+import { radio } from '@/ui.config'
+import colors from '#constants/colors.config'
 import { uid } from '../../utils/uid'
+import { useFormGroup } from '../../composables/useFormGroup'
 
 const config = mergeConfig<typeof radio>(appConfig.ui.strategy, appConfig.ui.radio, radio)
 
@@ -97,11 +97,12 @@ export default defineComponent({
       default: undefined
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'change'],
   setup (props, { emit }) {
     const { ui, attrs } = useUI('radio', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const { emitFormChange, color, name, inputId } = useFormGroup(props)
+    const radioGroup = inject('radio-group', null)
+    const { emitFormChange, color, name } = radioGroup ?? useFormGroup(props, config)
 
     const pick = computed({
       get () {
@@ -109,7 +110,9 @@ export default defineComponent({
       },
       set (value) {
         emit('update:modelValue', value)
-        if (value) {
+        emit('change', value)
+
+        if (!radioGroup) {
           emitFormChange()
         }
       }
@@ -128,7 +131,6 @@ export default defineComponent({
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
-      inputId,
       attrs,
       pick,
       // eslint-disable-next-line vue/no-dupe-keys
