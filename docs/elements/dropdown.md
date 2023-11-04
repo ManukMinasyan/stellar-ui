@@ -1,6 +1,12 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Dropdown/Basic.vue';
+import Mode from './demo/Dropdown/Mode.vue';
 </script>
+
 # Dropdown
 
 Display a list of actions in a dropdown menu.
@@ -21,3 +27,13 @@ Pass an array of arrays to the items prop of the Dropdown component. Each array 
 </DemoContainer>
 
 <<< @/elements/demo/Dropdown/Basic.vue
+
+### Mode
+
+Use the `mode` prop to switch between `click` and `hover` modes.
+
+<DemoContainer>
+  <Mode/>
+</DemoContainer>
+
+<<< @/elements/demo/Dropdown/Mode.vue
