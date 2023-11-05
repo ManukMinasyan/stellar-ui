@@ -5,6 +5,7 @@ outline: deep
 <script setup>
 import Basic from './demo/Dropdown/Basic.vue';
 import Mode from './demo/Dropdown/Mode.vue';
+import PopperArrow from './demo/Dropdown/PopperArrow.vue';
 </script>
 
 # Dropdown
@@ -37,3 +38,15 @@ Use the `mode` prop to switch between `click` and `hover` modes.
 </DemoContainer>
 
 <<< @/elements/demo/Dropdown/Mode.vue
+
+### Popper
+
+Use the `popper` prop to customize the popper instance.
+
+#### Arrow
+
+<DemoContainer>
+  <PopperArrow/>
+</DemoContainer>
+
+<<< @/elements/demo/Dropdown/PopperArrow.vue
