@@ -13,6 +13,7 @@ import Disabled from './demo/Button/Disabled.vue';
 import Loading from './demo/Button/Loading.vue';
 import Block from './demo/Button/Block.vue';
 import Link from './demo/Button/Link.vue';
+import Padded from './demo/Button/Padded.vue';
 </script>
 
 # Button
@@ -121,3 +122,13 @@ Use the `to` prop to make the Button a link.
 </DemoContainer>
 
 <<< @/elements/demo/Button/Link.vue
+
+### Padded
+
+Use the `padded` prop to remove the padding of the Button.
+
+<DemoContainer>
+<Padded />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Padded.vue
