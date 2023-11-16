@@ -15,6 +15,7 @@ import Block from './demo/Button/Block.vue';
 import Link from './demo/Button/Link.vue';
 import Padded from './demo/Button/Padded.vue';
 import Square from './demo/Button/Square.vue';
+import Truncate from './demo/Button/Truncate.vue';
 </script>
 
 # Button
@@ -143,3 +144,13 @@ Use the `square` prop to force the Button to have the same padding horizontally 
 </DemoContainer>
 
 <<< @/elements/demo/Button/Padded.vue
+
+### Truncate
+
+Use the `truncate` prop to truncate the label of the Button.
+
+<DemoContainer>
+<Truncate />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Truncate.vue
