@@ -4,7 +4,7 @@ import SAlert from './elements/Alert.vue'
 import SAvatarGroup from './elements/AvatarGroup'
 import SBadge from './elements/Badge.vue'
 import SButton from './elements/Button.vue'
-// export { default as SButton } from './elements/Button.vue'
+import SButtonGroup from './elements/ButtonGroup'
 import SDropdown from './elements/Dropdown.vue'
 import SAccordion from './elements/Accordion.vue'
 import SIcon from './elements/Icon.vue'
@@ -42,6 +42,7 @@ export {
     SAvatarGroup,
     SBadge,
     SButton,
+    SButtonGroup,
     SDropdown,
     SAccordion,
     SIcon,

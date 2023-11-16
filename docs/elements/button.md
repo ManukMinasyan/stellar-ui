@@ -16,6 +16,8 @@ import Link from './demo/Button/Link.vue';
 import Padded from './demo/Button/Padded.vue';
 import Square from './demo/Button/Square.vue';
 import Truncate from './demo/Button/Truncate.vue';
+import GroupAction from './demo/Button/GroupAction.vue';
+import GroupInput from './demo/Button/GroupInput.vue';
 </script>
 
 # Button
@@ -154,3 +156,24 @@ Use the `truncate` prop to truncate the label of the Button.
 </DemoContainer>
 
 <<< @/elements/demo/Button/Truncate.vue
+
+### Group
+
+To stack buttons as a group, use the `ButtonGroup` component.
+- To size all the buttons equally, pass the `size` prop
+- To change the orientation of the buttons, set the `orientation` prop to `vertical`
+- To adjust the rounded or the shadow around buttons, customize with `ui.buttonGroup.rounded` or `ui.buttonGroup.shadow`
+
+<DemoContainer>
+<GroupAction />
+</DemoContainer>
+
+<<< @/elements/demo/Button/GroupAction.vue
+
+This can also work with an [Input](/forms/input) component for example:
+
+<DemoContainer>
+<GroupInput />
+</DemoContainer>
+
+<<< @/elements/demo/Button/GroupInput.vue
