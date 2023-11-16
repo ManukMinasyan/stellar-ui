@@ -14,6 +14,7 @@ import Loading from './demo/Button/Loading.vue';
 import Block from './demo/Button/Block.vue';
 import Link from './demo/Button/Link.vue';
 import Padded from './demo/Button/Padded.vue';
+import Square from './demo/Button/Square.vue';
 </script>
 
 # Button
@@ -129,6 +130,16 @@ Use the `padded` prop to remove the padding of the Button.
 
 <DemoContainer>
 <Padded />
+</DemoContainer>
+
+<<< @/elements/demo/Button/Padded.vue
+
+### Square
+
+Use the `square` prop to force the Button to have the same padding horizontally and vertically.
+
+<DemoContainer>
+<Square />
 </DemoContainer>
 
 <<< @/elements/demo/Button/Padded.vue
