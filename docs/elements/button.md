@@ -18,6 +18,8 @@ import Square from './demo/Button/Square.vue';
 import Truncate from './demo/Button/Truncate.vue';
 import GroupAction from './demo/Button/GroupAction.vue';
 import GroupInput from './demo/Button/GroupInput.vue';
+import LeadingSlot from './demo/Button/LeadingSlot.vue';
+import TrailingSlot from './demo/Button/TrailingSlot.vue';
 </script>
 
 # Button
@@ -177,3 +179,25 @@ This can also work with an [Input](/forms/input) component for example:
 </DemoContainer>
 
 <<< @/elements/demo/Button/GroupInput.vue
+
+### Slots
+
+#### `leading`
+
+Use the `#leading` slot to set the content of the leading icon.
+
+<DemoContainer>
+<LeadingSlot />
+</DemoContainer>
+
+<<< @/elements/demo/Button/LeadingSlot.vue
+
+#### `trailing`
+
+Use the `#trailing` slot to set the content of the trailing icon.
+
+<DemoContainer>
+<TrailingSlot />
+</DemoContainer>
+
+<<< @/elements/demo/Button/TrailingSlot.vue
