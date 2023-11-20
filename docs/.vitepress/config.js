@@ -37,6 +37,7 @@ module.exports = {
                     {text: 'Dropdown', link: '/elements/dropdown'},
                     {text: 'Icon', link: '/elements/icon'},
                     {text: 'Kbd', link: '/elements/kbd'},
+                    {text: 'Progress', link: '/elements/progress'},
                 ],
             },
             {

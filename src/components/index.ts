@@ -9,6 +9,7 @@ import SDropdown from './elements/Dropdown.vue'
 import SAccordion from './elements/Accordion.vue'
 import SIcon from './elements/Icon.vue'
 import SKbd from './elements/Kbd.vue'
+import SProgress from './elements/Progress.vue'
 
 // Forms
 import SInput from './forms/Input.vue'
@@ -47,6 +48,7 @@ export {
     SAccordion,
     SIcon,
     SKbd,
+    SProgress,
     SInput,
     STextarea,
     SSelect,
