@@ -213,7 +213,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /** These styles are required to animate the bar */
 progress:indeterminate {
   @apply relative;

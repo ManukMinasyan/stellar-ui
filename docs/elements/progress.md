@@ -7,6 +7,7 @@ import Basic from './demo/Progress/Basic.vue';
 import Max from './demo/Progress/Max.vue';
 import Steps from './demo/Progress/Steps.vue';
 import Indicator from './demo/Progress/Indicator.vue';
+import Indeterminate from './demo/Progress/Indeterminate.vue';
 </script>
 
 # Progress
@@ -35,7 +36,8 @@ You may also set the `max` number to set the maximum progress value, which will 
 
 ## Steps
 
-You can set an array of named steps in the `max` prop to show the active step, at the same time it sets the maximum value.
+You can set an array of named steps in the `max` prop to show the active step, at the same time it sets the maximum
+value.
 
 The first step is always shown at `0%`, making the last `100%`.
 
@@ -54,3 +56,14 @@ You can add a numeric indicator, which will show the percent on top the progress
 </DemoContainer>
 
 <<< @/elements/demo/Progress/Indicator.vue
+
+## Indeterminate
+
+By not setting a `value`, or setting it as `null`, the progress bar becomes indeterminate. The bar will be animated as a
+carousel, but you can change it using the `animation` prop for an inverse carousel, a swinging bar or an elastic bar.
+
+<DemoContainer>
+<Indeterminate/>
+</DemoContainer>
+
+<<< @/elements/demo/Progress/Indeterminate.vue
