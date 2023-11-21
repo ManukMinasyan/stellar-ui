@@ -6,6 +6,7 @@ outline: deep
 import Basic from './demo/Progress/Basic.vue';
 import Max from './demo/Progress/Max.vue';
 import Steps from './demo/Progress/Steps.vue';
+import Indicator from './demo/Progress/Indicator.vue';
 </script>
 
 # Progress
@@ -43,3 +44,13 @@ The first step is always shown at `0%`, making the last `100%`.
 </DemoContainer>
 
 <<< @/elements/demo/Progress/Steps.vue
+
+## Progress indicator
+
+You can add a numeric indicator, which will show the percent on top the progress track.
+
+<DemoContainer>
+  <Indicator/>
+</DemoContainer>
+
+<<< @/elements/demo/Progress/Indicator.vue
