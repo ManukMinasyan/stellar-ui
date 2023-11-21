@@ -5,6 +5,7 @@ outline: deep
 <script setup>
 import Basic from './demo/Progress/Basic.vue';
 import Max from './demo/Progress/Max.vue';
+import Steps from './demo/Progress/Steps.vue';
 </script>
 
 # Progress
@@ -30,3 +31,15 @@ You may also set the `max` number to set the maximum progress value, which will 
 </DemoContainer>
 
 <<< @/elements/demo/Progress/Max.vue
+
+## Steps
+
+You can set an array of named steps in the `max` prop to show the active step, at the same time it sets the maximum value.
+
+The first step is always shown at `0%`, making the last `100%`.
+
+<DemoContainer>
+  <Steps/>
+</DemoContainer>
+
+<<< @/elements/demo/Progress/Steps.vue
