@@ -27,6 +27,9 @@ import SForm from './forms/Form.vue'
 // Data
 import STable from './data/Table.vue'
 
+// Navigation
+import SPagination from './navigation/Pagination.vue'
+
 // Overlays
 import SModal from './overlays/Modal.vue'
 import SPopover from './overlays/Popover.vue'
@@ -61,6 +64,7 @@ export {
     SFormGroup,
     SForm,
     STable,
+    SPagination,
     SModal,
     SPopover,
     SNotification,
