@@ -64,6 +64,13 @@ module.exports = {
                 ],
             },
             {
+                text: 'Navigation',
+                collapsed: false,
+                items: [
+                    {text: 'Pagination', link: '/navigation/pagination'},
+                ],
+            },
+            {
                 text: 'Overlays',
                 collapsed: false,
                 items: [
