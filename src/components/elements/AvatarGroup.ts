@@ -1,7 +1,7 @@
 import { h, cloneVNode, computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
-import UAvatar from './Avatar.vue'
+import SAvatar from './Avatar.vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig, getSlotsChildren } from '../../utils'
 import type { AvatarSize, Strategy } from '../../types'
@@ -57,7 +57,7 @@ export default defineComponent({
             }
 
             if (max.value !== undefined && index === max.value) {
-                return h(UAvatar, {
+                return h(SAvatar, {
                     size: props.size || (avatarConfig.default.size as AvatarSize),
                     text: `+${children.value.length - max.value}`,
                     class: twJoin(ui.value.ring, ui.value.margin)

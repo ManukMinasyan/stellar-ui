@@ -27,7 +27,7 @@
               >
                 <slot :name="item.slot || 'item'" :item="item">
                   <UIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
-                  <UAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
+                  <s-avatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
 
                   <span class="truncate">{{ item.label }}</span>
 
@@ -50,7 +50,7 @@ import type { PropType } from 'vue'
 import { Menu as HMenu, MenuButton as HMenuButton, MenuItems as HMenuItems, MenuItem as HMenuItem } from '@headlessui/vue'
 import { defu } from 'defu'
 import UIcon from '../elements/Icon.vue'
-import UAvatar from '../elements/Avatar.vue'
+import SAvatar from '../elements/Avatar.vue'
 import UKbd from '../elements/Kbd.vue'
 import ULink from '../elements/Link.vue'
 import { useUI } from '../../composables/useUI'
@@ -69,7 +69,7 @@ export default defineComponent({
     HMenuItems,
     HMenuItem,
     UIcon,
-    UAvatar,
+    SAvatar,
     UKbd,
     ULink
   },

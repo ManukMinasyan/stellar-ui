@@ -2,7 +2,7 @@
   <div :class="alertClass" v-bind="attrs">
     <div class="flex gap-3" :class="{ 'items-start': (description || $slots.description), 'items-center': !description && !$slots.description }">
       <UIcon v-if="icon" :name="icon" :class="ui.icon.base" />
-      <UAvatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
+      <s-avatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
 
       <div class="w-0 flex-1">
         <p :class="ui.title">
@@ -36,7 +36,7 @@ import { computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import UAvatar from '../elements/Avatar.vue'
+import SAvatar from '../elements/Avatar.vue'
 import UButton from '../elements/Button.vue'
 import { useUI } from '@/composables/useUI'
 import type { Avatar, Button, NestedKeyOf, Strategy } from '@/types'
@@ -50,7 +50,7 @@ const config = mergeConfig<typeof alert>(appConfig.ui.strategy, appConfig.ui.ale
 export default defineComponent({
   components: {
     UIcon,
-    UAvatar,
+    SAvatar,
     UButton
   },
   inheritAttrs: false,

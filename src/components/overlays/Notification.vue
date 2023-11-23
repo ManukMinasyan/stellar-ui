@@ -5,7 +5,7 @@
         <div :class="ui.padding">
           <div class="flex gap-3" :class="{ 'items-start': description || $slots.description, 'items-center': !description && !$slots.description }">
             <UIcon v-if="icon" :name="icon" :class="iconClass" />
-            <UAvatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
+            <s-avatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
 
             <div class="w-0 flex-1">
               <p :class="ui.title">
@@ -43,7 +43,7 @@ import { ref, computed, toRef, onMounted, onUnmounted, watchEffect, defineCompon
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import UAvatar from '../elements/Avatar.vue'
+import SAvatar from '../elements/Avatar.vue'
 import UButton from '../elements/Button.vue'
 import { useUI } from '../../composables/useUI'
 import { useTimer } from '../../composables/useTimer'
@@ -57,7 +57,7 @@ const config = mergeConfig<typeof notification>(appConfig.ui.strategy, appConfig
 export default defineComponent({
   components: {
     UIcon,
-    UAvatar,
+    SAvatar,
     UButton
   },
   inheritAttrs: false,
