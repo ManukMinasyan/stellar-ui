@@ -7,7 +7,7 @@
       :class="switchClass"
       v-bind="attrs"
   >
-    <span :class="[active ? ui.container.active : ui.container.inactive, ui.container.base]">
+    <span :class="containerClass">
       <span v-if="onIcon" :class="[active ? ui.icon.active : ui.icon.inactive, ui.icon.base]" aria-hidden="true">
         <UIcon :name="onIcon" :class="onIconClass" />
       </span>
@@ -27,10 +27,11 @@ import UIcon from '../elements/Icon.vue'
 import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
-import type { Strategy } from '../../types'
-import appConfig from '../../constants/app.config'
-import { toggle } from '../../ui.config'
-import colors from '../../constants/colors.config'
+import type { ToggleSize, Strategy } from '../../types'
+import appConfig from '@/constants/app.config'
+import { toggle } from '@/ui.config'
+import colors from '@/constants/colors.config'
+
 const config = mergeConfig<typeof toggle>(appConfig.ui.strategy, appConfig.ui.toggle, toggle)
 
 export default defineComponent({
@@ -75,6 +76,13 @@ export default defineComponent({
       type: [String, Object, Array] as PropType<any>,
       default: undefined
     },
+    size: {
+      type: String as PropType<ToggleSize>,
+      default: config.default.size,
+      validator (value: string) {
+        return Object.keys(config.size).includes(value)
+      }
+    },
     ui: {
       type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
       default: undefined
@@ -99,20 +107,31 @@ export default defineComponent({
     const switchClass = computed(() => {
       return twMerge(twJoin(
           ui.value.base,
+          ui.value.size[props.size],
           ui.value.rounded,
           ui.value.ring.replaceAll('{color}', color.value),
           (active.value ? ui.value.active : ui.value.inactive).replaceAll('{color}', color.value)
       ), props.class)
     })
 
+    const containerClass = computed(() => {
+      return twJoin(
+          ui.value.container.base,
+          ui.value.container.size[props.size],
+          (active.value ? ui.value.container.active[props.size] : ui.value.container.inactive)
+      )
+    })
+
     const onIconClass = computed(() => {
       return twJoin(
+          ui.value.icon.size[props.size],
           ui.value.icon.on.replaceAll('{color}', color.value)
       )
     })
 
     const offIconClass = computed(() => {
       return twJoin(
+          ui.value.icon.size[props.size],
           ui.value.icon.off.replaceAll('{color}', color.value)
       )
     })
@@ -126,6 +145,7 @@ export default defineComponent({
       inputId,
       active,
       switchClass,
+      containerClass,
       onIconClass,
       offIconClass
     }
