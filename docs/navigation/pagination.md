@@ -5,6 +5,7 @@ outline: deep
 <script setup>
 import Basic from './demo/Pagination/Basic.vue';
 import Max from './demo/Pagination/Max.vue';
+import Size from './demo/Pagination/Size.vue';
 </script>
 
 # Pagination
@@ -31,3 +32,13 @@ Use the `max` prop to set a maximum of displayed pages. Defaults to `7`, being t
 </DemoContainer>
 
 <<< @/navigation/demo/Pagination/Max.vue
+
+## Size
+
+Use the `size` prop to change the size of the buttons.
+
+<DemoContainer>
+<Size/>
+</DemoContainer>
+
+<<< @/navigation/demo/Pagination/Size.vue
