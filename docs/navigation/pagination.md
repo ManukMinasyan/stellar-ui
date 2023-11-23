@@ -6,6 +6,7 @@ outline: deep
 import Basic from './demo/Pagination/Basic.vue';
 import Max from './demo/Pagination/Max.vue';
 import Size from './demo/Pagination/Size.vue';
+import ActiveInactive from './demo/Pagination/ActiveInactive.vue';
 </script>
 
 # Pagination
@@ -42,3 +43,13 @@ Use the `size` prop to change the size of the buttons.
 </DemoContainer>
 
 <<< @/navigation/demo/Pagination/Size.vue
+
+## Active / Inactive
+
+Use the `active-button` and `inactive-button` props to customize the active and inactive buttons of the Pagination.
+
+<DemoContainer>
+<ActiveInactive/>
+</DemoContainer>
+
+<<< @/navigation/demo/Pagination/ActiveInactive.vue
