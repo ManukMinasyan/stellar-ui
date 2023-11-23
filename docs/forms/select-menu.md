@@ -8,6 +8,7 @@ import Multiple from './demo/SelectMenu/Multiple.vue';
 import Objects from './demo/SelectMenu/Objects.vue';
 import ObjectsValueAttribute from './demo/SelectMenu/ObjectsValueAttribute.vue';
 import Icon from './demo/SelectMenu/Icon.vue';
+import Search from './demo/SelectMenu/Search.vue';
 </script>
 
 # Select Menu
@@ -68,3 +69,17 @@ Use the `selected-icon` prop to set a different icon or change it globally in `u
 </DemoContainer>
 
 <<< @/forms/demo/SelectMenu/Icon.vue
+
+## Search
+
+Use the `searchable` prop to enable search.
+
+Use the `searchable-placeholder` prop to set a different placeholder.
+
+This will use Headless UI Combobox component instead of Listbox.
+
+<DemoContainer>
+  <Search />
+</DemoContainer>
+
+<<< @/forms/demo/SelectMenu/Search.vue
