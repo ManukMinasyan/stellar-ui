@@ -38,6 +38,7 @@ import SNotifications from './overlays/Notifications.vue'
 
 // Layout
 import SCard from './layout/Card.vue'
+import SDivider from './layout/Divider.vue'
 
 
 export {
@@ -70,4 +71,5 @@ export {
     SNotification,
     SNotifications,
     SCard,
+    SDivider
 }
