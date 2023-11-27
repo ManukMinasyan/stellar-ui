@@ -1,6 +1,7 @@
 <script setup>
 import Basic from './demo/Divider/Basic.vue';
 import Icon from './demo/Divider/Icon.vue';
+import Avatar from './demo/Divider/Avatar.vue';
 </script>
 
 # Divider
@@ -26,3 +27,13 @@ Use any icon from Iconify by setting the `icon` prop by using this pattern: `ico
 </DemoContainer>
 
 <<< @/layout/demo/Divider/Icon.vue
+
+## Avatar
+
+Use the [avatar](/elements/avatar) prop as an object and configure it with any of its props.
+
+<DemoContainer>
+<Avatar/>
+</DemoContainer>
+
+<<< @/layout/demo/Divider/Avatar.vue
