@@ -23,6 +23,7 @@ module.exports = {
                     {text: 'Introduction', link: '/'},
                     {text: 'Installation', link: '/getting-started/installation'},
                     {text: 'Theming', link: '/getting-started/theming'},
+                    {text: 'Shortcuts', link: '/getting-started/shortcuts'},
                 ],
             },
             {
