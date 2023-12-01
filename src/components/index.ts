@@ -34,6 +34,7 @@ import SCommandPalette from './navigation/CommandPalette.vue'
 // Overlays
 import SModal from './overlays/Modal.vue'
 import SPopover from './overlays/Popover.vue'
+import STooltip from './overlays/Tooltip.vue'
 import SNotification from './overlays/Notification.vue'
 import SNotifications from './overlays/Notifications.vue'
 
@@ -70,6 +71,7 @@ export {
     SCommandPalette,
     SModal,
     SPopover,
+    STooltip,
     SNotification,
     SNotifications,
     SCard,
