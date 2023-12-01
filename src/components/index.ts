@@ -30,6 +30,7 @@ import STable from './data/Table.vue'
 // Navigation
 import SPagination from './navigation/Pagination.vue'
 import SCommandPalette from './navigation/CommandPalette.vue'
+import SBreadcrumb from './navigation/Breadcrumb.vue'
 
 // Overlays
 import SModal from './overlays/Modal.vue'
@@ -69,6 +70,7 @@ export {
     STable,
     SPagination,
     SCommandPalette,
+    SBreadcrumb,
     SModal,
     SPopover,
     STooltip,
