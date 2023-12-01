@@ -76,7 +76,7 @@ import { ComboboxOption as HComboboxOption } from '@headlessui/vue'
 import UIcon from '../elements/Icon.vue'
 import UAvatar from '../elements/Avatar.vue'
 import UKbd from '../elements/Kbd.vue'
-import type { Group } from '../../types'
+import type { Group } from '@/types'
 import { commandPalette } from '@/ui.config'
 
 export default defineComponent({

@@ -7,7 +7,7 @@ export interface Command {
     suffix?: string
     icon?: string
     iconClass?: string
-    avatar?: Partial<Avatar>
+    avatar?: Avatar
     chip?: string
     disabled?: boolean
     shortcuts?: string[]
@@ -21,6 +21,8 @@ export interface Group {
     key: string
     active?: string
     inactive?: string
-    commands: Command[]
+    commands?: Command[]
+    search?: Function
+    filter?: Function
     [key: string]: any
 }
