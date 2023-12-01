@@ -29,6 +29,7 @@ import STable from './data/Table.vue'
 
 // Navigation
 import SPagination from './navigation/Pagination.vue'
+import SCommandPalette from './navigation/CommandPalette.vue'
 
 // Overlays
 import SModal from './overlays/Modal.vue'
@@ -66,6 +67,7 @@ export {
     SForm,
     STable,
     SPagination,
+    SCommandPalette,
     SModal,
     SPopover,
     SNotification,

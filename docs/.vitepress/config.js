@@ -69,6 +69,7 @@ module.exports = {
                 collapsed: false,
                 items: [
                     {text: 'Pagination', link: '/navigation/pagination'},
+                    {text: 'CommandPalette', link: '/navigation/command-palette'},
                 ],
             },
             {
