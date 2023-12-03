@@ -32,7 +32,7 @@
 
                 <span class="truncate" :class="{ 'flex-none': command.suffix || command.matches?.length }">{{ command[commandAttribute] }}</span>
 
-                <!-- eslint-disable-next-line vue/no-v-html -->
+                <!-- @ts-ignore -->
                 <span v-if="command.matches?.length" class="truncate" :class="command.suffixClass || ui.group.command.suffix" v-html="highlight(command[commandAttribute], command.matches[0])" />
                 <span v-else-if="command.suffix" class="truncate" :class="command.suffixClass || ui.group.command.suffix">{{ command.suffix }}</span>
               </slot>
@@ -119,7 +119,7 @@ export default defineComponent({
       return typeof label === 'function' ? label(props.query) : label
     })
 
-    function highlight (text: string, { indices, value }: { indices: number[][], value: string }): string {
+    function highlight (text: string, { indices, value }: { indices: (readonly number[])[]; value: string; }): string {
       if (text === value) {
         return ''
       }

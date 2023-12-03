@@ -175,9 +175,9 @@ const safelistByComponent = {
 }
 
 const safelistComponentAliasesMap = {
-    'USelect': 'UInput',
-    'USelectMenu': 'UInput',
-    'UTextarea': 'UInput'
+    'SSelect': 'SInput',
+    'SSelectMenu': 'SInput',
+    'STextarea': 'SInput'
 }
 
 const colorsAsRegex = (colors: string[]): string => colors.join('|')
