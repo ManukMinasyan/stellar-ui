@@ -6,6 +6,7 @@ outline: deep
 import Basic from './demo/Dropdown/Basic.vue';
 import Mode from './demo/Dropdown/Mode.vue';
 import PopperArrow from './demo/Dropdown/PopperArrow.vue';
+import PopperPlacement from './demo/Dropdown/PopperPlacement.vue';
 </script>
 
 # Dropdown
@@ -50,3 +51,11 @@ Use the `popper` prop to customize the popper instance.
 </DemoContainer>
 
 <<< @/elements/demo/Dropdown/PopperArrow.vue
+
+#### Placement
+
+<DemoContainer>
+  <PopperPlacement/>
+</DemoContainer>
+
+<<< @/elements/demo/Dropdown/PopperPlacement.vue

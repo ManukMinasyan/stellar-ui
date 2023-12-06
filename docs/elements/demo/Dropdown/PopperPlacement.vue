@@ -10,7 +10,7 @@ const items = [
 </script>
 
 <template>
-  <SDropdown :items="items" :popper="{ arrow: true }">
+  <SDropdown :items="items" :popper="{ placement: 'right-start' }">
     <SButton color="white" label="Options" trailing-icon="icon-[heroicons--chevron-down-20-solid]" />
   </SDropdown>
 </template>
