@@ -7,6 +7,7 @@ import Basic from './demo/Dropdown/Basic.vue';
 import Mode from './demo/Dropdown/Mode.vue';
 import PopperArrow from './demo/Dropdown/PopperArrow.vue';
 import PopperPlacement from './demo/Dropdown/PopperPlacement.vue';
+import PopperOffset from './demo/Dropdown/PopperOffset.vue';
 </script>
 
 # Dropdown
@@ -59,3 +60,11 @@ Use the `popper` prop to customize the popper instance.
 </DemoContainer>
 
 <<< @/elements/demo/Dropdown/PopperPlacement.vue
+
+#### Offset
+
+<DemoContainer>
+  <PopperOffset/>
+</DemoContainer>
+
+<<< @/elements/demo/Dropdown/PopperOffset.vue
