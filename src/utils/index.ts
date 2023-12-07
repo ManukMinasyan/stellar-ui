@@ -4,7 +4,7 @@ import type { Strategy } from '../types'
 
 const customTwMerge = extendTailwindMerge({
   classGroups: {
-    icons: [(classPart: string) => /^i-/.test(classPart)]
+    icons: [(classPart: string) => /^icon-/.test(classPart)]
   }
 })
 
