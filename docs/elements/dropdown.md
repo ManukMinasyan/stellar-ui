@@ -8,6 +8,7 @@ import Mode from './demo/Dropdown/Mode.vue';
 import PopperArrow from './demo/Dropdown/PopperArrow.vue';
 import PopperPlacement from './demo/Dropdown/PopperPlacement.vue';
 import PopperOffset from './demo/Dropdown/PopperOffset.vue';
+import SlotsItem from './demo/Dropdown/SlotsItem.vue';
 </script>
 
 # Dropdown
@@ -68,3 +69,15 @@ Use the `popper` prop to customize the popper instance.
 </DemoContainer>
 
 <<< @/elements/demo/Dropdown/PopperOffset.vue
+
+## Slots
+
+### `item`
+
+Use the `#item` slot to customize the items content or pass a `slot` property to customize a specific item. You will have access to the `item` property in the slot scope.
+
+<DemoContainer>
+  <SlotsItem/>
+</DemoContainer>
+
+<<< @/elements/demo/Dropdown/SlotsItem.vue
