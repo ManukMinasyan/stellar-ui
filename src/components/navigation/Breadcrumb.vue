@@ -23,7 +23,7 @@
 
         <slot v-if="index < links.length - 1" name="divider">
           <template v-if="divider">
-            <UIcon v-if="divider.startsWith('i-')" :name="divider" :class="ui.divider.base" role="presentation" />
+            <UIcon v-if="divider.startsWith('icon-')" :name="divider" :class="ui.divider.base" role="presentation" />
             <span v-else role="presentation">{{ divider }}</span>
           </template>
         </slot>

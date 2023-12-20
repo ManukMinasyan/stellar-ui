@@ -70,6 +70,7 @@ module.exports = {
                 items: [
                     {text: 'Pagination', link: '/navigation/pagination'},
                     {text: 'CommandPalette', link: '/navigation/command-palette'},
+                    {text: 'Breadcrumb', link: '/navigation/breadcrumb'},
                 ],
             },
             {
