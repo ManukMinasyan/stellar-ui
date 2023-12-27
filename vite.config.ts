@@ -9,7 +9,6 @@ module.exports = defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
-            '#constants': path.resolve(__dirname, './src/constants'),
         },
     },
     server: {

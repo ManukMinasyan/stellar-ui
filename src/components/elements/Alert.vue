@@ -41,7 +41,7 @@ import UButton from '../elements/Button.vue'
 import { useUI } from '@/composables/useUI'
 import type { Avatar, Button, NestedKeyOf, Strategy } from '@/types'
 import { mergeConfig } from '@/utils'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { alert } from '@/ui.config'
 import colors from '@/constants/colors.config'
 

@@ -1,6 +1,6 @@
 import { computed, toValue, useAttrs } from 'vue'
 import type { Ref } from 'vue'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { mergeConfig, omit, get } from '@/utils'
 import { Strategy } from '@/types'
 

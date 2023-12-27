@@ -26,7 +26,7 @@ import {useUI} from '../../composables/useUI'
 import {useToast, useToastSharedState} from '../../composables/useToast'
 import {mergeConfig} from '../../utils'
 import type {Notification, Strategy} from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import {notifications} from '@/ui.config'
 
 const config = mergeConfig<typeof notifications>(appConfig.ui.strategy, appConfig.ui.notifications, notifications)

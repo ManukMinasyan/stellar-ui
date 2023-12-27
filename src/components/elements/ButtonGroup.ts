@@ -4,7 +4,7 @@ import { twMerge, twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig, getSlotsChildren } from '../../utils'
 import type { ButtonSize, Strategy } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { button, buttonGroup } from '@/ui.config'
 
 const buttonConfig = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.button, button)

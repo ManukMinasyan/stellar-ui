@@ -49,7 +49,7 @@ import { useUI } from '../../composables/useUI'
 import { useTimer } from '../../composables/useTimer'
 import { mergeConfig } from '../../utils'
 import type { Avatar, Button, NotificationColor, NotificationAction, Strategy } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { notification } from '@/ui.config'
 
 const config = mergeConfig<typeof notification>(appConfig.ui.strategy, appConfig.ui.notification, notification)

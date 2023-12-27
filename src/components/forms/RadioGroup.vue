@@ -32,9 +32,9 @@ import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig, get } from '../../utils'
 import type { Strategy } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { radioGroup, radio } from '@/ui.config'
-import colors from '#constants/colors.config'
+import colors from '@/constants/colors.config'
 
 const config = mergeConfig<typeof radioGroup>(appConfig.ui.strategy, appConfig.ui.radioGroup, radioGroup)
 const configRadio = mergeConfig<typeof radio>(appConfig.ui.strategy, appConfig.ui.radio, radio)

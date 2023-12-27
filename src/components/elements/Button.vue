@@ -25,7 +25,7 @@ import SLink from '../elements/Link.vue'
 import { useUI } from '@/composables/useUI'
 import { mergeConfig } from '@/utils'
 import type { ButtonColor, ButtonSize, ButtonVariant, Strategy } from '@/types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { button } from '@/ui.config'
 
 const config = mergeConfig<typeof button>(appConfig.ui.strategy, appConfig.ui.button, button)

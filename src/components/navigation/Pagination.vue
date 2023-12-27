@@ -72,7 +72,7 @@ import SButton from '../elements/Button.vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { Button, ButtonSize, Strategy } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { pagination, button } from '@/ui.config'
 
 const config = mergeConfig<typeof pagination>(appConfig.ui.strategy, appConfig.ui.pagination, pagination)

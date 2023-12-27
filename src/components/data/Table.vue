@@ -77,7 +77,7 @@ import UCheckbox from '../forms/Checkbox.vue'
 import { useUI } from '@/composables/useUI'
 import { mergeConfig, omit, get } from '@/utils'
 import type { Strategy, Button } from '@/types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { table } from '@/ui.config'
 
 const config = mergeConfig<typeof table>(appConfig.ui.strategy, appConfig.ui.table, table)

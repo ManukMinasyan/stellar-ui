@@ -29,7 +29,7 @@ import { twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { Strategy, ProgressSize, ProgressAnimation } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { progress } from '@/ui.config'
 
 const config = mergeConfig<typeof progress>(appConfig.ui.strategy, appConfig.ui.progress, progress)

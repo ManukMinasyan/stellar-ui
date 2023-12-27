@@ -57,7 +57,7 @@ import { useUI } from '../../composables/useUI'
 import { usePopper } from '../../composables/usePopper'
 import { mergeConfig, omit } from '../../utils'
 import type { DropdownItem, PopperOptions, Strategy } from '../../types'
-import appConfig from '#constants/app.config'
+import appConfig from '@/constants/app.config'
 import { dropdown } from '@/ui.config'
 
 const config = mergeConfig<typeof dropdown>(appConfig.ui.strategy, appConfig.ui.dropdown, dropdown)
