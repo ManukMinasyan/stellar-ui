@@ -4,7 +4,7 @@
         ref="trigger"
         as="div"
         :disabled="disabled"
-        class="inline-flex w-full"
+        :class="ui.trigger"
         role="button"
         @mouseover="onMouseOver"
     >
@@ -17,40 +17,49 @@
 
     <div v-if="open && items.length" ref="container" :class="[ui.container, ui.width]" :style="containerStyle" @mouseover="onMouseOver">
       <Transition appear v-bind="ui.transition">
-        <HMenuItems :class="[ui.base, ui.divide, ui.ring, ui.rounded, ui.shadow, ui.background, ui.height]" static>
-          <div v-for="(subItems, index) of items" :key="index" :class="ui.padding">
-            <HMenuItem v-for="(item, subIndex) of subItems" :key="subIndex" v-slot="{ active, disabled: itemDisabled }" :disabled="item.disabled">
-              <ULink
-                  v-bind="omit(item, ['label', 'slot', 'icon', 'iconClass', 'avatar', 'shortcuts', 'disabled', 'click'])"
-                  :class="[ui.item.base, ui.item.padding, ui.item.size, ui.item.rounded, active ? ui.item.active : ui.item.inactive, itemDisabled && ui.item.disabled]"
-                  @click="item.click"
-              >
-                <slot :name="item.slot || 'item'" :item="item">
-                  <UIcon v-if="item.icon" :name="item.icon" :class="[ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive, item.iconClass]" />
-                  <s-avatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
+        <div>
+          <div v-if="popper.arrow" data-popper-arrow :class="Object.values(ui.arrow)" />
+          <HMenuItems :class="[ui.base, ui.divide, ui.ring, ui.rounded, ui.shadow, ui.background, ui.height]" static>
+            <div v-for="(subItems, index) of items" :key="index" :class="ui.padding">
+              <ULink v-for="(item, subIndex) of subItems" :key="subIndex" v-slot="{ href, target, rel, navigate, isExternal }" v-bind="omit(item, ['label', 'labelClass', 'slot', 'icon', 'iconClass', 'avatar', 'shortcuts', 'disabled', 'class', 'click'])" class="block w-full">
+                <HMenuItem v-slot="{ active, disabled: itemDisabled, close }" :disabled="item.disabled">
+                  <component
+                      :is="!!href ? 'a' : 'button'"
+                      :href="!itemDisabled ? href : undefined"
+                      :rel="rel"
+                      :target="target"
+                      :class="twMerge(twJoin(ui.item.base, ui.item.padding, ui.item.size, ui.item.rounded, active ? ui.item.active : ui.item.inactive, itemDisabled && ui.item.disabled), item.class)"
+                      @click="onClick($event, item, { href, navigate, close, isExternal })"
+                  >
+                    <slot :name="item.slot || 'item'" :item="item">
+                      <UIcon v-if="item.icon" :name="item.icon" :class="twMerge(twJoin(ui.item.icon.base, active ? ui.item.icon.active : ui.item.icon.inactive), item.iconClass)" />
+                      <UAvatar v-else-if="item.avatar" v-bind="{ size: ui.item.avatar.size, ...item.avatar }" :class="ui.item.avatar.base" />
 
-                  <span class="truncate">{{ item.label }}</span>
+                      <span :class="twMerge(ui.item.label, item.labelClass)">{{ item.label }}</span>
 
-                  <span v-if="item.shortcuts?.length" :class="ui.item.shortcuts">
-                    <UKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</UKbd>
-                  </span>
-                </slot>
+                      <span v-if="item.shortcuts?.length" :class="ui.item.shortcuts">
+                        <UKbd v-for="shortcut of item.shortcuts" :key="shortcut">{{ shortcut }}</UKbd>
+                      </span>
+                    </slot>
+                  </component>
+                </HMenuItem>
               </ULink>
-            </HMenuItem>
-          </div>
-        </HMenuItems>
+            </div>
+          </HMenuItems>
+        </div>
       </Transition>
     </div>
   </HMenu>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, toRef, onMounted } from 'vue'
+import { defineComponent, ref, computed, toRef, onMounted, resolveComponent } from 'vue'
 import type { PropType } from 'vue'
 import { Menu as HMenu, MenuButton as HMenuButton, MenuItems as HMenuItems, MenuItem as HMenuItem } from '@headlessui/vue'
 import { defu } from 'defu'
+import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import SAvatar from '../elements/Avatar.vue'
+import UAvatar from '../elements/Avatar.vue'
 import UKbd from '../elements/Kbd.vue'
 import ULink from '../elements/Link.vue'
 import { useUI } from '../../composables/useUI'
@@ -69,7 +78,7 @@ export default defineComponent({
     HMenuItems,
     HMenuItem,
     UIcon,
-    SAvatar,
+    UAvatar,
     UKbd,
     ULink
   },
@@ -102,11 +111,11 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   setup (props) {
@@ -180,16 +189,33 @@ export default defineComponent({
       }, props.closeDelay)
     }
 
+    function onClick (e, item, { href, navigate, close, isExternal }) {
+      if (item.click) {
+        item.click(e)
+      }
+
+      if (href && !isExternal) {
+        navigate(e)
+
+        close()
+      }
+    }
+
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
       attrs,
+      // eslint-disable-next-line vue/no-dupe-keys
+      popper,
       trigger,
       container,
       containerStyle,
       onMouseOver,
       onMouseLeave,
-      omit
+      onClick,
+      omit,
+      twMerge,
+      twJoin,
     }
   }
 })

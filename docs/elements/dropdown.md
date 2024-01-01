@@ -24,6 +24,7 @@ Pass an array of arrays to the items prop of the Dropdown component. Each array 
 - avatar - The avatar of the item. You can pass all the props of the Avatar component.
 - shortcuts - The shortcuts of the item.
 - disabled - Whether the item is disabled.
+- `class` - The class of the item.
 - click - The click handler of the item.
 
 <DemoContainer>

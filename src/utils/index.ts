@@ -2,22 +2,29 @@ import { defu, createDefu } from 'defu'
 import { extendTailwindMerge } from 'tailwind-merge'
 import type { Strategy } from '../types'
 
-const customTwMerge = extendTailwindMerge({
-  classGroups: {
-    icons: [(classPart: string) => /^icon-/.test(classPart)]
+const customTwMerge = extendTailwindMerge<string, string>({
+  extend: {
+    classGroups: {
+      icons: [(classPart: string) => /^icon-/.test(classPart)]
+    }
   }
 })
 
 const defuTwMerge = createDefu((obj, key, value, namespace) => {
-  if (namespace !== 'default' && typeof obj[key] === 'string' && typeof value === 'string' && obj[key] && value) {
+  if (namespace === 'default' || namespace.startsWith('default.')) {
+    return false
+  }
+  if (namespace.endsWith('avatar') && key === 'size') {
+    return false
+  }
+  if (typeof obj[key] === 'string' && typeof value === 'string' && obj[key] && value) {
     // @ts-ignore
     obj[key] = customTwMerge(obj[key], value)
     return true
   }
 })
 
-
-export function mergeConfig<T> (strategy: string, ...configs): T {
+export function mergeConfig<T> (strategy: Strategy|string, ...configs): T {
   if (strategy === 'override') {
     return defu({}, ...configs) as T
   }
@@ -40,7 +47,7 @@ export function hexToRgb (hex: string) {
 
 export function getSlotsChildren (slots: any) {
   let children = slots.default?.()
-  if (children.length) {
+  if (children?.length) {
     children = children.flatMap(c => {
       if (typeof c.type === 'symbol') {
         if (typeof c.children === 'string') {
@@ -54,7 +61,16 @@ export function getSlotsChildren (slots: any) {
       return c
     }).filter(Boolean)
   }
-  return children
+  return children || []
+}
+
+/**
+ * "123-foo" will be parsed to 123
+ * This is used for the .number modifier in v-model
+ */
+export function looseToNumber (val: any): any {
+  const n = parseFloat(val)
+  return isNaN(n) ? val : n
 }
 
 export * from './lodash'
