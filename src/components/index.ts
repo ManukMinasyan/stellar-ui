@@ -10,6 +10,7 @@ import SAccordion from './elements/Accordion.vue'
 import SIcon from './elements/Icon.vue'
 import SKbd from './elements/Kbd.vue'
 import SProgress from './elements/Progress.vue'
+import SMeter from './elements/Meter.vue'
 
 // Forms
 import SInput from './forms/Input.vue'
@@ -56,6 +57,7 @@ export {
     SIcon,
     SKbd,
     SProgress,
+    SMeter,
     SInput,
     STextarea,
     SSelect,
