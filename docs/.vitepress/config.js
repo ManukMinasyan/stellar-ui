@@ -40,6 +40,7 @@ module.exports = {
                     {text: 'Kbd', link: '/elements/kbd'},
                     {text: 'Progress', link: '/elements/progress'},
                     {text: 'Meter', link: '/elements/meter'},
+                    {text: 'Chip', link: '/elements/chip'},
                 ],
             },
             {
