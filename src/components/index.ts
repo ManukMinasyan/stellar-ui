@@ -11,6 +11,7 @@ import SIcon from './elements/Icon.vue'
 import SKbd from './elements/Kbd.vue'
 import SProgress from './elements/Progress.vue'
 import SMeter from './elements/Meter.vue'
+import SChip from './elements/Chip.vue'
 
 // Forms
 import SInput from './forms/Input.vue'
@@ -58,6 +59,7 @@ export {
     SKbd,
     SProgress,
     SMeter,
+    SChip,
     SInput,
     STextarea,
     SSelect,
