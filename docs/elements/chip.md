@@ -5,6 +5,7 @@ outline: deep
 <script setup>
 import Basic from './demo/Chip/Basic.vue';
 import Size from './demo/Chip/Size.vue';
+import Color from './demo/Chip/Color.vue';
 </script>
 
 # Chip
@@ -30,3 +31,13 @@ Use the `size` prop to change the size of the chip.
 </DemoContainer>
 
 <<< @/elements/demo/Chip/Size.vue
+
+### Color
+
+Use the `color` prop to change the color of the chip.
+
+<DemoContainer>
+  <Color/>
+</DemoContainer>
+
+<<< @/elements/demo/Chip/Color.vue
