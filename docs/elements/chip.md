@@ -6,6 +6,7 @@ outline: deep
 import Basic from './demo/Chip/Basic.vue';
 import Size from './demo/Chip/Size.vue';
 import Color from './demo/Chip/Color.vue';
+import Position from './demo/Chip/Position.vue';
 </script>
 
 # Chip
@@ -41,3 +42,13 @@ Use the `color` prop to change the color of the chip.
 </DemoContainer>
 
 <<< @/elements/demo/Chip/Color.vue
+
+### Position
+
+Use the `position` prop to change the position of the chip.
+
+<DemoContainer>
+<Position/>
+</DemoContainer>
+
+<<< @/elements/demo/Chip/Position.vue
