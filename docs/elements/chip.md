@@ -8,6 +8,7 @@ import Size from './demo/Chip/Size.vue';
 import Color from './demo/Chip/Color.vue';
 import Position from './demo/Chip/Position.vue';
 import Text from './demo/Chip/Text.vue';
+import Show from './demo/Chip/Show.vue';
 </script>
 
 # Chip
@@ -63,3 +64,13 @@ Use the `text` prop to display text in the chip.
 </DemoContainer>
 
 <<< @/elements/demo/Chip/Text.vue
+
+### Show
+
+Use the `show` prop to conditionally display the chip.
+
+<DemoContainer>
+<Show/>
+</DemoContainer>
+
+<<< @/elements/demo/Chip/Show.vue
