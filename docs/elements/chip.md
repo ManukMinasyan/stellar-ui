@@ -7,6 +7,7 @@ import Basic from './demo/Chip/Basic.vue';
 import Size from './demo/Chip/Size.vue';
 import Color from './demo/Chip/Color.vue';
 import Position from './demo/Chip/Position.vue';
+import Text from './demo/Chip/Text.vue';
 </script>
 
 # Chip
@@ -52,3 +53,13 @@ Use the `position` prop to change the position of the chip.
 </DemoContainer>
 
 <<< @/elements/demo/Chip/Position.vue
+
+### Text
+
+Use the `text` prop to display text in the chip.
+
+<DemoContainer>
+<Text/>
+</DemoContainer>
+
+<<< @/elements/demo/Chip/Text.vue
