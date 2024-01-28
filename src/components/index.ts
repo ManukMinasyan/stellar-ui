@@ -15,6 +15,7 @@ import SChip from './elements/Chip.vue'
 
 // Forms
 import SInput from './forms/Input.vue'
+import SInputMenu from './forms/InputMenu.vue'
 import STextarea from './forms/Textarea.vue'
 import SSelect from './forms/Select.vue'
 import SSelectMenu from './forms/SelectMenu.vue'
@@ -61,6 +62,7 @@ export {
     SMeter,
     SChip,
     SInput,
+    SInputMenu,
     STextarea,
     SSelect,
     SSelectMenu,

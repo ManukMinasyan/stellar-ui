@@ -48,6 +48,7 @@ module.exports = {
                 collapsed: false,
                 items: [
                     {text: 'Input', link: '/forms/input'},
+                    {text: 'InputMenu', link: '/forms/input-menu'},
                     {text: 'Textarea', link: '/forms/textarea'},
                     {text: 'Select', link: '/forms/select'},
                     {text: 'Select Menu', link: '/forms/select-menu'},
