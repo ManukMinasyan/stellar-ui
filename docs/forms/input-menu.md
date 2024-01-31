@@ -4,6 +4,7 @@ outline: deep
 
 <script setup>
 import Basic from './demo/InputMenu/Basic.vue';
+import Objects from './demo/InputMenu/Objects.vue';
 </script>
 
 # InputMenu
@@ -23,3 +24,13 @@ Pass an array of strings or objects to the `options` prop to display in the menu
 </DemoContainer>
 
 <<< @/forms/demo/InputMenu/Basic.vue
+
+### Objects
+
+You can pass an array of objects to `options` and either compare on the whole object or use the `by` prop to compare on a specific key. You can configure which field will be used to display the label through the `option-attribute` prop that defaults to `label`.
+
+<DemoContainer>
+  <Objects/>
+</DemoContainer>
+
+<<< @/forms/demo/InputMenu/Objects.vue
