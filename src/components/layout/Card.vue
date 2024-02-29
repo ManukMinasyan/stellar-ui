@@ -7,7 +7,7 @@
     <div v-if="$slots.header" :class="[ui.header.base, ui.header.padding, ui.header.background]">
       <slot name="header" />
     </div>
-    <div :class="[ui.body.base, ui.body.padding, ui.body.background]">
+    <div v-if="$slots.default" :class="[ui.body.base, ui.body.padding, ui.body.background]">
       <slot />
     </div>
     <div v-if="$slots.footer" :class="[ui.footer.base, ui.footer.padding, ui.footer.background]">
@@ -23,8 +23,8 @@ import { twMerge, twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { Strategy } from '../../types'
-import appConfig from '../../constants/app.config'
-import { card } from '../../ui.config'
+import appConfig from '@/constants/app.config'
+import { card } from '@/ui.config'
 
 const config = mergeConfig<typeof card>(appConfig.ui.strategy, appConfig.ui.card, card)
 
@@ -37,11 +37,11 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   setup (props) {
