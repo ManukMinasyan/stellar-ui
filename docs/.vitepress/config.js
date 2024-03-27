@@ -84,6 +84,7 @@ module.exports = {
                     {text: 'Popover', link: '/overlays/popover'},
                     {text: 'Tooltip', link: '/overlays/tooltip'},
                     {text: 'Notification', link: '/overlays/notification'},
+                    {text: 'Slideover', link: '/overlays/slideover'},
                 ],
             },
             {

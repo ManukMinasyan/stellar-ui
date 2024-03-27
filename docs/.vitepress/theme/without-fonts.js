@@ -9,6 +9,7 @@ import './styles/components/vp-sponsor.css';
 import VPBadge from './components/VPBadge.vue';
 import Layout from './Layout.vue';
 import DemoContainer from "../components/DemoContainer.vue";
+import Placeholder from "../components/content/Placeholder.vue";
 import StellarUI from 'stellar-ui'
 // Note: if we add more optional components here, i.e. components that are not
 // used in the theme by default unless the user imports them, make sure to update
@@ -31,6 +32,7 @@ const theme = {
         app.use(StellarUI)
         app.component('Badge', VPBadge);
         app.component('DemoContainer', DemoContainer)
+        app.component('Placeholder', Placeholder)
     }
 };
 export default theme;
