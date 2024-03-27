@@ -1,31 +1,35 @@
 <template>
   <div :class="alertClass" v-bind="attrs">
-    <div class="flex gap-3" :class="{ 'items-start': (description || $slots.description), 'items-center': !description && !$slots.description }">
-      <UIcon v-if="icon" :name="icon" :class="ui.icon.base" />
-      <s-avatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
+    <div class="flex" :class="[ui.gap, { 'items-start': (description || $slots.description), 'items-center': !description && !$slots.description }]">
+      <slot name="icon" :icon="icon">
+        <UIcon v-if="icon" :name="icon" :ui="ui.icon.base" />
+      </slot>
+      <slot name="avatar" :avatar="avatar">
+        <UAvatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
+      </slot>
 
-      <div class="w-0 flex-1">
-        <p :class="ui.title">
+      <div :class="ui.inner">
+        <p v-if="(title || $slots.title)" :class="ui.title">
           <slot name="title" :title="title">
             {{ title }}
           </slot>
         </p>
-        <p v-if="description || $slots.description" :class="ui.description">
+        <p v-if="description || $slots.description" :class="twMerge(ui.description, !(title && $slots.title) && 'mt-0 leading-5')">
           <slot name="description" :description="description">
             {{ description }}
           </slot>
         </p>
 
-        <div v-if="(description || $slots.description) && actions.length" class="mt-3 flex items-center gap-2">
-          <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...ui.default.actionButton, ...action }" @click.stop="action.click" />
+        <div v-if="(description || $slots.description) && actions.length" :class="ui.actions">
+          <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...(ui.default.actionButton || {}), ...action }" @click.stop="onAction(action)" />
         </div>
       </div>
-      <div class="flex-shrink-0 flex items-center gap-3">
-        <div v-if="!description && !$slots.description && actions.length" class="flex items-center gap-2">
-          <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...ui.default.actionButton, ...action }" @click.stop="action.click" />
-        </div>
+      <div v-if="closeButton || (!description && !$slots.description && actions.length)" :class="twMerge(ui.actions, 'mt-0')">
+        <template v-if="!description && !$slots.description && actions.length">
+          <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...(ui.default.actionButton || {}), ...action }" @click.stop="onAction(action)" />
+        </template>
 
-        <UButton v-if="closeButton" aria-label="Close" v-bind="{ ...ui.default.closeButton, ...closeButton }" @click.stop="$emit('close')" />
+        <UButton v-if="closeButton" aria-label="Close" v-bind="{ ...(ui.default.closeButton || {}), ...closeButton }" @click.stop="$emit('close')" />
       </div>
     </div>
   </div>
@@ -36,28 +40,27 @@ import { computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
-import SAvatar from '../elements/Avatar.vue'
+import UAvatar from '../elements/Avatar.vue'
 import UButton from '../elements/Button.vue'
-import { useUI } from '@/composables/useUI'
-import type { Avatar, Button, NestedKeyOf, Strategy } from '@/types'
-import { mergeConfig } from '@/utils'
+import { useUI } from '../../composables/useUI'
+import type { Avatar, Button, AlertColor, AlertVariant, AlertAction, Strategy } from '../../types'
+import { mergeConfig } from '../../utils'
 import appConfig from '@/constants/app.config'
 import { alert } from '@/ui.config'
-import colors from '@/constants/colors.config'
 
 const config = mergeConfig<typeof alert>(appConfig.ui.strategy, appConfig.ui.alert, alert)
 
 export default defineComponent({
   components: {
     UIcon,
-    SAvatar,
+    UAvatar,
     UButton
   },
   inheritAttrs: false,
   props: {
     title: {
       type: String,
-      required: true
+      default: null
     },
     description: {
       type: String,
@@ -73,21 +76,21 @@ export default defineComponent({
     },
     closeButton: {
       type: Object as PropType<Button>,
-      default: () => config.default.closeButton as Button
+      default: () => config.default.closeButton as unknown as Button
     },
     actions: {
-      type: Array as PropType<(Button & { click?: Function })[]>,
+      type: Array as PropType<AlertAction[]>,
       default: () => []
     },
     color: {
-      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      type: String as PropType<AlertColor>,
       default: () => config.default.color,
       validator (value: string) {
         return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      type: String as PropType<AlertVariant>,
       default: () => config.default.variant,
       validator (value: string) {
         return [
@@ -98,11 +101,11 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   emits: ['close'],
@@ -121,11 +124,19 @@ export default defineComponent({
       ), props.class)
     })
 
+    function onAction (action: AlertAction) {
+      if (action.click) {
+        action.click()
+      }
+    }
+
     return {
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
       attrs,
-      alertClass
+      alertClass,
+      onAction,
+      twMerge
     }
   }
 })
