@@ -157,7 +157,7 @@ const heroImageSlotExists = inject('hero-image-slot-exists') as Ref<boolean>
   .name,
   .text {
     line-height: 64px;
-    font-size: 56px;
+    font-size: 50px;
   }
 
   .VPHero.has-image .name,

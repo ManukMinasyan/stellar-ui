@@ -1,15 +1,13 @@
 import type {Config} from 'tailwindcss'
-import { defaultExtractor as createDefaultExtractor } from 'tailwindcss/lib/lib/defaultExtractor.js'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import colors from "tailwindcss/colors";
 import forms from '@tailwindcss/forms'
 import aspectRatio from '@tailwindcss/aspect-ratio'
 import typography from '@tailwindcss/typography'
 import containerQueries from '@tailwindcss/container-queries'
-import { customSafelistExtractor, generateSafelist } from './src/constants/colors'
+import { generateSafelist } from './src/constants/colors'
 import { addDynamicIconSelectors } from '@iconify/tailwind';
 
-const defaultExtractor = createDefaultExtractor({ tailwindConfig: { separator: ':' } })
 
 /** @type {import('tailwindcss').Config} */
 export default <Partial<Config>>{
@@ -20,6 +18,7 @@ export default <Partial<Config>>{
     content: {
         files: [
             './docs/**/*.{vue,mjs,ts}',
+            './docs/.vitepress/components/**/*.{html,js,vue,ts,md}',
             './src/**/*.{vue,mjs,ts}',
             './src/*.{mjs,js,ts}'
         ]

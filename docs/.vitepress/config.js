@@ -20,7 +20,7 @@ module.exports = {
                 text: 'Getting Started',
                 collapsed: false,
                 items: [
-                    {text: 'Introduction', link: '/'},
+                    {text: 'Introduction', link: '/getting-started/introduction'},
                     {text: 'Installation', link: '/getting-started/installation'},
                     {text: 'Theming', link: '/getting-started/theming'},
                     {text: 'Shortcuts', link: '/getting-started/shortcuts'},
@@ -71,6 +71,7 @@ module.exports = {
                 text: 'Navigation',
                 collapsed: false,
                 items: [
+                    {text: 'Tabs', link: '/navigation/tabs'},
                     {text: 'Pagination', link: '/navigation/pagination'},
                     {text: 'CommandPalette', link: '/navigation/command-palette'},
                     {text: 'Breadcrumb', link: '/navigation/breadcrumb'},
@@ -98,6 +99,10 @@ module.exports = {
                 ],
             }
         ],
+        footer: {
+            message: 'Released under the MIT License.',
+            copyright: 'Copyright © 2023-present Manuk Minasyan',
+        }
     },
     vite: {
         resolve: {
