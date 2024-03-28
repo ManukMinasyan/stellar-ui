@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Card/Basic.vue';
 </script>

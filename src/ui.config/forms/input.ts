@@ -4,6 +4,17 @@ export default {
   form: 'form-input',
   rounded: 'rounded-md',
   placeholder: 'placeholder-gray-400 dark:placeholder-gray-500',
+  file: {
+    base: 'file:cursor-pointer file:rounded-l-md file:absolute file:left-0 file:inset-y-0 file:font-medium file:m-0 file:border-0 file:ring-1 file:ring-gray-300 dark:file:ring-gray-700 file:text-gray-900 dark:file:text-white file:bg-gray-50 hover:file:bg-gray-100 dark:file:bg-gray-800 dark:hover:file:bg-gray-700/50',
+    padding: {
+      '2xs': 'ps-[85px]',
+      xs: 'ps-[87px]',
+      sm: 'ps-[96px]',
+      md: 'ps-[98px]',
+      lg: 'ps-[100px]',
+      xl: 'ps-[109px]'
+    }
+  },
   size: {
     '2xs': 'text-xs',
     xs: 'text-xs',
@@ -76,24 +87,24 @@ export default {
       wrapper: 'absolute inset-y-0 start-0 flex items-center',
       pointer: 'pointer-events-none',
       padding: {
-        '2xs': 'ps-2',
-        xs: 'ps-2.5',
-        sm: 'ps-2.5',
-        md: 'ps-3',
-        lg: 'ps-3.5',
-        xl: 'ps-3.5'
+        '2xs': 'px-2',
+        xs: 'px-2.5',
+        sm: 'px-2.5',
+        md: 'px-3',
+        lg: 'px-3.5',
+        xl: 'px-3.5'
       }
     },
     trailing: {
       wrapper: 'absolute inset-y-0 end-0 flex items-center',
       pointer: 'pointer-events-none',
       padding: {
-        '2xs': 'pe-2',
-        xs: 'pe-2.5',
-        sm: 'pe-2.5',
-        md: 'pe-3',
-        lg: 'pe-3.5',
-        xl: 'pe-3.5'
+        '2xs': 'px-2',
+        xs: 'px-2.5',
+        sm: 'px-2.5',
+        md: 'px-3',
+        lg: 'px-3.5',
+        xl: 'px-3.5'
       }
     }
   },
@@ -101,6 +112,6 @@ export default {
     size: 'sm',
     color: 'white',
     variant: 'outline',
-    loadingIcon: 'icon-[heroicons--arrow-path-20-solid]'
+    loadingIcon: 'icon-heroicons-arrow-path-20-solid'
   }
 }

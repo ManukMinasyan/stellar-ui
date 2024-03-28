@@ -92,7 +92,9 @@ module.exports = {
                 collapsed: false,
                 items: [
                     {text: 'Card', link: '/layout/card'},
-                    {text: 'Divider', link: '/layout/divider'}
+                    {text: 'Container', link: '/layout/container'},
+                    {text: 'Divider', link: '/layout/divider'},
+                    {text: 'Skeleton', link: '/layout/skeleton'}
                 ],
             }
         ],

@@ -21,7 +21,7 @@
           autocomplete="off"
           v-bind="attrs"
           :display-value="() => query ? query : label"
-          @change="onChange"
+          @change="onQueryChange"
       />
 
       <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="leadingWrapperIconClass">
@@ -98,7 +98,8 @@ import {
   ComboboxButton as HComboboxButton,
   ComboboxOptions as HComboboxOptions,
   ComboboxOption as HComboboxOption,
-  ComboboxInput as HComboboxInput
+  ComboboxInput as HComboboxInput,
+  provideUseId
 } from '@headlessui/vue'
 import { computedAsync, useDebounceFn } from '@vueuse/core'
 import { defu } from 'defu'
@@ -113,6 +114,7 @@ import { useInjectButtonGroup } from '../../composables/useButtonGroup'
 import type { InputSize, InputColor, InputVariant, PopperOptions, Strategy } from '../../types'
 import appConfig from '@/constants/app.config'
 import { input, inputMenu } from '@/ui.config'
+import { useId } from '@/composables/useId'
 
 const config = mergeConfig<typeof input>(appConfig.ui.strategy, appConfig.ui.input, input)
 
@@ -274,7 +276,6 @@ export default defineComponent({
   emits: ['update:modelValue', 'update:query', 'open', 'close', 'change'],
   setup (props, { emit, slots }) {
     const { ui, attrs } = useUI('input', toRef(props, 'ui'), config, toRef(props, 'class'))
-
     const { ui: uiMenu } = useUI('inputMenu', toRef(props, 'uiMenu'), configMenu)
 
     const popper = computed<PopperOptions>(() => defu({}, props.popper, uiMenu.value.popper as PopperOptions))
@@ -416,16 +417,19 @@ export default defineComponent({
       }
     })
 
-    function onUpdate (event: any) {
+    function onUpdate (value: any) {
       query.value = ''
-      emit('update:modelValue', event)
-      emit('change', event)
+      emit('update:modelValue', value)
+      emit('change', value)
+
       emitFormChange()
     }
 
-    function onChange (event: any) {
+    function onQueryChange (event: any) {
       query.value = event.target.value
     }
+
+    provideUseId(() => useId())
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys
@@ -455,7 +459,7 @@ export default defineComponent({
       // eslint-disable-next-line vue/no-dupe-keys
       query,
       onUpdate,
-      onChange
+      onQueryChange
     }
   }
 })

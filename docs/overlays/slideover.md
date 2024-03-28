@@ -21,7 +21,7 @@ Use a `v-model` to control the Slideover state.
 
 <<< @/overlays/demo/Slideover/Basic.vue
 
-You can put a [Card](/components/card) component inside your Slideover to handle forms and take advantage of `header` and `footer` slots:
+You can put a [Card](/layout/card) component inside your Slideover to handle forms and take advantage of `header` and `footer` slots:
 
 <DemoContainer>
 <Card/>

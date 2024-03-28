@@ -1,6 +1,6 @@
 <template>
-  <div :class="ui.wrapper">
-    <div class="flex items-center h-5">
+  <div :class="ui.wrapper" :data-n-ids="attrs['data-n-ids']">
+    <div :class="ui.container">
       <input
           :id="inputId"
           v-model="toggle"
@@ -8,16 +8,14 @@
           :required="required"
           :value="value"
           :disabled="disabled"
-          :checked="checked"
           :indeterminate="indeterminate"
           type="checkbox"
-          class="form-checkbox"
           :class="inputClass"
           v-bind="attrs"
           @change="onChange"
       >
     </div>
-    <div v-if="label || $slots.label" class="ms-3 text-sm">
+    <div v-if="label || $slots.label" :class="ui.inner">
       <label :for="inputId" :class="ui.label">
         <slot name="label">{{ label }}</slot>
         <span v-if="required" :class="ui.required">*</span>
@@ -36,12 +34,11 @@ import { twMerge, twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
-import { uid } from '../../utils/uid'
 import type { Strategy } from '../../types'
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
-import { checkbox } from '../../ui.config'
-import colors from '../../constants/colors.config'
+import appConfig from '@/constants/app.config'
+import { checkbox } from '@/ui.config'
+import colors from '@/constants/colors.config'
+import { useId } from '@/composables/useId'
 
 const config = mergeConfig<typeof checkbox>(appConfig.ui.strategy, appConfig.ui.checkbox, checkbox)
 
@@ -50,8 +47,7 @@ export default defineComponent({
   props: {
     id: {
       type: String,
-      // A default value is needed here to bind the label
-      default: () => uid()
+      default: () => null
     },
     value: {
       type: [String, Number, Boolean, Object],
@@ -69,13 +65,9 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    checked: {
-      type: Boolean,
-      default: false
-    },
     indeterminate: {
       type: Boolean,
-      default: false
+      default: undefined
     },
     help: {
       type: String,
@@ -102,18 +94,19 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   emits: ['update:modelValue', 'change'],
   setup (props, { emit }) {
     const { ui, attrs } = useUI('checkbox', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const { emitFormChange, color, name, inputId } = useFormGroup(props)
+    const { emitFormChange, color, name, inputId: _inputId } = useFormGroup(props)
+    const inputId = _inputId.value ?? useId()
 
     const toggle = computed({
       get () {
@@ -125,18 +118,19 @@ export default defineComponent({
     })
 
     const onChange = (event: Event) => {
-      emit('change', event)
+      emit('change', (event.target as HTMLInputElement).value)
       emitFormChange()
     }
 
     const inputClass = computed(() => {
       return twMerge(twJoin(
           ui.value.base,
+          ui.value.form,
           ui.value.rounded,
           ui.value.background,
           ui.value.border,
-          ui.value.ring.replaceAll('{color}', color.value),
-          ui.value.color.replaceAll('{color}', color.value)
+          color.value && ui.value.ring.replaceAll('{color}', color.value),
+          color.value && ui.value.color.replaceAll('{color}', color.value)
       ), props.inputClass)
     })
 

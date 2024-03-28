@@ -8,12 +8,12 @@
         :type="type"
         :required="required"
         :placeholder="placeholder"
-        :disabled="disabled || loading"
-        class="form-input"
+        :disabled="disabled"
         :class="inputClass"
         v-bind="attrs"
         @input="onInput"
         @blur="onBlur"
+        @change="onChange"
     >
     <slot />
 
@@ -36,13 +36,14 @@ import { ref, computed, toRef, onMounted, defineComponent } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../elements/Icon.vue'
+import { defu } from 'defu'
 import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
-import { mergeConfig } from '../../utils'
-import type { NestedKeyOf, Strategy } from '../../types'
-import { input } from '../../ui.config'
-import appConfig from '../../constants/app.config'
-import colors from '../../constants/colors.config'
+import { mergeConfig, looseToNumber } from '../../utils'
+import { useInjectButtonGroup } from '../../composables/useButtonGroup'
+import type { InputSize, InputColor, InputVariant, Strategy } from '../../types'
+import appConfig from '@/constants/app.config'
+import { input } from '@/ui.config'
 
 const config = mergeConfig<typeof input>(appConfig.ui.strategy, appConfig.ui.input, input)
 
@@ -84,6 +85,10 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    autofocusDelay: {
+      type: Number,
+      default: 100
+    },
     icon: {
       type: String,
       default: null
@@ -117,21 +122,21 @@ export default defineComponent({
       default: true
     },
     size: {
-      type: String as PropType<keyof typeof config.size>,
+      type: String as PropType<InputSize>,
       default: null,
       validator (value: string) {
         return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      type: String as PropType<InputColor>,
       default: () => config.default.color,
       validator (value: string) {
         return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      type: String as PropType<InputVariant>,
       default: () => config.default.variant,
       validator (value: string) {
         return [
@@ -146,18 +151,28 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
+    },
+    modelModifiers: {
+      type: Object as PropType<{ trim?: boolean, lazy?: boolean, number?: boolean }>,
+      default: () => ({})
     }
   },
-  emits: ['update:modelValue', 'blur'],
+  emits: ['update:modelValue', 'blur', 'change'],
   setup (props, { emit, slots }) {
     const { ui, attrs } = useUI('input', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const { emitFormBlur, emitFormInput, size, color, inputId, name } = useFormGroup(props, config)
+    const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
+
+    const { emitFormBlur, emitFormInput, size: sizeFormGroup, color, inputId, name } = useFormGroup(props, config)
+
+    const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
+
+    const modelModifiers = ref(defu({}, props.modelModifiers, { trim: false, lazy: false, number: false }))
 
     const input = ref<HTMLInputElement | null>(null)
 
@@ -167,9 +182,42 @@ export default defineComponent({
       }
     }
 
-    const onInput = (event: InputEvent) => {
-      emit('update:modelValue', (event.target as HTMLInputElement).value)
+    // Custom function to handle the v-model properties
+    const updateInput = (value: string) => {
+
+      if (modelModifiers.value.trim) {
+        value = value.trim()
+      }
+
+      if (modelModifiers.value.number || props.type === 'number') {
+        value = looseToNumber(value)
+      }
+
+      emit('update:modelValue', value)
       emitFormInput()
+    }
+
+    const onInput = (event: Event) => {
+      if (!modelModifiers.value.lazy) {
+        updateInput((event.target as HTMLInputElement).value)
+      }
+    }
+
+    const onChange = (event: Event) => {
+      if (props.type === 'file') {
+        const value = (event.target as HTMLInputElement).files
+        emit('change', value)
+      } else {
+        const value = (event.target as HTMLInputElement).value
+        emit('change', value)
+        if (modelModifiers.value.lazy) {
+          updateInput(value)
+        }
+        // Update trimmed input so that it has same behavior as native input https://github.com/vuejs/core/blob/5ea8a8a4fab4e19a71e123e4d27d051f5e927172/packages/runtime-dom/src/directives/vModel.ts#L63
+        if (modelModifiers.value.trim) {
+          (event.target as HTMLInputElement).value = value.trim()
+        }
+      }
     }
 
     const onBlur = (event: FocusEvent) => {
@@ -180,7 +228,7 @@ export default defineComponent({
     onMounted(() => {
       setTimeout(() => {
         autoFocus()
-      }, 100)
+      }, props.autofocusDelay)
     })
 
     const inputClass = computed(() => {
@@ -188,8 +236,10 @@ export default defineComponent({
 
       return twMerge(twJoin(
           ui.value.base,
-          ui.value.rounded,
+          ui.value.form,
+          rounded.value,
           ui.value.placeholder,
+          props.type === 'file' && [ui.value.file.base, ui.value.file.padding[size.value]],
           ui.value.size[size.value],
           props.padded ? ui.value.padding[size.value] : 'p-0',
           variant?.replaceAll('{color}', color.value),
@@ -233,9 +283,9 @@ export default defineComponent({
     const leadingIconClass = computed(() => {
       return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          color.value && appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
           ui.value.icon.size[size.value],
-          props.loading && 'animate-spin'
+          props.loading && ui.value.icon.loading
       )
     })
 
@@ -250,9 +300,9 @@ export default defineComponent({
     const trailingIconClass = computed(() => {
       return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          color.value && appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
           ui.value.icon.size[size.value],
-          props.loading && !isLeading.value && 'animate-spin'
+          props.loading && !isLeading.value && ui.value.icon.loading
       )
     })
 
@@ -275,6 +325,7 @@ export default defineComponent({
       trailingIconClass,
       trailingWrapperIconClass,
       onInput,
+      onChange,
       onBlur
     }
   }

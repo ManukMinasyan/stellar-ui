@@ -23,7 +23,7 @@ placeholder, icon, disabled, etc.
 Like the Select component, you can use the options prop to pass an array of strings or objects.
 
 <DemoContainer>
-  <Basic/>
+  <Basic />
 </DemoContainer>
 
 <<< @/forms/demo/SelectMenu/Basic.vue

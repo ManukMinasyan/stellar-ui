@@ -52,8 +52,8 @@ export default {
         placement: 'bottom-end'
     },
     default: {
-        selectedIcon: 'i-heroicons-check-20-solid',
-        trailingIcon: 'i-heroicons-chevron-down-20-solid'
+        selectedIcon: 'icon-[heroicons--check-20-solid]',
+        trailingIcon: 'icon-[heroicons--chevron-down-20-solid]'
     },
     arrow: {
         ...arrow,

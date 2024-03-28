@@ -66,7 +66,7 @@ export default defineComponent({
       type: Boolean,
       default: null
     },
-    active: {
+    isActive: {
       type: Boolean,
       default: false
     },

@@ -1,12 +1,12 @@
 <template>
   <TransitionRoot :appear="appear" :show="isOpen" as="template">
-    <HDialog :class="ui.wrapper" v-bind="attrs" @close="(e) => !preventClose && close(e)">
+    <HDialog :class="ui.wrapper" v-bind="attrs" @close="close">
       <TransitionChild v-if="overlay" as="template" :appear="appear" v-bind="ui.overlay.transition">
         <div :class="[ui.overlay.base, ui.overlay.background]" />
       </TransitionChild>
 
       <div :class="ui.inner">
-        <div :class="[ui.container, ui.padding]">
+        <div :class="[ui.container, !fullscreen && ui.padding]">
           <TransitionChild as="template" :appear="appear" v-bind="transitionClass">
             <HDialogPanel
                 :class="[
@@ -14,10 +14,7 @@
                 ui.background,
                 ui.ring,
                 ui.shadow,
-                fullscreen ? 'w-screen' : ui.width,
-                fullscreen ? 'h-screen' : ui.height,
-                fullscreen ? 'rounded-none' : ui.rounded,
-                fullscreen ? 'm-0' : ui.margin
+                fullscreen ? ui.fullscreen : [ui.width, ui.height, ui.rounded, ui.margin],
               ]"
             >
               <slot />
@@ -32,12 +29,13 @@
 <script lang="ts">
 import { computed, toRef, defineComponent } from 'vue'
 import type { PropType } from 'vue'
-import { Dialog as HDialog, DialogPanel as HDialogPanel, TransitionRoot, TransitionChild } from '@headlessui/vue'
+import { Dialog as HDialog, DialogPanel as HDialogPanel, TransitionRoot, TransitionChild, provideUseId } from '@headlessui/vue'
 import { useUI } from '../../composables/useUI'
 import { mergeConfig } from '../../utils'
 import type { Strategy } from '../../types'
-import appConfig from '../../constants/app.config'
-import { modal } from '../../ui.config'
+import appConfig from '@/constants/app.config'
+import { modal } from '@/ui.config'
+import { useId } from '@/composables/useId'
 
 const config = mergeConfig<typeof modal>(appConfig.ui.strategy, appConfig.ui.modal, modal)
 
@@ -76,14 +74,14 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
-  emits: ['update:modelValue', 'close'],
+  emits: ['update:modelValue', 'close', 'close-prevented'],
   setup (props, { emit }) {
     const { ui, attrs } = useUI('modal', toRef(props, 'ui'), config, toRef(props, 'class'))
 
@@ -107,10 +105,18 @@ export default defineComponent({
     })
 
     function close (value: boolean) {
+      if (props.preventClose) {
+        emit('close-prevented')
+
+        return
+      }
+
       isOpen.value = value
 
       emit('close')
     }
+
+    provideUseId(() => useId())
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys

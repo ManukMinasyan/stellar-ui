@@ -45,7 +45,9 @@ import SSlideover from './overlays/Slideover.vue'
 
 // Layout
 import SCard from './layout/Card.vue'
+import SContainer from './layout/Container.vue'
 import SDivider from './layout/Divider.vue'
+import SSkeleton from './layout/Skeleton.vue'
 
 
 export {
@@ -85,5 +87,7 @@ export {
     SNotifications,
     SSlideover,
     SCard,
+    SContainer,
     SDivider,
+    SSkeleton
 }

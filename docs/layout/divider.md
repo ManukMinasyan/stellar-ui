@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 <script setup>
 import Basic from './demo/Divider/Basic.vue';
 import Icon from './demo/Divider/Icon.vue';

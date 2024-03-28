@@ -5,8 +5,7 @@
         :name="name"
         :value="modelValue"
         :required="required"
-        :disabled="disabled || loading"
-        class="form-select"
+        :disabled="disabled"
         :class="selectClass"
         v-bind="attrs"
         @input="onInput"
@@ -61,11 +60,10 @@ import UIcon from '../elements/Icon.vue'
 import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig, get } from '../../utils'
-import type { NestedKeyOf, Strategy } from '../../types'
-// @ts-expect-error
-import appConfig from '../../constants/app.config.ts'
-import { select } from '../../ui.config'
-import colors from '../../constants/colors.config'
+import { useInjectButtonGroup } from '../../composables/useButtonGroup'
+import type { SelectSize, SelectColor, SelectVariant, Strategy } from '../../types'
+import appConfig from '@/constants/app.config'
+import { select } from '@/ui.config'
 
 const config = mergeConfig<typeof select>(appConfig.ui.strategy, appConfig.ui.select, select)
 
@@ -136,21 +134,21 @@ export default defineComponent({
       default: () => []
     },
     size: {
-      type: String as PropType<keyof typeof config.size>,
+      type: String as PropType<SelectSize>,
       default: null,
       validator (value: string) {
         return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String as PropType<keyof typeof config.color | typeof colors[number]>,
+      type: String as PropType<SelectColor>,
       default: () => config.default.color,
       validator (value: string) {
         return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
       }
     },
     variant: {
-      type: String as PropType<keyof typeof config.variant | NestedKeyOf<typeof config.color>>,
+      type: String as PropType<SelectVariant>,
       default: () => config.default.variant,
       validator (value: string) {
         return [
@@ -173,26 +171,30 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   emits: ['update:modelValue', 'change'],
   setup (props, { emit, slots }) {
     const { ui, attrs } = useUI('select', toRef(props, 'ui'), config, toRef(props, 'class'))
 
-    const { emitFormChange, inputId, color, size, name } = useFormGroup(props, config)
+    const { size: sizeButtonGroup, rounded } = useInjectButtonGroup({ ui, props })
 
-    const onInput = (event: InputEvent) => {
+    const { emitFormChange, inputId, color, size: sizeFormGroup, name } = useFormGroup(props, config)
+
+    const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
+
+    const onInput = (event: Event) => {
       emit('update:modelValue', (event.target as HTMLInputElement).value)
     }
 
     const onChange = (event: Event) => {
+      emit('change', (event.target as HTMLInputElement).value)
       emitFormChange()
-      emit('change', event)
     }
 
     const guessOptionValue = (option: any) => {
@@ -252,13 +254,14 @@ export default defineComponent({
 
       return twMerge(twJoin(
           ui.value.base,
-          ui.value.rounded,
+          ui.value.form,
+          rounded.value,
           ui.value.size[size.value],
           props.padded ? ui.value.padding[size.value] : 'p-0',
           variant?.replaceAll('{color}', color.value),
           (isLeading.value || slots.leading) && ui.value.leading.padding[size.value],
           (isTrailing.value || slots.trailing) && ui.value.trailing.padding[size.value]
-      ), props.selectClass)
+      ), props.placeholder && !props.modelValue && ui.value.placeholder, props.selectClass)
     })
 
     const isLeading = computed(() => {
@@ -296,9 +299,9 @@ export default defineComponent({
     const leadingIconClass = computed(() => {
       return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          color.value && appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
           ui.value.icon.size[size.value],
-          props.loading && 'animate-spin'
+          props.loading && ui.value.icon.loading
       )
     })
 
@@ -313,9 +316,9 @@ export default defineComponent({
     const trailingIconClass = computed(() => {
       return twJoin(
           ui.value.icon.base,
-          appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
+          color.value && appConfig.ui.colors.includes(color.value) && ui.value.icon.color.replaceAll('{color}', color.value),
           ui.value.icon.size[size.value],
-          props.loading && !isLeading.value && 'animate-spin'
+          props.loading && !isLeading.value && ui.value.icon.loading
       )
     })
 
@@ -344,3 +347,9 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.form-select {
+  background-image: none;
+}
+</style>

@@ -9,7 +9,7 @@
     </slot>
 
     <progress :class="progressClass" v-bind="{ value, max: realMax }">
-      {{ Math.round(percent) }}%
+      {{ percent !== undefined ? `${Math.round(percent)}%` : undefined }}
     </progress>
 
     <div v-if="isSteps" :class="stepsClass">
@@ -23,14 +23,14 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, toRef } from 'vue'
-import type { PropType } from 'vue'
-import { twJoin } from 'tailwind-merge'
-import { useUI } from '../../composables/useUI'
-import { mergeConfig } from '../../utils'
-import type { Strategy, ProgressSize, ProgressAnimation } from '../../types'
+import {computed, defineComponent, toRef} from 'vue'
+import type {PropType} from 'vue'
+import {twJoin} from 'tailwind-merge'
+import {useUI} from '../../composables/useUI'
+import {mergeConfig} from '../../utils'
+import type {Strategy, ProgressSize, ProgressAnimation, ProgressColor} from '../../types'
 import appConfig from '@/constants/app.config'
-import { progress } from '@/ui.config'
+import {progress} from '@/ui.config'
 
 const config = mergeConfig<typeof progress>(appConfig.ui.strategy, appConfig.ui.progress, progress)
 
@@ -38,7 +38,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     value: {
-      type: [Number, null, undefined],
+      type: Number,
       default: null
     },
     max: {
@@ -52,35 +52,35 @@ export default defineComponent({
     animation: {
       type: String as PropType<ProgressAnimation>,
       default: () => config.default.animation,
-      validator (value: string) {
+      validator(value: string) {
         return Object.keys(config.animation).includes(value)
       }
     },
     size: {
       type: String as PropType<ProgressSize>,
       default: () => config.default.size,
-      validator (value: string) {
+      validator(value: string) {
         return Object.keys(config.progress.size).includes(value)
       }
     },
     color: {
-      type: String,
+      type: String as PropType<ProgressColor>,
       default: () => config.default.color,
-      validator (value: string) {
+      validator(value: string) {
         return appConfig.ui.colors.includes(value)
       }
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
-  setup (props) {
-    const { ui, attrs } = useUI('progress', toRef(props, 'ui'), config, toRef(props, 'class'))
+  setup(props) {
+    const {ui, attrs} = useUI('progress', toRef(props, 'ui'), config, toRef(props, 'class'))
 
     const indicatorContainerClass = computed(() => {
       return twJoin(
@@ -148,15 +148,15 @@ export default defineComponent({
       )
     })
 
-    function isActive (index: number) {
+    function isActive(index: number) {
       return index === Number(props.value)
     }
 
-    function isFirst (index: number) {
+    function isFirst(index: number) {
       return index === 0
     }
 
-    function stepClasses (index: string|number) {
+    function stepClasses(index: string | number) {
       index = Number(index)
 
       const classes = [stepClass.value]
@@ -172,7 +172,7 @@ export default defineComponent({
       return classes.join(' ')
     }
 
-    const isIndeterminate = computed(() => [undefined, null].includes(props.value))
+    const isIndeterminate = computed(() => props.value === undefined || props.value === null)
     const isSteps = computed(() => Array.isArray(props.max))
 
     const realMax = computed(() => {
@@ -188,10 +188,17 @@ export default defineComponent({
     })
 
     const percent = computed(() => {
+      if (isIndeterminate.value) {
+        return undefined
+      }
+
       switch (true) {
-        case props.value < 0: return 0
-        case props.value > realMax.value: return 100
-        default: return (props.value / realMax.value) * 100
+        case props.value < 0:
+          return 0
+        case props.value > (realMax.value as number):
+          return 100
+        default:
+          return (props.value / (realMax.value as number)) * 100
       }
     })
 
@@ -236,9 +243,11 @@ progress:indeterminate {
     &:after {
       animation: carousel 2s ease-in-out infinite;
     }
+
     &::-webkit-progress-value {
       animation: carousel 2s ease-in-out infinite;
     }
+
     &::-moz-progress-bar {
       animation: carousel 2s ease-in-out infinite;
     }
@@ -248,9 +257,11 @@ progress:indeterminate {
     &:after {
       animation: carousel-inverse 2s ease-in-out infinite;
     }
+
     &::-webkit-progress-value {
       animation: carousel-inverse 2s ease-in-out infinite;
     }
+
     &::-moz-progress-bar {
       animation: carousel-inverse 2s ease-in-out infinite;
     }
@@ -260,9 +271,11 @@ progress:indeterminate {
     &:after {
       animation: swing 3s ease-in-out infinite;
     }
+
     &::-webkit-progress-value {
       animation: swing 3s ease-in-out infinite;
     }
+
     &::-moz-progress-bar {
       animation: swing 3s ease-in-out infinite;
     }
@@ -272,9 +285,11 @@ progress:indeterminate {
     &::after {
       animation: elastic 3s ease-in-out infinite;
     }
+
     &::-webkit-progress-value {
       animation: elastic 3s ease-in-out infinite;
     }
+
     &::-moz-progress-bar {
       animation: elastic 3s ease-in-out infinite;
     }
@@ -282,26 +297,65 @@ progress:indeterminate {
 }
 
 @keyframes carousel {
-  0%, 100% { width: 50% }
-  0% { transform: translateX(-100%) }
-  100% { transform: translateX(200%) }
+
+  0%,
+  100% {
+    width: 50%
+  }
+
+  0% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(200%)
+  }
 }
 
 @keyframes carousel-inverse {
-  0%, 100% { width: 50% }
-  0% { transform: translateX(200%) }
-  100% { transform: translateX(-100%) }
+
+  0%,
+  100% {
+    width: 50%
+  }
+
+  0% {
+    transform: translateX(200%)
+  }
+
+  100% {
+    transform: translateX(-100%)
+  }
 }
 
 @keyframes swing {
-  0%, 100% { width: 50% }
-  0%, 100% { transform: translateX(-25%) }
-  50% { transform: translateX(125%) }
+
+  0%,
+  100% {
+    width: 50%
+  }
+
+  0%,
+  100% {
+    transform: translateX(-25%)
+  }
+
+  50% {
+    transform: translateX(125%)
+  }
 }
 
 @keyframes elastic {
+
   /* Firefox doesn't do "margin: 0 auto", we have to play with margin-left */
-  0%, 100% { width: 50%; margin-left: 25%; }
-  50% { width: 90%; margin-left: 5% }
-}
-</style>
+  0%,
+  100% {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  50% {
+    width: 90%;
+    margin-left: 5%
+  }
+}</style>

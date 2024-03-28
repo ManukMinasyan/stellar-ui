@@ -40,10 +40,10 @@ export default {
     wrapper: 'absolute inset-x-0 -bottom-[0.5px] p-0'
   },
   default: {
-    sortAscIcon: 'i-heroicons-bars-arrow-up-20-solid',
-    sortDescIcon: 'i-heroicons-bars-arrow-down-20-solid',
+    sortAscIcon: 'icon-[heroicons--bars-arrow-up-20-solid]',
+    sortDescIcon: 'icon-[heroicons--bars-arrow-down-20-solid]',
     sortButton: {
-      icon: 'i-heroicons-arrows-up-down-20-solid',
+      icon: 'icon-[heroicons--arrows-up-down-20-solid]',
       trailing: true,
       square: true,
       color: 'gray' as const,
@@ -55,11 +55,11 @@ export default {
       animation: 'carousel' as const
     },
     loadingState: {
-      icon: 'i-heroicons-arrow-path-20-solid',
+      icon: 'icon-[heroicons--arrow-path-20-solid]',
       label: 'Loading...'
     },
     emptyState: {
-      icon: 'i-heroicons-circle-stack-20-solid',
+      icon: 'icon-[heroicons--circle-stack-20-solid]',
       label: 'No items.'
     }
   }

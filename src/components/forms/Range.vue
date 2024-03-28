@@ -26,10 +26,9 @@ import { twMerge, twJoin } from 'tailwind-merge'
 import { useUI } from '../../composables/useUI'
 import { useFormGroup } from '../../composables/useFormGroup'
 import { mergeConfig } from '../../utils'
-import type { Strategy } from '../../types'
+import type { RangeSize, RangeColor, Strategy } from '../../types'
 import appConfig from '@/constants/app.config'
 import { range } from '@/ui.config'
-import colors from '@/constants/colors.config'
 
 const config = mergeConfig<typeof range>(appConfig.ui.strategy, appConfig.ui.range, range)
 
@@ -65,14 +64,14 @@ export default defineComponent({
       default: 1
     },
     size: {
-      type: String as PropType<keyof typeof config.size>,
+      type: String as PropType<RangeSize>,
       default: null,
       validator (value: string) {
         return Object.keys(config.size).includes(value)
       }
     },
     color: {
-      type: String as PropType<typeof colors[number]>,
+      type: String as PropType<RangeColor>,
       default: () => config.default.color,
       validator (value: string) {
         return appConfig.ui.colors.includes(value)
@@ -84,11 +83,11 @@ export default defineComponent({
     },
     class: {
       type: [String, Object, Array] as PropType<any>,
-      default: undefined
+      default: () => ''
     },
     ui: {
-      type: Object as PropType<Partial<typeof config & { strategy?: Strategy }>>,
-      default: undefined
+      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+      default: () => ({})
     }
   },
   emits: ['update:modelValue', 'change'],
@@ -107,7 +106,7 @@ export default defineComponent({
     })
 
     const onChange = (event: Event) => {
-      emit('change', event)
+      emit('change', (event.target as HTMLInputElement).value)
       emitFormChange()
     }
 
@@ -123,7 +122,7 @@ export default defineComponent({
           ui.value.base,
           ui.value.background,
           ui.value.rounded,
-          ui.value.ring.replaceAll('{color}', color.value),
+          color.value && ui.value.ring.replaceAll('{color}', color.value),
           ui.value.size[size.value]
       ), props.inputClass)
     })
@@ -132,7 +131,7 @@ export default defineComponent({
       return twJoin(
           ui.value.thumb.base,
           // Intermediate class to allow thumb ring or background color (set to `current`) as it's impossible to safelist with arbitrary values
-          ui.value.thumb.color.replaceAll('{color}', color.value),
+          color.value && ui.value.thumb.color.replaceAll('{color}', color.value),
           ui.value.thumb.ring,
           ui.value.thumb.background,
           ui.value.thumb.size[size.value]
@@ -152,7 +151,7 @@ export default defineComponent({
       return twJoin(
           ui.value.progress.base,
           ui.value.progress.rounded,
-          ui.value.progress.background.replaceAll('{color}', color.value),
+          color.value && ui.value.progress.background.replaceAll('{color}', color.value),
           ui.value.progress.size[size.value]
       )
     })
