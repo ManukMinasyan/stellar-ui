@@ -1,7 +1,7 @@
 import type { Link } from './link'
 import { button } from '../ui.config'
 import type { NestedKeyOf } from '.'
-import colors from '#ui-colors'
+import colors from '@/constants/colors.config'
 
 export type ButtonSize = keyof typeof button.size
 export type ButtonColor = keyof typeof button.color | typeof colors[number]
