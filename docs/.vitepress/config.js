@@ -4,7 +4,10 @@ module.exports = {
     title: 'Stellar UI',
     description: 'Fully styled and customizable components for Vue 3',
     base: '/stellar-ui/',
-    head: [['link', { rel: 'icon', href: '/stellar-ui/favicon.ico' }]],
+    head: [
+        ['link', { rel: 'icon', href: '/stellar-ui/favicon.ico' }],
+        ['meta', { property: 'og:image', content: '/stellar-ui/og-image.png' }]
+    ],
     themeConfig: {
         repo: 'https://github.com/ManukMinasyan/stellar-ui',
         logo: { light: '/logo-light.svg', dark: '/logo-dark.svg', alt: 'Stellar UI Logo' },
