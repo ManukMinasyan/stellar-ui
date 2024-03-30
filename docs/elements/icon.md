@@ -20,9 +20,9 @@ To install it, add `@iconify/tailwind` as dev dependency:
 npm i -D @iconify/tailwind
 ```
 
-Then open `tailwind.config.js`, import `addDynamicIconSelectors` from `@iconify/tailwind` and add it to list of plugins.
+Then open `tailwind.config.ts`, import `addDynamicIconSelectors` from `@iconify/tailwind` and add it to list of plugins.
 
-Example `tailwind.config.js`:
+Example `tailwind.config.ts`:
 
 ```js
 const { addDynamicIconSelectors } = require('@iconify/tailwind');

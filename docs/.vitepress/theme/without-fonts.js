@@ -8,6 +8,7 @@ import './styles/components/vp-doc.css';
 import './styles/components/vp-sponsor.css';
 import VPBadge from './components/VPBadge.vue';
 import Layout from './Layout.vue';
+import Logo from "../components/Logo.vue";
 import HomePageDemo from "../components/HomePageDemo.vue";
 import DemoContainer from "../components/DemoContainer.vue";
 import Placeholder from "../components/content/Placeholder.vue";
@@ -31,6 +32,7 @@ const theme = {
     Layout,
     enhanceApp: ({ app }) => {
         app.use(StellarUI)
+        app.component('Logo', Logo);
         app.component('Badge', VPBadge);
         app.component('HomePageDemo', HomePageDemo)
         app.component('DemoContainer', DemoContainer)

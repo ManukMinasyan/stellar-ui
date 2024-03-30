@@ -17,5 +17,9 @@ hero:
       link: https://github.com/ManukMinasyan/stellar-ui
 ---
 
+<script setup>
+import Marketing from './.vitepress/components/Marketing.vue'
+</script>
 
+<Marketing />
 <HomePageDemo />

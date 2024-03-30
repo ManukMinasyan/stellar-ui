@@ -106,14 +106,5 @@ module.exports = {
             message: 'Released under the MIT License.',
             copyright: 'Copyright © 2023-present Manuk Minasyan',
         }
-    },
-    vite: {
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, '../../src'),
-                'stellar-ui': path.resolve(__dirname, '../../src'),
-            },
-            dedupe: ['vue'], // avoid error when using dependencies that also use Vue
-        }
     }
 }

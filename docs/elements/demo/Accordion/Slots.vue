@@ -29,7 +29,7 @@ const items = [
       <s-button color="gray" variant="ghost" class="border-b border-gray-200 dark:border-gray-700"
                 :ui="{ rounded :'rounded-none', padding: { sm:'p-3' } }">
         <template #leading>
-          <div class="w-6 h-6 rounded-full bg-primary-500 dark:bg-primary-400 flex items-center justify-center -my-1">
+          <div class="w-6 h-6 rounded-full bg-primary-500  flex items-center justify-center -my-1">
             <s-icon :name="item.icon" class="w-4 h-4 text-white dark:text-gray-900"/>
           </div>
         </template>

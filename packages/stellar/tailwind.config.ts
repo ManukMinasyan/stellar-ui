@@ -18,7 +18,6 @@ export default <Partial<Config>>{
     content: {
         files: [
             './docs/**/*.{vue,mjs,ts}',
-            './docs/.vitepress/components/**/*.{html,js,vue,ts,md}',
             './src/**/*.{vue,mjs,ts}',
             './src/*.{mjs,js,ts}'
         ]
