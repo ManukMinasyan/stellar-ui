@@ -159,8 +159,8 @@ export default defineComponent({
 })
 </script>
 
-<style>
-mark {
-  @apply bg-primary-400;
-}
-</style>
+<!--<style>-->
+<!--//mark {-->
+<!--//  //@apply bg-primary-400;-->
+<!--//}-->
+<!--</style>-->

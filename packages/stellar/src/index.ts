@@ -10,6 +10,8 @@ function install(app: App) {
 
 import './assets/main.scss'
 
+console.log('Stellar installed')
+
 export default {install}
 
 export * from './components'

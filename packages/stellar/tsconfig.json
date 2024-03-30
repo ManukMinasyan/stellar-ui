@@ -23,7 +23,7 @@
     "declarationDir": "./dist/types",
     "isolatedModules": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "../..",
     "paths": {
       "@/*": [
         "src/*"
@@ -42,6 +42,6 @@
     "src/index.js"
   ],
   "exclude": [
-    "docs"
+    "../../docs"
   ]
 }

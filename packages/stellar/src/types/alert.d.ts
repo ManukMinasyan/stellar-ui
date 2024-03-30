@@ -1,5 +1,5 @@
 import { alert } from '../ui.config'
-import type { NestedKeyOf, ExtractDeepKey, ExtractDeepObject } from '.'
+import type { NestedKeyOf, ExtractDeepKey, ExtractDeepObject } from './index'
 import type { Button } from './button'
 import colors from '@/constants/colors.config'
 import type { AppConfig } from 'nuxt/schema'

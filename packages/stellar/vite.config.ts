@@ -9,7 +9,7 @@ const config = {
         ],
         resolve: {
             alias: {
-                '@': resolve(__dirname, './packages/src'),
+                '@': resolve(__dirname, './src'),
             },
         },
         server: {
@@ -51,7 +51,7 @@ const config = {
         ],
         resolve: {
             alias: {
-                '@': resolve(__dirname, './packages/src'),
+                '@': resolve(__dirname, './src'),
             },
         },
         server: {
@@ -85,9 +85,6 @@ const config = {
         },
     },
 };
-console.log({
-    LIB_NAME: process.env.LIB_NAME,
-});
 
 const currentConfig = config[process.env.LIB_NAME];
 if (currentConfig === undefined) {
