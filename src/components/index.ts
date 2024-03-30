@@ -43,6 +43,7 @@ import STooltip from './overlays/Tooltip.vue'
 import SNotification from './overlays/Notification.vue'
 import SNotifications from './overlays/Notifications.vue'
 import SSlideover from './overlays/Slideover.vue'
+import SContextMenu from './overlays/ContextMenu.vue'
 
 // Layout
 import SCard from './layout/Card.vue'
@@ -88,6 +89,7 @@ export {
     SNotification,
     SNotifications,
     SSlideover,
+    SContextMenu,
     SCard,
     SContainer,
     SDivider,

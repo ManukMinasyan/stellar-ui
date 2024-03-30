@@ -89,6 +89,7 @@ module.exports = {
                     {text: 'Tooltip', link: '/overlays/tooltip'},
                     {text: 'Notification', link: '/overlays/notification'},
                     {text: 'Slideover', link: '/overlays/slideover'},
+                    {text: 'ContextMenu', link: '/overlays/context-menu'},
                 ],
             },
             {
