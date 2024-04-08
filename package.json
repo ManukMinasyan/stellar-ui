@@ -1,6 +1,6 @@
 {
   "name": "stellar-ui",
-  "version": "0.0.61",
+  "version": "0.0.62",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && run-p build:stellar build:helpers",

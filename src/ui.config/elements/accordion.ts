@@ -1,5 +1,6 @@
 export default {
   wrapper: 'w-full flex flex-col',
+  container: 'w-full flex flex-col',
   item: {
     base: '',
     size: 'text-sm',
@@ -15,6 +16,6 @@ export default {
     openIcon: 'icon-[heroicons--chevron-down-20-solid]',
     closeIcon: '',
     class: 'mb-1.5 w-full',
-    variant: 'soft'
+    variant: 'soft' as const
   }
 }
