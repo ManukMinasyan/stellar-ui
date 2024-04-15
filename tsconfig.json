@@ -12,6 +12,7 @@
     "moduleResolution": "Node",
     "strict": false,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": false,

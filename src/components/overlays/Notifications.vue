@@ -50,7 +50,7 @@ export default defineComponent({
     const {ui, attrs} = useUI('notifications', toRef(props, 'ui'), config)
 
     const toast = useToast()
-    const {sharedToastState: {notifications}} = useToastSharedState()
+    const {notifications} = useToastSharedState()
 
     const wrapperClass = computed(() => {
       return twMerge(twJoin(

@@ -1,19 +1,24 @@
 <script setup lang="ts">
+import {ref} from 'vue'
+
 const columns = [{
   key: 'id',
   label: 'ID'
 }, {
   key: 'name',
-  label: 'User name'
+  label: 'Name'
 }, {
   key: 'title',
-  label: 'Job position'
+  label: 'Title'
 }, {
   key: 'email',
   label: 'Email'
 }, {
-  key: 'role'
+  key: 'role',
+  label: 'Role'
 }]
+
+const selectedColumns = ref([...columns])
 
 const people = [{
   id: 1,
@@ -55,6 +60,12 @@ const people = [{
 </script>
 
 <template>
-  <STable :columns="columns" :rows="people"/>
+  <div>
+    <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
+      <SSelectMenu v-model="selectedColumns" :options="columns" multiple placeholder="Columns" />
+    </div>
+
+    <STable :columns="selectedColumns" :rows="people" />
+  </div>
 </template>
 

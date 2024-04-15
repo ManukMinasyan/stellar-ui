@@ -40,15 +40,18 @@ export default {
     wrapper: 'absolute inset-x-0 -bottom-[0.5px] p-0'
   },
   default: {
-    sortAscIcon: 'icon-[heroicons--bars-arrow-up-20-solid]',
-    sortDescIcon: 'icon-[heroicons--bars-arrow-down-20-solid]',
+    sortAscIcon: 'i-heroicons-bars-arrow-up-20-solid',
+    sortDescIcon: 'i-heroicons-bars-arrow-down-20-solid',
     sortButton: {
-      icon: 'icon-[heroicons--arrows-up-down-20-solid]',
+      icon: 'i-heroicons-arrows-up-down-20-solid',
       trailing: true,
       square: true,
       color: 'gray' as const,
       variant: 'ghost' as const,
       class: '-m-1.5'
+    },
+    checkbox: {
+      color: 'primary' as const
     },
     progress: {
       color: 'primary' as const,

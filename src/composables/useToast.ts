@@ -1,5 +1,5 @@
 import type { Notification } from '../types/notification'
-import {useStateEffect} from "@/composables/useState";
+import { createGlobalState } from '@vueuse/core'
 import {ref} from "vue";
 
 const sharedToastState = () => {
@@ -30,15 +30,10 @@ const sharedToastState = () => {
     }
 }
 
-// @ts-expect-error
-export const useToastSharedState: any = useStateEffect(sharedToastState, {
-    name: 'sharedToastState',
-    debug: false,
-    destroy: false,
-})
+export const useToastSharedState: any = createGlobalState(sharedToastState)
 
 export function useToast () {
-    const {sharedToastState: {add, remove}} = useToastSharedState()
+    const {add, remove} = useToastSharedState()
 
     return {
         add,
