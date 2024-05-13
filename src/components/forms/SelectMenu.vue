@@ -63,7 +63,7 @@
                 autofocus
                 autocomplete="off"
                 :class="uiMenu.input"
-                @change="onChange"
+                @change="onQueryChange"
             />
             <component
                 :is="searchable ? 'HComboboxOption' : 'HListboxOption'"
@@ -173,7 +173,7 @@ export default defineComponent({
   inheritAttrs: false,
   props: {
     modelValue: {
-      type: [String, Number, Object, Array],
+      type: [String, Number, Object, Array, Boolean],
       default: ''
     },
     query: {
@@ -247,6 +247,10 @@ export default defineComponent({
     searchablePlaceholder: {
       type: String,
       default: 'Search...'
+    },
+    searchableLazy: {
+      type: Boolean,
+      default: false
     },
     clearSearchOnClose: {
       type: Boolean,
@@ -361,7 +365,7 @@ export default defineComponent({
         } else {
           return null
         }
-      } else if (props.modelValue) {
+      } else if (props.modelValue !== undefined && props.modelValue !== null) {
         if (props.valueAttribute) {
           const option = props.options.find(option => option[props.valueAttribute] === props.modelValue)
           return option ? option[props.optionAttribute] : null
@@ -386,7 +390,7 @@ export default defineComponent({
           variant?.replaceAll('{color}', color.value),
           (isLeading.value || slots.leading) && ui.value.leading.padding[size.value],
           (isTrailing.value || slots.trailing) && ui.value.trailing.padding[size.value]
-      ), props.placeholder && !props.modelValue && ui.value.placeholder, props.selectClass)
+      ), props.placeholder && (props.modelValue === undefined && props.modelValue === null) && ui.value.placeholder, props.selectClass)
     })
 
     const isLeading = computed(() => {
@@ -469,6 +473,8 @@ export default defineComponent({
           return child !== null && child !== undefined && String(child).search(new RegExp(query.value, 'i')) !== -1
         })
       })
+    }, [], {
+      lazy: props.searchableLazy
     })
 
     const createOption = computed(() => {
@@ -504,14 +510,13 @@ export default defineComponent({
       }
     })
 
-    function onUpdate (event: any) {
-      emit('update:modelValue', event)
+    function onUpdate (value: any) {
+      emit('update:modelValue', value)
+      emit('change', value)
+      emitFormChange()
     }
 
-    function onChange (event: any) {
-      emit('change', (event.target as HTMLInputElement).value)
-      emitFormChange()
-
+    function onQueryChange (event: any) {
       query.value = event.target.value
     }
 
@@ -546,7 +551,7 @@ export default defineComponent({
       // eslint-disable-next-line vue/no-dupe-keys
       query,
       onUpdate,
-      onChange
+      onQueryChange
     }
   }
 })

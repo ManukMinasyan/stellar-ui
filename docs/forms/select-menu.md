@@ -8,7 +8,8 @@ import Multiple from './demo/SelectMenu/Multiple.vue';
 import Objects from './demo/SelectMenu/Objects.vue';
 import ObjectsValueAttribute from './demo/SelectMenu/ObjectsValueAttribute.vue';
 import Icon from './demo/SelectMenu/Icon.vue';
-import Search from './demo/SelectMenu/Search.vue';
+import Searchable from './demo/SelectMenu/Searchable.vue';
+import SearchableAttributes from './demo/SelectMenu/SearchableAttributes.vue';
 </script>
 
 # Select Menu
@@ -62,7 +63,8 @@ If you only want to select a single object property rather than the whole object
 
 ## Icon
 
-Use the `selected-icon` prop to set a different icon or change it globally in `ui.selectMenu.default.selectedIcon`. Defaults to `icon-[heroicons--check-20-solid]`.
+Use the `selected-icon` prop to set a different icon or change it globally in `ui.selectMenu.default.selectedIcon`.
+Defaults to `icon-[heroicons--check-20-solid]`.
 
 <DemoContainer>
   <Icon />
@@ -70,7 +72,7 @@ Use the `selected-icon` prop to set a different icon or change it globally in `u
 
 <<< @/forms/demo/SelectMenu/Icon.vue
 
-## Search
+## Searchable
 
 Use the `searchable` prop to enable search.
 
@@ -79,7 +81,19 @@ Use the `searchable-placeholder` prop to set a different placeholder.
 This will use Headless UI Combobox component instead of Listbox.
 
 <DemoContainer>
-  <Search />
+  <Searchable />
 </DemoContainer>
 
-<<< @/forms/demo/SelectMenu/Search.vue
+<<< @/forms/demo/SelectMenu/Searchable.vue
+
+### Attributes
+
+Use the `search-attributes` prop with an array of property names to search on each option object. Nested attributes can
+be accessed using `dot.notation`. When the property value is an array or object, these are cast to string so these can
+be searched within.
+
+<DemoContainer>
+  <SearchableAttributes />
+</DemoContainer>
+
+<<< @/forms/demo/SelectMenu/SearchableAttributes.vue

@@ -248,6 +248,10 @@ export default defineComponent({
       type: Array,
       default: null
     },
+    searchLazy: {
+      type: Boolean,
+      default: false
+    },
     debounce: {
       type: Number,
       default: 200
@@ -406,6 +410,8 @@ export default defineComponent({
           return child !== null && child !== undefined && String(child).search(new RegExp(query.value, 'i')) !== -1
         })
       })
+    }, [], {
+      lazy: props.searchLazy
     })
 
     watch(container, (value) => {
