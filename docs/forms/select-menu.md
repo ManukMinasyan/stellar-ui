@@ -10,6 +10,7 @@ import ObjectsValueAttribute from './demo/SelectMenu/ObjectsValueAttribute.vue';
 import Icon from './demo/SelectMenu/Icon.vue';
 import Searchable from './demo/SelectMenu/Searchable.vue';
 import SearchableAttributes from './demo/SelectMenu/SearchableAttributes.vue';
+import SearchableClearOnClose from './demo/SelectMenu/SearchableClearOnClose.vue';
 </script>
 
 # Select Menu
@@ -97,3 +98,14 @@ be searched within.
 </DemoContainer>
 
 <<< @/forms/demo/SelectMenu/SearchableAttributes.vue
+
+### Clear on close
+
+By default, the search query will be kept after the menu is closed. To clear it on close, set the `clear-search-on-close` prop.
+
+
+<DemoContainer>
+  <SearchableClearOnClose />
+</DemoContainer>
+
+<<< @/forms/demo/SelectMenu/SearchableClearOnClose.vue
