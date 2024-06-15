@@ -3,66 +3,111 @@ outline: deep
 ---
 
 <script setup>
-import Basic from './demo/Form/Basic.vue';
 import Yup from './demo/Form/Yup.vue';
 import Zod from './demo/Form/Zod.vue';
 import Joi from './demo/Form/Joi.vue';
 import Valibot from './demo/Form/Valibot.vue';
+import CustomValidation from './demo/Form/CustomValidation.vue';
+
+const items = [
+{
+  slot: 'yup',
+  label: 'Yup'
+}, 
+{
+  slot: 'zod',
+  label: 'Zod'
+},
+{
+  slot: 'joi',
+  label: 'Joi'
+},
+{
+  slot: 'valibot',
+  label: 'Valibot'
+}
+]
 </script>
 
 # Form
 
-Use the Form component to validate form data using schema libraries such as Yup, Zod, Joi, Valibot or your own
-validation logic. It works seamlessly with the FormGroup component to automatically display error messages around form
-elements.
+Collect and validate form data.
 
-The Form component requires the `validate` and `state` props for form validation.
+## Usage
 
-- `state` - a reactive object that holds the current state of the form.
-- `validate` - a function that takes the form's state as input and returns an array of `FormError` objects with the
-  following fields:
-    - `message` - the error message to display.
-    - `path` - the path to the form element matching the name.
+Use the Form component to validate form data using schema libraries such
+as [Yup](https://github.com/jquense/yup), [Zod](https://github.com/colinhacks/zod), [Joi](https://github.com/hapijs/joi), [Valibot](https://valibot.dev/),
+or your own validation logic.
 
-<DemoContainer>
-  <Basic/>
-</DemoContainer>
+It works with the [FormGroup](/forms/form-group) component to display error messages around form elements
+automatically.
 
-<<< @/forms/demo/Form/Basic.vue
+The form component requires two props:
+
+- `state` - a reactive object holding the form's state.
+- `schema` - a schema object from [Yup](#yup), [Zod](#zod), [Joi](#joi), or [Valibot](#valibot).
+
+::: info
+Note that **no validation library is included** by default, so ensure you **install the one you need**.
+:::
 
 ## Schema
 
-You can provide a schema from Yup, Zod or Joi, Valibot through the `schema` prop to validate the state. It's important to
+You can provide a schema from Yup, Zod or Joi, Valibot through the `schema` prop to validate the state. It's important
+to
 note that **none of these libraries are included** by default, so make sure to **install the one you need**.
 
-### Yup
-
-<DemoContainer>
-  <Yup/>
-</DemoContainer>
+  <STabs :items="items" class="w-full space-y-2">
+    <template #yup="{ item }">
+      <DemoContainer>
+        <Yup/>
+      </DemoContainer>
 
 <<< @/forms/demo/Form/Yup.vue
 
-### Zod
+  </template>
 
+<template #zod="{ item }">
 <DemoContainer>
-  <Zod/>
+<Zod/>
 </DemoContainer>
 
 <<< @/forms/demo/Form/Zod.vue
 
-### Joi
-
-<DemoContainer>
-  <Joi/>
-</DemoContainer>
+  </template>
+<template #joi="{ item }">
+      <DemoContainer>
+        <Joi/>
+      </DemoContainer>
 
 <<< @/forms/demo/Form/Joi.vue
 
-### Valibot
-
-<DemoContainer>
-  <Valibot/>
-</DemoContainer>
+  </template>
+<template #valibot="{ item }">
+      <DemoContainer>
+        <Valibot/>
+      </DemoContainer>
 
 <<< @/forms/demo/Form/Valibot.vue
+
+  </template>
+</STabs>
+
+## Custom validation
+
+Use the `validate` prop to apply your own validation logic.
+
+The validation function must return a list of errors with the following attributes:
+
+- `message` - Error message for display.
+- `path` - Path to the form element corresponding to the `name` attribute.
+
+::: info
+Note that it can be used alongside the `schema` prop to handle complex use cases.
+:::
+
+<DemoContainer>
+    <CustomValidation/>
+</DemoContainer>
+
+<<< @/forms/demo/Form/CustomValidation.vue

@@ -1,42 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { string, object, email, minLength, Input } from 'valibot'
+import * as v from 'valibot'
+import {reactive} from "vue";
 
-const schema = object({
-  email: string([email('Invalid email')]),
-  password: string([minLength(8, 'Must be at least 8 characters')])
+const schema = v.object({
+  email: v.pipe(v.string(), v.email('Invalid email')),
+  password: v.pipe(v.string(), v.minLength(8, 'Must be at least 8 characters'))
 })
 
-type Schema = Input<typeof schema>
+type Schema = v.InferOutput<typeof schema>
 
-const state = ref({
-  email: undefined,
-  password: undefined
+const state = reactive({
+  email: '',
+  password: ''
 })
 
-async function submit (event) {
+async function onSubmit (event) {
   // Do something with event.data
   console.log(event.data)
 }
 </script>
 
 <template>
-  <s-form
-      :schema="schema"
-      :state="state"
-      @submit="submit"
-      class="space-y-4"
-  >
-    <s-form-group label="Email" name="email">
-      <s-input v-model="state.email" />
-    </s-form-group>
+  <SForm :schema="v.safeParser(schema)" :state="state" class="space-y-4" @submit="onSubmit">
+    <SFormGroup label="Email" name="email">
+      <SInput v-model="state.email" />
+    </SFormGroup>
 
-    <s-form-group label="Password" name="password">
-      <s-input v-model="state.password" type="password" />
-    </s-form-group>
+    <SFormGroup label="Password" name="password">
+      <SInput v-model="state.password" type="password" />
+    </SFormGroup>
 
-    <s-button type="submit">
+    <SButton type="submit">
       Submit
-    </s-button>
-  </s-form>
+    </SButton>
+  </SForm>
 </template>
+
