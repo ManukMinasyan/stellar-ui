@@ -1,5 +1,5 @@
 <template>
-  <div :class="ui.wrapper">
+  <div :class="(type === 'hidden') ? 'hidden' : ui.wrapper">
     <input
         :id="inputId"
         ref="input"
@@ -170,7 +170,7 @@ export default defineComponent({
 
     const { emitFormBlur, emitFormInput, size: sizeFormGroup, color, inputId, name } = useFormGroup(props, config)
 
-    const size = computed(() => sizeButtonGroup.value || sizeFormGroup.value)
+    const size = computed(() => sizeButtonGroup.value ?? sizeFormGroup.value)
 
     const modelModifiers = ref(defu({}, props.modelModifiers, { trim: false, lazy: false, number: false }))
 
@@ -239,7 +239,7 @@ export default defineComponent({
           ui.value.form,
           rounded.value,
           ui.value.placeholder,
-          props.type === 'file' && [ui.value.file.base, ui.value.file.padding[size.value]],
+          props.type === 'file' && ui.value.file.base,
           ui.value.size[size.value],
           props.padded ? ui.value.padding[size.value] : 'p-0',
           variant?.replaceAll('{color}', color.value),
