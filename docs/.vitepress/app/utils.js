@@ -1,5 +1,4 @@
 import { inBrowser, sanitizeFileName } from '../shared';
-import { h, onMounted, onUnmounted, shallowRef } from 'vue';
 export { inBrowser } from '../shared';
 /**
  * Converts a url path to the corresponding js chunk filename.
@@ -41,30 +40,3 @@ export function pathToFile(path) {
     return pagePath;
 }
 export let contentUpdatedCallbacks = [];
-/**
- * Register callback that is called every time the markdown content is updated
- * in the DOM.
- */
-export function onContentUpdated(fn) {
-    contentUpdatedCallbacks.push(fn);
-    onUnmounted(() => {
-        contentUpdatedCallbacks = contentUpdatedCallbacks.filter((f) => f !== fn);
-    });
-}
-export function defineClientComponent(loader, args, cb) {
-    return {
-        setup() {
-            const comp = shallowRef();
-            onMounted(async () => {
-                let res = await loader();
-                // interop module default
-                if (res && (res.__esModule || res[Symbol.toStringTag] === 'Module')) {
-                    res = res.default;
-                }
-                comp.value = res;
-                await cb?.();
-            });
-            return () => (comp.value ? h(comp.value, ...(args ?? [])) : null);
-        }
-    };
-}
