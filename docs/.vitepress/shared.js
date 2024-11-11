@@ -7,12 +7,13 @@ export const notFoundPageData = {
     relativePath: '',
     filePath: '',
     title: '404',
-    description: 'Not Found',
+    description: 'Yuhuuu, this page is not found',
     headers: [],
-    frontmatter: { sidebar: false, layout: 'page' },
+    frontmatter: {sidebar: false, layout: 'page'},
     lastUpdated: 0,
     isNotFound: true
 };
+
 export function isActive(currentPath, matchPath, asRegex = false) {
     if (matchPath === undefined) {
         return false;
@@ -30,12 +31,15 @@ export function isActive(currentPath, matchPath, asRegex = false) {
     }
     return true;
 }
+
 export function normalize(path) {
     return decodeURI(path).replace(HASH_RE, '').replace(EXT_RE, '');
 }
+
 export function isExternal(path) {
     return EXTERNAL_URL_RE.test(path);
 }
+
 /**
  * this merges the locales data to the main data by the route
  */
@@ -57,6 +61,7 @@ export function resolveSiteDataByRoute(siteData, relativePath) {
         }
     });
 }
+
 /**
  * Create the page title string based on config.
  */
@@ -69,6 +74,7 @@ export function createTitle(siteData, pageData) {
     const templateString = createTitleTemplate(siteData.title, template);
     return `${title}${templateString}`;
 }
+
 function createTitleTemplate(siteTitle, template) {
     if (template === false) {
         return '';
@@ -81,6 +87,7 @@ function createTitleTemplate(siteTitle, template) {
     }
     return ` | ${template}`;
 }
+
 function hasTag(head, tag) {
     const [tagType, tagAttrs] = tag;
     if (tagType !== 'meta')
@@ -90,12 +97,15 @@ function hasTag(head, tag) {
         return false;
     return head.some(([type, attrs]) => type === tagType && attrs[keyAttr[0]] === keyAttr[1]);
 }
+
 export function mergeHead(prev, curr) {
     return [...prev.filter((tagAttrs) => !hasTag(curr, tagAttrs)), ...curr];
 }
+
 // https://github.com/rollup/rollup/blob/fec513270c6ac350072425cc045db367656c623b/src/utils/sanitizeFileName.ts
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
+
 export function sanitizeFileName(name) {
     const match = DRIVE_LETTER_REGEX.exec(name);
     const driveLetter = match ? match[0] : '';
@@ -105,6 +115,7 @@ export function sanitizeFileName(name) {
             .replace(INVALID_CHAR_REGEX, '_')
             .replace(/(^|\/)_+(?=[^/]*$)/, '$1'));
 }
+
 export function slash(p) {
     return p.replace(/\\/g, '/');
 }

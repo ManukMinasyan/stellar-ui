@@ -1,21 +1,6 @@
-import { siteDataRef } from './data';
-import { inBrowser, EXTERNAL_URL_RE, sanitizeFileName } from '../shared';
+import { inBrowser, sanitizeFileName } from '../shared';
 import { h, onMounted, onUnmounted, shallowRef } from 'vue';
 export { inBrowser } from '../shared';
-/**
- * Join two paths by resolving the slash collision.
- */
-export function joinPath(base, path) {
-    return `${base}${path}`.replace(/\/+/g, '/');
-}
-/**
- * Append base to internal (non-relative) urls
- */
-export function withBase(path) {
-    return EXTERNAL_URL_RE.test(path) || !path.startsWith('/')
-        ? path
-        : joinPath(siteDataRef.value.base, path);
-}
 /**
  * Converts a url path to the corresponding js chunk filename.
  */
