@@ -21,7 +21,7 @@ const config = {
             lib: {
                 entry: resolve(__dirname, 'src/index.ts'),
                 name: 'stellar-ui',
-                formats: ['es'], // adding 'umd' requires globals set to every external module
+                formats: ['es', 'cjs'], // adding 'umd' requires globals set to every external module
                 fileName: (format) => `stellar-ui.${format}.js`,
             },
             rollupOptions: {
