@@ -1,147 +1,138 @@
+<script lang="ts">
+import type { VariantProps } from 'tailwind-variants'
+import type { AppConfig } from '@nuxt/schema'
+import _appConfig from '#build/app.config'
+import theme from '#build/ui/alert'
+import { extendDevtoolsMeta } from '../composables/extendDevtoolsMeta'
+import { tv } from '../utils/tv'
+import type { AvatarProps, ButtonProps } from '../types'
+
+const appConfigAlert = _appConfig as AppConfig & { ui: { alert: Partial<typeof theme> } }
+
+const alert = tv({ extend: tv(theme), ...(appConfigAlert.ui?.alert || {}) })
+
+type AlertVariants = VariantProps<typeof alert>
+
+export interface AlertProps {
+  /**
+   * The element or component this component should render as.
+   * @defaultValue 'div'
+   */
+  as?: any
+  title?: string
+  description?: string
+  icon?: string
+  avatar?: AvatarProps
+  color?: AlertVariants['color']
+  variant?: AlertVariants['variant']
+  /**
+   * Display a list of actions:
+   * - under the title and description if multiline
+   * - next to the close button if not multiline
+   * `{ size: 'xs' }`{lang="ts-type"}
+   */
+  actions?: ButtonProps[]
+  /**
+   * Display a close button to dismiss the alert.
+   * `{ size: 'md', color: 'neutral', variant: 'link' }`{lang="ts-type"}
+   * @emits 'update:open'
+   * @defaultValue false
+   */
+  close?: ButtonProps | boolean
+  /**
+   * The icon displayed in the close button.
+   * @defaultValue appConfig.ui.icons.close
+   */
+  closeIcon?: string
+  class?: any
+  ui?: Partial<typeof alert.slots>
+}
+
+export interface AlertEmits {
+  (e: 'update:open', value: boolean): void
+}
+
+export interface AlertSlots {
+  leading(props?: {}): any
+  title(props?: {}): any
+  description(props?: {}): any
+  actions(props?: {}): any
+  close(props: { ui: any }): any
+}
+
+extendDevtoolsMeta<AlertProps>({ defaultProps: { title: 'Heads up!' } })
+</script>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { Primitive } from 'reka-ui'
+import { useAppConfig } from '#imports'
+import { useLocale } from '../composables/useLocale'
+import UIcon from './Icon.vue'
+import UAvatar from './Avatar.vue'
+import UButton from './Button.vue'
+
+const props = defineProps<AlertProps>()
+const emits = defineEmits<AlertEmits>()
+const slots = defineSlots<AlertSlots>()
+
+const { t } = useLocale()
+const appConfig = useAppConfig()
+
+const multiline = computed(() => !!props.title && !!props.description)
+
+const ui = computed(() => alert({
+  color: props.color,
+  variant: props.variant
+}))
+</script>
+
 <template>
-  <div :class="alertClass" v-bind="attrs">
-    <div class="flex" :class="[ui.gap, { 'items-start': (description || $slots.description), 'items-center': !description && !$slots.description }]">
-      <slot name="icon" :icon="icon">
-        <UIcon v-if="icon" :name="icon" :class="ui.icon.base" />
-      </slot>
-      <slot name="avatar" :avatar="avatar">
-        <UAvatar v-if="avatar" v-bind="{ size: ui.avatar.size, ...avatar }" :class="ui.avatar.base" />
-      </slot>
+  <Primitive :as="as" :class="ui.root({ class: [props.class, props.ui?.root], multiline })">
+    <slot name="leading">
+      <UAvatar v-if="avatar" :size="((props.ui?.avatarSize || ui.avatarSize()) as AvatarProps['size'])" v-bind="avatar" :class="ui.avatar({ class: props.ui?.avatar })" />
+      <UIcon v-else-if="icon" :name="icon" :class="ui.icon({ class: props.ui?.icon })" />
+    </slot>
 
-      <div :class="ui.inner">
-        <p v-if="(title || $slots.title)" :class="ui.title">
-          <slot name="title" :title="title">
-            {{ title }}
-          </slot>
-        </p>
-        <div v-if="description || $slots.description" :class="twMerge(ui.description, !(title && $slots.title) && 'mt-0 leading-5')">
-          <slot name="description" :description="description">
-            {{ description }}
-          </slot>
-        </div>
-
-        <div v-if="(description || $slots.description) && (actions.length || $slots.actions)" :class="ui.actions">
-          <slot name="actions">
-            <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...(ui.default.actionButton || {}), ...action }" @click.stop="onAction(action)" />
-          </slot>
-        </div>
+    <div :class="ui.wrapper({ class: props.ui?.wrapper })">
+      <div v-if="title || !!slots.title" :class="ui.title({ class: props.ui?.title })">
+        <slot name="title">
+          {{ title }}
+        </slot>
       </div>
-      <div v-if="closeButton || (!description && !$slots.description && actions.length)" :class="twMerge(ui.actions, 'mt-0')">
-        <template v-if="!description && !$slots.description && (actions.length || $slots.actions)">
-          <slot name="actions">
-            <UButton v-for="(action, index) of actions" :key="index" v-bind="{ ...(ui.default.actionButton || {}), ...action }" @click.stop="onAction(action)" />
-          </slot>
-        </template>
+      <div v-if="description || !!slots.description" :class="ui.description({ class: props.ui?.description })">
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </div>
 
-        <UButton v-if="closeButton" aria-label="Close" v-bind="{ ...(ui.default.closeButton || {}), ...closeButton }" @click.stop="$emit('close')" />
+      <div v-if="multiline && actions?.length" :class="ui.actions({ class: props.ui?.actions, multiline: true })">
+        <slot name="actions">
+          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        </slot>
       </div>
     </div>
-  </div>
+
+    <div v-if="(!multiline && actions?.length) || close" :class="ui.actions({ class: props.ui?.actions, multiline: false })">
+      <template v-if="!multiline">
+        <slot name="actions">
+          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+        </slot>
+      </template>
+
+      <slot name="close" :ui="ui">
+        <UButton
+            v-if="close"
+            :icon="closeIcon || appConfig.ui.icons.close"
+            size="md"
+            color="neutral"
+            variant="link"
+            :aria-label="t('alert.close')"
+            v-bind="typeof close === 'object' ? close : undefined"
+            :class="ui.close({ class: props.ui?.close })"
+            @click="emits('update:open', false)"
+        />
+      </slot>
+    </div>
+  </Primitive>
 </template>
-
-<script lang="ts">
-import { computed, toRef, defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import { twMerge, twJoin } from 'tailwind-merge'
-import UIcon from '../elements/Icon.vue'
-import UAvatar from '../elements/Avatar.vue'
-import UButton from '../elements/Button.vue'
-import { useUI } from '../../composables/useUI'
-import type { Avatar, Button, AlertColor, AlertVariant, AlertAction, Strategy } from '../../types'
-import { mergeConfig } from '../../utils'
-import appConfig from '@/constants/app.config'
-import { alert } from '@/ui.config'
-
-const config = mergeConfig<typeof alert>(appConfig.ui.strategy, appConfig.ui.alert, alert)
-
-export default defineComponent({
-  components: {
-    UIcon,
-    UAvatar,
-    UButton
-  },
-  inheritAttrs: false,
-  props: {
-    title: {
-      type: String,
-      default: null
-    },
-    description: {
-      type: String,
-      default: null
-    },
-    icon: {
-      type: String,
-      default: () => config.default.icon
-    },
-    avatar: {
-      type: Object as PropType<Avatar>,
-      default: null
-    },
-    closeButton: {
-      type: Object as PropType<Button>,
-      default: () => config.default.closeButton as unknown as Button
-    },
-    actions: {
-      type: Array as PropType<AlertAction[]>,
-      default: () => []
-    },
-    color: {
-      type: String as PropType<AlertColor>,
-      default: () => config.default.color,
-      validator (value: string) {
-        return [...appConfig.ui.colors, ...Object.keys(config.color)].includes(value)
-      }
-    },
-    variant: {
-      type: String as PropType<AlertVariant>,
-      default: () => config.default.variant,
-      validator (value: string) {
-        return [
-          ...Object.keys(config.variant),
-          ...Object.values(config.color).flatMap(value => Object.keys(value))
-        ].includes(value)
-      }
-    },
-    class: {
-      type: [String, Object, Array] as PropType<any>,
-      default: () => ''
-    },
-    ui: {
-      type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
-      default: () => ({})
-    }
-  },
-  emits: ['close'],
-  setup (props) {
-    const { ui, attrs } = useUI('alert', toRef(props, 'ui'), config)
-
-    const alertClass = computed(() => {
-      const variant = ui.value.color?.[props.color as string]?.[props.variant as string] || ui.value.variant[props.variant]
-
-      return twMerge(twJoin(
-          ui.value.wrapper,
-          ui.value.rounded,
-          ui.value.shadow,
-          ui.value.padding,
-          variant?.replaceAll('{color}', props.color)
-      ), props.class)
-    })
-
-    function onAction (action: AlertAction) {
-      if (action.click) {
-        action.click()
-      }
-    }
-
-    return {
-      // eslint-disable-next-line vue/no-dupe-keys
-      ui,
-      attrs,
-      alertClass,
-      onAction,
-      twMerge
-    }
-  }
-})
-</script>
