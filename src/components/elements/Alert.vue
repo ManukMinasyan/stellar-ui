@@ -1,11 +1,10 @@
 <script lang="ts">
 import type { VariantProps } from 'tailwind-variants'
-import type { AppConfig } from '@nuxt/schema'
+import type { AppConfig } from '@/types/config'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/alert'
-import { extendDevtoolsMeta } from '../composables/extendDevtoolsMeta'
-import { tv } from '../utils/tv'
-import type { AvatarProps, ButtonProps } from '../types'
+import { tv } from '@/utils/tv'
+import type { AvatarProps, ButtonProps } from '@/types'
 
 const appConfigAlert = _appConfig as AppConfig & { ui: { alert: Partial<typeof theme> } }
 
@@ -59,8 +58,6 @@ export interface AlertSlots {
   actions(props?: {}): any
   close(props: { ui: any }): any
 }
-
-extendDevtoolsMeta<AlertProps>({ defaultProps: { title: 'Heads up!' } })
 </script>
 
 <script setup lang="ts">
