@@ -15,9 +15,9 @@ First of all, add the `Notifications` component to your app, preferably inside `
 <<< @/overlays/demo/Notification/App.vue
 
 This component will render the notifications at the bottom right of the screen by default. You can configure its
-behavior in the `app.config.ts` through `ui.notifications`:
+behavior in the `app.config.d.ts` through `ui.notifications`:
 
-<<< @/overlays/demo/Notification/app.config.ts
+<<< @/overlays/demo/Notification/app.config.d.ts
 
 Then, you can use the `useToast` composable to add notifications to your app:
 
