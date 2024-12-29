@@ -64,7 +64,7 @@ export interface AlertSlots {
 import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import { useAppConfig } from '#imports'
-import { useLocale } from '../composables/useLocale'
+import { useLocale } from '@/composables/useLocale'
 import UIcon from './Icon.vue'
 import UAvatar from './Avatar.vue'
 import UButton from './Button.vue'
