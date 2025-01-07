@@ -1,4 +1,4 @@
-import type { ModuleOptions } from '../module'
+import type { ModuleOptions } from '@/module'
 
 export default (options: Required<ModuleOptions>) => ({
     slots: {

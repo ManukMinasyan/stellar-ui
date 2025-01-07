@@ -65,9 +65,9 @@ import { computed } from 'vue'
 import { Primitive } from 'reka-ui'
 import { useAppConfig } from '#imports'
 import { useLocale } from '@/composables/useLocale'
-import UIcon from './Icon.vue'
-import UAvatar from './Avatar.vue'
-import UButton from './Button.vue'
+import SIcon from './Icon.vue'
+import SAvatar from './Avatar.vue'
+import SButton from './Button.vue'
 
 const props = defineProps<AlertProps>()
 const emits = defineEmits<AlertEmits>()
@@ -87,8 +87,8 @@ const ui = computed(() => alert({
 <template>
   <Primitive :as="as" :class="ui.root({ class: [props.class, props.ui?.root], multiline })">
     <slot name="leading">
-      <UAvatar v-if="avatar" :size="((props.ui?.avatarSize || ui.avatarSize()) as AvatarProps['size'])" v-bind="avatar" :class="ui.avatar({ class: props.ui?.avatar })" />
-      <UIcon v-else-if="icon" :name="icon" :class="ui.icon({ class: props.ui?.icon })" />
+      <SAvatar v-if="avatar" :size="((props.ui?.avatarSize || ui.avatarSize()) as AvatarProps['size'])" v-bind="avatar" :class="ui.avatar({ class: props.ui?.avatar })" />
+      <SIcon v-else-if="icon" :name="icon" :class="ui.icon({ class: props.ui?.icon })" />
     </slot>
 
     <div :class="ui.wrapper({ class: props.ui?.wrapper })">
@@ -105,7 +105,7 @@ const ui = computed(() => alert({
 
       <div v-if="multiline && actions?.length" :class="ui.actions({ class: props.ui?.actions, multiline: true })">
         <slot name="actions">
-          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+          <SButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
         </slot>
       </div>
     </div>
@@ -113,12 +113,12 @@ const ui = computed(() => alert({
     <div v-if="(!multiline && actions?.length) || close" :class="ui.actions({ class: props.ui?.actions, multiline: false })">
       <template v-if="!multiline">
         <slot name="actions">
-          <UButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
+          <SButton v-for="(action, index) in actions" :key="index" size="xs" v-bind="action" />
         </slot>
       </template>
 
       <slot name="close" :ui="ui">
-        <UButton
+        <SButton
             v-if="close"
             :icon="closeIcon || appConfig.ui.icons.close"
             size="md"
