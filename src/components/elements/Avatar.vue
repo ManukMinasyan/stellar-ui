@@ -38,8 +38,8 @@ import { ref, computed, useAttrs, onMounted } from 'vue'
 import { AvatarRoot, AvatarFallback, useForwardProps } from 'reka-ui'
 import { reactivePick, useImage } from '@vueuse/core'
 import ImageComponent from '#build/ui-image-component'
-import { useAvatarGroup } from '../composables/useAvatarGroup'
-import UIcon from './Icon.vue'
+import { useAvatarGroup } from '@/composables/useAvatarGroup'
+import SIcon from './Icon.vue'
 
 defineOptions({ inheritAttrs: false })
 
