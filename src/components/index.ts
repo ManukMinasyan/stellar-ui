@@ -1,5 +1,5 @@
 // Elements
-import SAlert from './elements/Alert.vue'
+import SAlert from './Alert.vue'
 
 export {
     SAlert,
