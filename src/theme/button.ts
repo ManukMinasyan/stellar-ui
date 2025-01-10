@@ -119,6 +119,43 @@ export default (options: Required<ModuleOptions>) => ({
         color: 'neutral',
         variant: 'ghost',
         class: 'text-[var(--ui-text)] hover:bg-[var(--ui-bg-elevated)] focus-visible:bg-[var(--ui-bg-elevated)] hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent'
+    }, {
+        color: 'neutral',
+        variant: 'link',
+        class: 'text-[var(--ui-text-muted)] hover:text-[var(--ui-text)] disabled:text-[var(--ui-text-muted)] aria-disabled:text-[var(--ui-text-muted)] focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-[var(--ui-border-inverted)]'
+    }, {
+        size: 'xs',
+        square: true,
+        class: 'p-1'
+    }, {
+        size: 'sm',
+        square: true,
+        class: 'p-1.5'
+    }, {
+        size: 'md',
+        square: true,
+        class: 'p-1.5'
+    }, {
+        size: 'lg',
+        square: true,
+        class: 'p-2'
+    }, {
+        size: 'xl',
+        square: true,
+        class: 'p-2'
+    }, {
+        loading: true,
+        leading: true,
+        class: {
+            leadingIcon: 'animate-spin'
+        }
+    }, {
+        loading: true,
+        leading: false,
+        trailing: true,
+        class: {
+            trailingIcon: 'animate-spin'
+        }
     }],
     defaultVariants: {
         color: 'primary',
