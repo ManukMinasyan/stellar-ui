@@ -3,8 +3,11 @@ import type { VariantProps } from 'tailwind-variants'
 import type { AppConfig } from '@/types/config'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/button'
-import { tv } from '../utils/tv'
-import type { PartialString } from '../types/utils'
+import type { LinkProps } from './Link.vue'
+import type { UseComponentIconsProps } from '../composables/useComponentIcons'
+import { tv } from '@/utils/tv'
+import type { AvatarProps } from '../types'
+import type { PartialString } from '@/types/utils'
 
 const appConfigButton = _appConfig as AppConfig & { ui: { button: Partial<typeof theme> } }
 
@@ -12,7 +15,7 @@ const button = tv({ extend: tv(theme), ...(appConfigButton.ui?.button || {}) })
 
 type ButtonVariants = VariantProps<typeof button>
 
-export interface ButtonProps extends Omit<'raw' | 'custom'> {
+export interface ButtonProps extends UseComponentIconsProps, Omit<LinkProps, 'raw' | 'custom'> {
   label?: string
   color?: ButtonVariants['color']
   variant?: ButtonVariants['variant']
@@ -28,8 +31,6 @@ export interface ButtonProps extends Omit<'raw' | 'custom'> {
   ui?: PartialString<typeof button.slots>
 }
 
-// Injects props to use as default in the devtools playground.
-
 export interface ButtonSlots {
   leading(props?: {}): any
   default(props?: {}): any
@@ -40,10 +41,13 @@ export interface ButtonSlots {
 <script setup lang="ts">
 import { type Ref, computed, ref, inject } from 'vue'
 import { useForwardProps } from 'reka-ui'
+import { useComponentIcons } from '../composables/useComponentIcons'
 import { useButtonGroup } from '@/composables/useButtonGroup'
 import { formLoadingInjectionKey } from '../composables/useFormField'
-import { omit } from '../utils'
+import { omit } from '@/utils'
 import { pickLinkProps } from '../utils/link'
+import SIcon from './Icon.vue'
+import SAvatar from './Avatar.vue'
 import ULink from './Link.vue'
 
 const props = defineProps<ButtonProps>()
@@ -70,6 +74,10 @@ const isLoading = computed(() => {
   return props.loading || (props.loadingAuto && (loadingAutoState.value || (formLoading?.value && props.type === 'submit')))
 })
 
+const { isLeading, isTrailing, leadingIconName, trailingIconName } = useComponentIcons(
+    computed(() => ({ ...props, loading: isLoading.value }))
+)
+
 const ui = computed(() => button({
   color: props.color,
   variant: props.variant,
@@ -77,6 +85,8 @@ const ui = computed(() => button({
   loading: isLoading.value,
   block: props.block,
   square: props.square || (!slots.default && !props.label),
+  leading: isLeading.value,
+  trailing: isTrailing.value,
   buttonGroup: orientation.value
 }))
 </script>
@@ -90,10 +100,19 @@ const ui = computed(() => button({
       raw
       @click="onClickWrapper"
   >
+    <slot name="leading">
+      <SIcon v-if="isLeading && leadingIconName" :name="leadingIconName" :class="ui.leadingIcon({ class: props.ui?.leadingIcon })" />
+      <SAvatar v-else-if="!!avatar" :size="((props.ui?.leadingAvatarSize || ui.leadingAvatarSize()) as AvatarProps['size'])" v-bind="avatar" :class="ui.leadingAvatar({ class: props.ui?.leadingAvatar })" />
+    </slot>
+
     <slot>
       <span v-if="label" :class="ui.label({ class: props.ui?.label })">
         {{ label }}
       </span>
+    </slot>
+
+    <slot name="trailing">
+      <SIcon v-if="isTrailing && trailingIconName" :name="trailingIconName" :class="ui.trailingIcon({ class: props.ui?.trailingIcon })" />
     </slot>
   </ULink>
 </template>
