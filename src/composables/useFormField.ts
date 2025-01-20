@@ -41,6 +41,31 @@ export function useFormField<T>(props?: Props<T>, opts?: { bind?: boolean, defer
         }
     }
 
+    function emitFormEvent(type: FormInputEvents, name?: string, eager?: boolean) {
+        if (formBus && formField && name) {
+            formBus.emit({ type, name, eager })
+        }
+    }
+
+    function emitFormBlur() {
+        emitFormEvent('blur', formField?.value.name)
+    }
+
+    function emitFormFocus() {
+        emitFormEvent('focus', formField?.value.name)
+    }
+
+    function emitFormChange() {
+        emitFormEvent('change', formField?.value.name)
+    }
+
+    const emitFormInput = useDebounceFn(
+        () => {
+            emitFormEvent('input', formField?.value.name, !opts?.deferInputValidation || formField?.value.eagerValidation)
+        },
+        formField?.value.validateOnInputDelay ?? formOptions?.value.validateOnInputDelay ?? 0
+    )
+
     return {
         id: computed(() => props?.id ?? inputId?.value),
         name: computed(() => props?.name ?? formField?.value.name),
@@ -48,6 +73,10 @@ export function useFormField<T>(props?: Props<T>, opts?: { bind?: boolean, defer
         color: computed(() => formField?.value.error ? 'error' : props?.color),
         highlight: computed(() => formField?.value.error ? true : props?.highlight),
         disabled: computed(() => formOptions?.value.disabled || props?.disabled),
+        emitFormBlur,
+        emitFormInput,
+        emitFormChange,
+        emitFormFocus,
         ariaAttrs: computed(() => {
             if (!formField?.value) return
 
