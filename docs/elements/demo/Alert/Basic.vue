@@ -1,3 +1,3 @@
 <template>
-  <s-alert title="Heads up!" />
+  <SAlert title="Heads up!" />
 </template>
