@@ -2,8 +2,8 @@
 import type { AppConfig } from '@/types/config
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/form'
-import { tv } from '../utils/tv'
-import type { FormSchema, FormError, FormInputEvents, FormErrorEvent, FormSubmitEvent, FormEvent, Form, FormErrorWithId } from '../types/form'
+import { tv } from '@/utils/tv'
+import type { FormSchema, FormError, FormInputEvents, FormErrorEvent, FormSubmitEvent, FormEvent, Form, FormErrorWithId } from '@/types/form'
 import type { DeepReadonly } from 'vue'
 
 const appConfigForm = _appConfig as AppConfig & { ui: { form: Partial<typeof theme> } }
@@ -36,9 +36,9 @@ export interface FormSlots {
 <script lang="ts" setup generic="T extends object">
 import { provide, inject, nextTick, ref, onUnmounted, onMounted, computed, useId, readonly } from 'vue'
 import { useEventBus } from '@vueuse/core'
-import { formOptionsInjectionKey, formInputsInjectionKey, formBusInjectionKey, formLoadingInjectionKey } from '../composables/useFormField'
-import { validateSchema } from '../utils/form'
-import { FormValidationException } from '../types/form'
+import { formOptionsInjectionKey, formInputsInjectionKey, formBusInjectionKey, formLoadingInjectionKey } from '@/composables/useFormField'
+import { validateSchema } from '@/utils/form'
+import { FormValidationException } from '@/types/form'
 
 const props = withDefaults(defineProps<FormProps<T>>(), {
   validateOn() {
