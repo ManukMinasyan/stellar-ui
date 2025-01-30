@@ -1,4 +1,5 @@
 export * from '../components/AvatarGroup.vue'
 export * from '../components/Avatar.vue'
 export * from '../components/Alert.vue'
+export * from '../components/Button.vue'
 export * from './locale'
