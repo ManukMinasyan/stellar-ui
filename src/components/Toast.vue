@@ -4,7 +4,7 @@ import type { ToastRootProps, ToastRootEmits } from 'reka-ui'
 import type { AppConfig } from '@/types/config'
 import _appConfig from '#build/app.config'
 import theme from '#build/ui/toast'
-import { tv } from '../utils/tv'
+import { tv } from '@/utils/tv'
 import type { AvatarProps, ButtonProps } from '../types'
 import type { StringOrVNode } from '@/types/utils'
 
