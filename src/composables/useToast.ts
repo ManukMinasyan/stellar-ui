@@ -1,7 +1,7 @@
 import { ref, nextTick } from 'vue'
 import { useState } from '#imports'
 import type { ToastProps, ToastEmits } from '../types'
-import type { EmitsToProps } from '../types/utils'
+import type { EmitsToProps } from '@/types/utils'
 
 export interface Toast extends Omit<ToastProps, 'defaultOpen'>, EmitsToProps<ToastEmits> {
     id: string | number
